@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,23 @@ namespace SF_19_2019_POP2020.Models
         {
             return base.ToString() + "Ja sam lekar " + Korisnicko.ToString() + ". Ja radim u " + DomZdravlja;
 
+        }
+
+        private ObservableCollection<String> _zakazaniTermini;
+
+        public ObservableCollection<String> ZakazaniTermini
+        {
+            get { return _zakazaniTermini; }
+            set { _zakazaniTermini = value; }
+        }
+
+
+        private ObservableCollection<String> _slobodniTermini;
+
+        public ObservableCollection<String> SlobodniTermini
+        {
+            get { return _zakazaniTermini; }
+            set { _zakazaniTermini = value; }
         }
 
         public string LekarUpisUFajl()

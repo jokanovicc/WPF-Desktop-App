@@ -40,11 +40,23 @@ namespace SF19_2019_POP2020.Models
 
         public ObservableCollection<Korisnik> Korisnici { get; set; }
         public ObservableCollection<Lekar> Lekari { get; set; }
+        public ObservableCollection<Pacijent> Pacijenti { get; set; }
+        public ObservableCollection<Termin> Termini { get; set; }
+        public ObservableCollection<Terapija> Terapije { get; set; }
+
+        public ObservableCollection<DomZdravlja> DomoviZdravlja { get; set; }
+
+        public ObservableCollection<Adresa> Adrese { get; set; }
 
         public void Initialize()
         {
             Korisnici = new ObservableCollection<Korisnik>();
             Lekari = new ObservableCollection<Lekar>();
+            Pacijenti = new ObservableCollection<Pacijent>();
+            Terapije = new ObservableCollection<Terapija>();
+            Termini = new ObservableCollection<Termin>();
+            DomoviZdravlja = new ObservableCollection<DomZdravlja>();
+            Adrese = new ObservableCollection<Adresa>();
 
             Adresa adresa = new Adresa
             {
@@ -52,7 +64,7 @@ namespace SF19_2019_POP2020.Models
                 Broj = "Broj 1",
                 Drzava = "Drzava 1",
                 Ulica = "Ulica 1",
-                ID = "1"
+                SifraAdrese = "1"
             };
 
             Korisnik korisnik1 = new Korisnik();
@@ -117,6 +129,10 @@ namespace SF19_2019_POP2020.Models
             else if (filename.Contains("lekari"))
             {
                 _doctorService.readUsers(filename);
+            }
+            else if (filename.Contains("pacijenti"))
+            {
+                //uradi nesto
             }
         }
 

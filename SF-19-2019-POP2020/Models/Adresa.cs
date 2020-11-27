@@ -9,12 +9,12 @@ namespace SF_19_2019_POP2020.Models
     [Serializable]
     public class Adresa
     {
-        private string _id;
+        private string _sifraAdrese;
 
-        public string ID
+        public string SifraAdrese
         {
-            get { return _id; }
-            set { _id = value; }
+            get { return _sifraAdrese; }
+            set { _sifraAdrese = value; }
         }
 
         private string _ulica;

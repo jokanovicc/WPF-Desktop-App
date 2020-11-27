@@ -57,12 +57,12 @@ namespace SF_19_2019_POP2020.Models
             set { _jmbg = value; }
         }
 
-        private Adresa _adresa;
+        private string _sifraAdrese;
 
-        public Adresa Adresa
+        public string SifraAdrese
         {
-            get { return _adresa; }
-            set { _adresa = value; }
+            get { return _sifraAdrese; }
+            set { _sifraAdrese = value; }
         }
 
         private EPol _pol;
@@ -109,7 +109,7 @@ namespace SF_19_2019_POP2020.Models
         {
             Korisnik kopija = new Korisnik();
 
-            kopija.Adresa = Adresa;
+            kopija.SifraAdrese = SifraAdrese;
             kopija.Aktivan = Aktivan;
             kopija.Email = Email;
             kopija.Ime = Ime;
