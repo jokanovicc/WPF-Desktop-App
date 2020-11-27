@@ -1,6 +1,5 @@
 ﻿using SF_19_2019_POP2020.Models;
 using SF_19_2019_POP2020.Services;
-using SF19_2019_POP2020.Model;
 using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
