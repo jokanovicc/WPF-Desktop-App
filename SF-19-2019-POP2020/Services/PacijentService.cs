@@ -42,7 +42,6 @@ namespace SF19_2019_POP2020.Services
                         Korisnicko = korisnik,
                         Terapije = kolekcijaTerapija,
                         Termini = kolekcijaTermina
-
                     };
                     Util.Instance.Pacijenti.Add(pacijent);
                 }

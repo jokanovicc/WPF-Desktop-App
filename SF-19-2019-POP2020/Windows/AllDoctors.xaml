@@ -17,9 +17,10 @@
             </MenuItem>
         </Menu>
         <DataGrid CanUserAddRows="False" Name="DGLekari" HorizontalAlignment="Left" 
-                  Height="371" Margin="10,38,0,0" VerticalAlignment="Top" Width="661"
+                  Height="240" Margin="10,38,0,0" VerticalAlignment="Top" Width="782"
                   AutoGenerateColumns="True"
                   AutoGeneratingColumn="DGLekari_AutoGeneratingColumn"/>
-        <TextBox Name="TxtPretraga" HorizontalAlignment="Left" Height="23" Margin="696,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyUp="TxtPretraga_KeyUp"/>
+        <TextBox Name="TxtPretraga" HorizontalAlignment="Left" Height="26" Margin="107,299,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173" KeyUp="TxtPretraga_KeyUp" Background="#FFB4E9FD"/>
+        <Label Content="Filter pretraga" HorizontalAlignment="Left" Margin="20,299,0,0" VerticalAlignment="Top" Width="109"/>
     </Grid>
 </Window>

@@ -49,10 +49,23 @@ namespace SF_19_2019_POP2020.Models
             set { _grad = value; }
         }
 
+        private bool _aktivan;
+        public bool Aktivan
+        {
+            get { return _aktivan; }
+            set { _aktivan = value; }
+        }
+
 
         public override string ToString()
         {
             return "Ulica " + Ulica + " broj " + Broj + "Grad " + Grad + " Drzava " + Drzava;
+        }
+
+        public string AdresaUFajl()
+        {
+            return SifraAdrese + ";" + Ulica + ";" + Broj + ";" + Drzava + ";" + Grad + ";" + Aktivan;
+
         }
 
     }

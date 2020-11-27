@@ -7,7 +7,23 @@
         mc:Ignorable="d"
         Title="Home" Height="450" Width="800" Name="WHome">
     <Grid>
-        <Label Name="LblWelcome" Content="Welcome"/>
-        <Button Name="BtnStart" Content="Pocetak" Height="100" Width="200" Click="BtnStart_Click"/>
+        <Button Name="BtnStart" Content="Lekari" Click="BtnStart_Click" Margin="45,294,36,74" RenderTransformOrigin="0.5,0.5"/>
+        <Button Content="Pacijenti" HorizontalAlignment="Left" VerticalAlignment="Top" Width="257" Height="49" RenderTransformOrigin="1.009,0.775" Margin="266,115,0,0"/>
+        <Button Content="Administratori" HorizontalAlignment="Left" Height="51" Margin="575,115,0,0" VerticalAlignment="Top" Width="181" Click="Button_Click_1"/>
+        <Button Content="Domovi Zdravlja" HorizontalAlignment="Left" Height="45" Margin="45,193,0,0" VerticalAlignment="Top" Width="147" Click="Button_Click_2"/>
+        <Button Content="Terapije" HorizontalAlignment="Left" Height="45" Margin="266,193,0,0" VerticalAlignment="Top" Width="257" Click="Button_Click_3"/>
+        <Button Content="Termini" HorizontalAlignment="Left" Height="45" Margin="598,193,0,0" VerticalAlignment="Top" Width="158"/>
+        <Button Content="Adrese" HorizontalAlignment="Left" Height="52" Margin="46,116,0,0" VerticalAlignment="Top" Width="149" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.653"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.558"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Label Content="CRUD OPERACIJE DOMA ZDRAVLJA" HorizontalAlignment="Left" Height="58" Margin="152,31,0,0" VerticalAlignment="Top" Width="448" FontSize="24" FontFamily="Verdana"/>
+
     </Grid>
 </Window>

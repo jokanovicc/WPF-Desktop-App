@@ -58,15 +58,19 @@
     <Compile Include="HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\AdresaService.cs" />
+    <Compile Include="Services\DomZdravljaService.cs" />
     <Compile Include="Models\EStatus.cs" />
     <Compile Include="Models\EStatusTermina.cs" />
     <Compile Include="Models\Pacijent.cs" />
     <Compile Include="Models\Terapija.cs" />
+    <Compile Include="Services\TerapijaService.cs" />
     <Compile Include="Models\Termin.cs" />
     <Compile Include="MyExceptions\UserNotFoundException.cs" />
     <Compile Include="Services\DoctorService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\PacijentService.cs" />
+    <Compile Include="Services\TerminService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Windows\AddEditDoctor.xaml.cs">
       <DependentUpon>AddEditDoctor.xaml</DependentUpon>
