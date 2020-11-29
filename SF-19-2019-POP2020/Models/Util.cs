@@ -25,6 +25,7 @@ namespace SF19_2019_POP2020.Models
         TerminService _terminService;
         TerapijaService _terapijaService;
         AdresaService _adreseService;
+        ETipKorisnika tipKorisnika;
 
         private Util()
         {
@@ -58,6 +59,7 @@ namespace SF19_2019_POP2020.Models
         public ObservableCollection<DomZdravlja> DomoviZdravlja { get; set; }
 
         public ObservableCollection<Adresa> Adrese { get; set; }
+        public ObservableCollection<Korisnik> Pacijenti1 { get; private set; }
 
         public void Initialize()
         {
@@ -99,25 +101,31 @@ namespace SF19_2019_POP2020.Models
                 JMBG = "654321",
                 Lozinka = "zika",
                 Pol = EPol.Z,
-                TipKorisnika = ETipKorisnika.LEKAR,
+                TipKorisnika = ETipKorisnika.PACIJENT,
                 //Adresa = adresa
             };
 
-            Lekar lekar = new Lekar
-            {
-                DomZdravlja = "Dom Zdravlja 1",
-                Korisnicko = korisnik2
-            };
 
             Korisnici.Add(korisnik1);
             Korisnici.Add(korisnik2);
 
-            Lekari = new ObservableCollection<Lekar>
-            {
-                lekar
-            };
+   
+
+                Pacijenti1 = new ObservableCollection<Korisnik>();
+                foreach (Korisnik korisnik in Korisnici)
+                {
+                    if (korisnik.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
+                    {
+                        Pacijenti1.Add(korisnik);
+
+                    }
+                }
+            
+
 
         }
+
+
 
         public void SacuvajEntite(string filename)
         {

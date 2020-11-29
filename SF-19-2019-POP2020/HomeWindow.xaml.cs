@@ -1,4 +1,5 @@
-﻿using SF19_2019_POP2020.Models;
+﻿using SF_19_2019_POP2020.Windows;
+using SF19_2019_POP2020.Models;
 using SF19_2019_POP2020.Windows;
 using System;
 using System.Collections.Generic;
@@ -36,24 +37,50 @@ namespace SF19_2019_POP2020
             window.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnPacijent_Click(object sender, RoutedEventArgs e)
         {
+            PacijentiWindow pw = new PacijentiWindow();
+            pw.ShowDialog();
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void BtnDomZdravlja_Click(object sender, RoutedEventArgs e)
         {
+            DomoviZdravljaWindow dzw = new DomoviZdravljaWindow();
+            dzw.ShowDialog();
 
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void BtnTermin_Click(object sender, RoutedEventArgs e)
         {
+            TerminiWindow tw = new TerminiWindow();
+            tw.ShowDialog();
+        }
+
+        private void BtnAdresa_Click(object sender, RoutedEventArgs e)
+        {
+            AdreseWindow aw = new AdreseWindow();
+            aw.ShowDialog();
 
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void BtnTerapije_Click(object sender, RoutedEventArgs e)
         {
+            TerapijeWindow tw = new TerapijeWindow();
+            tw.ShowDialog();
 
         }
+
+
+        private void BtnAdministrator_Click(object sender, RoutedEventArgs e)
+        {
+            AdministratoriWindow aw = new AdministratoriWindow();
+            aw.ShowDialog();
+
+        }
+
+
+
+
     }
 }

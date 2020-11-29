@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Aplikacija.cs" />
     <Compile Include="HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
@@ -75,8 +76,26 @@
     <Compile Include="Windows\AddEditDoctor.xaml.cs">
       <DependentUpon>AddEditDoctor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\AdministratoriWindow.xaml.cs">
+      <DependentUpon>AdministratoriWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AdreseWindow.xaml.cs">
+      <DependentUpon>AdreseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AllDoctors.xaml.cs">
       <DependentUpon>AllDoctors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DomoviZdravljaWindow.xaml.cs">
+      <DependentUpon>DomoviZdravljaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PacijentiWindow.xaml.cs">
+      <DependentUpon>PacijentiWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\TerapijeWindow.xaml.cs">
+      <DependentUpon>TerapijeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\TerminiWindow.xaml.cs">
+      <DependentUpon>TerminiWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="HomeWindow.xaml">
       <SubType>Designer</SubType>
@@ -98,7 +117,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\AdministratoriWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AdreseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AllDoctors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DomoviZdravljaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\PacijentiWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\TerapijeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\TerminiWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -39,8 +39,8 @@ namespace SF19_2019_POP2020.Services
                     //Korisnik korisnik = NadjiKorisnika(lekarIzFajla[1]);
                     Pacijent pacijent = new Pacijent
                     {
-                        Korisnicko = korisnik,
-                        Terapije = kolekcijaTerapija,
+                       // Korisnicko = korisnik,
+                       // Terapije = kolekcijaTerapija,
                         Termini = kolekcijaTermina
                     };
                     Util.Instance.Pacijenti.Add(pacijent);
@@ -56,7 +56,7 @@ namespace SF19_2019_POP2020.Services
             {
                 foreach (Pacijent pacijent in Util.Instance.Pacijenti)
                 {
-                    file.WriteLine(pacijent.pacijentZaUpisuFajl());
+                   // file.WriteLine(pacijent.pacijentZaUpisuFajl());
                 }
             }
         }
