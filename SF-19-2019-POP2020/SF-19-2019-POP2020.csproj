@@ -79,13 +79,22 @@
     <Compile Include="Windows\AdministratoriWindow.xaml.cs">
       <DependentUpon>AdministratoriWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\AdreseWindow.xaml.cs">
+    <Compile Include="Windows\AdresaProzori\AdresaEditAddDelete.xaml.cs">
+      <DependentUpon>AdresaEditAddDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AdresaProzori\AdresaPick.xaml.cs">
+      <DependentUpon>AdresaPick.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AdresaProzori\AdreseWindow.xaml.cs">
       <DependentUpon>AdreseWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AllDoctors.xaml.cs">
       <DependentUpon>AllDoctors.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\DomoviZdravljaWindow.xaml.cs">
+    <Compile Include="Windows\DomZdravljaProzori\DomoviZdravljaAddEdit.xaml.cs">
+      <DependentUpon>DomoviZdravljaAddEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DomZdravljaProzori\DomoviZdravljaWindow.xaml.cs">
       <DependentUpon>DomoviZdravljaWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\PacijentiWindow.xaml.cs">
@@ -94,7 +103,7 @@
     <Compile Include="Windows\TerapijeWindow.xaml.cs">
       <DependentUpon>TerapijeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\TerminiWindow.xaml.cs">
+    <Compile Include="Windows\TerminiWindow\TerminiWindow.xaml.cs">
       <DependentUpon>TerminiWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="HomeWindow.xaml">
@@ -121,7 +130,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\AdreseWindow.xaml">
+    <Page Include="Windows\AdresaProzori\AdresaEditAddDelete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AdresaProzori\AdresaPick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AdresaProzori\AdreseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,7 +146,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\DomoviZdravljaWindow.xaml">
+    <Page Include="Windows\DomZdravljaProzori\DomoviZdravljaAddEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DomZdravljaProzori\DomoviZdravljaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,7 +162,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\TerminiWindow.xaml">
+    <Page Include="Windows\TerminiWindow\TerminiWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

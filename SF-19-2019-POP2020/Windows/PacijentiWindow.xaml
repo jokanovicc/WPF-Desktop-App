@@ -7,11 +7,12 @@
         mc:Ignorable="d"
         Title="PacijentiWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid AutoGenerateColumns="True" Margin="12,12,12,57" Name="dgPacijenti" IsReadOnly="True" FontSize="16"/>
+        <DataGrid AutoGenerateColumns="True" Margin="12,12,12,237" Name="dgPacijenti" IsReadOnly="True" FontSize="16"/>
         <Button Content="Obriši" Height="39" HorizontalAlignment="Left" Margin="165,0,0,12" Name="btnDelete" VerticalAlignment="Bottom" Width="66"  />
         <Button Content="Zatvori" Height="39" HorizontalAlignment="Right" Margin="0,0,12,12" Name="btnClose" VerticalAlignment="Bottom" Width="102"  />
         <Button Content="Dodaj" Height="39" HorizontalAlignment="Left" Margin="12,0,0,12" Name="btnAdd" VerticalAlignment="Bottom" Width="66" />
         <Button Content="Izmeni" Height="39" HorizontalAlignment="Left" Margin="84,0,0,12" Name="btnUpdate" VerticalAlignment="Bottom" Width="75" />
-        
+        <DataGrid AutoGenerateColumns="True"  HorizontalAlignment="Left" Name="dgPacijentiZasebno"  IsReadOnly="True" FontSize="10" Height="93" Margin="12,222,0,0" VerticalAlignment="Top" Width="768"/>
+
     </Grid>
 </Window>

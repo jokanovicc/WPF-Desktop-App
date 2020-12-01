@@ -22,6 +22,8 @@ namespace SF_19_2019_POP2020
 
         public ObservableCollection<Terapija> Terapije { get; set; }
 
+        public List<String> Terapije1 { get; set; }
+
         private static Aplikacija instance = new Aplikacija();
 
 
@@ -40,6 +42,8 @@ namespace SF_19_2019_POP2020
             Termini = new ObservableCollection<Termin>();
             Adrese = new ObservableCollection<Adresa>();
             Terapije = new ObservableCollection<Terapija>();
+            Pacijenti = new ObservableCollection<Pacijent>();
+            Terapije1 = new List<string>();
             PopuniPodatke();
         }
 
@@ -101,17 +105,20 @@ namespace SF_19_2019_POP2020
 
             };
 
+            Terapije1.Add("1321312");
+
+            Pacijent pacijent = new Pacijent
+            {
+                Korisnicko = korisnik2,
+                Terapije = Terapije1,
+                Termini = new ObservableCollection<string>(),
+            };
+
+            Pacijenti.Add(pacijent);
+
             Korisnici.Add(korisnik3);
 
 
-            DomZdravlja domZdravlja = new DomZdravlja
-            {
-                Naziv = "DOM ZDRAVLJA SECANJ",
-                Sifra = "255366",
-                SifraAdrese = "324234",
-                Aktivan = true
-        };
-            DomoviZdravlja.Add(domZdravlja);
 
             Termin termin = new Termin
             {
@@ -151,6 +158,32 @@ namespace SF_19_2019_POP2020
             };
 
             Terapije.Add(terapija);
+
+
+            DomZdravlja domZdravlja = new DomZdravlja
+            {
+                Naziv = "DOM ZDRAVLJA SECANJ",
+                Sifra = "255366",
+                Adresa = adresa,
+                Aktivan = true
+            };
+            DomoviZdravlja.Add(domZdravlja);
+
+        }
+
+        private Terapija NadjiTerapiju(string sifra)
+        {
+            foreach (Terapija terapija in Terapije)
+            {
+                if (terapija.Sifra.Equals(sifra))
+                {
+                    return terapija;
+                }
+
+            }
+
+            return null;
+
 
         }
 

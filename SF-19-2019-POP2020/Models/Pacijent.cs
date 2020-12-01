@@ -18,9 +18,9 @@ namespace SF19_2019_POP2020.Models
             set { _korisnick = value; }
         }
 
-        private ObservableCollection<String> _terapije;
+        private List<String> _terapije;
 
-        public ObservableCollection<String> Terapije
+        public List<String> Terapije
         {
             get { return _terapije; }
             set { _terapije = value; }

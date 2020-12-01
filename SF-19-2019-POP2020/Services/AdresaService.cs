@@ -58,7 +58,7 @@ namespace SF_19_2019_POP2020.Services
             {
                 foreach (Adresa ad in Util.Instance.Adrese)
                 {
-                    file.WriteLine(ad.AdresaUFajl());
+                   // file.WriteLine(ad.AdresaUFajl());
                 }
             }
         }

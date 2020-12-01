@@ -1,52 +1,104 @@
-﻿using System;
+﻿using SF_19_2019_POP2020.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SF19_2019_POP2020.Models
 {
-    [Serializable]
-    public class DomZdravlja
+    public class DomZdravlja : ICloneable, INotifyPropertyChanged
     {
-        private string _sifra;
+
+        private string sifra;
+        private string naziv;
+        private Adresa adresa;
+        private Boolean aktivan;
+
+
 
         public string Sifra
         {
-            get { return _sifra; }
-            set { _sifra = value; }
+            get
+            {
+                return sifra; 
+            }
+            set {
+                sifra = value;
+                OnPropertyChanged("Sifra");
+            }
         }
 
-        private string _naziv;
 
         public string Naziv
         {
-            get { return _naziv; }
-            set { _naziv = value; }
+            get
+            {
+                return naziv;
+            }
+            set
+            {
+                naziv = value;
+                OnPropertyChanged("Naziv");
+            }
         }
 
-        private string _sifraAdrese;
 
-        public string SifraAdrese
+
+
+
+        public Adresa Adresa
         {
-            get { return _sifraAdrese; }
-            set { _sifraAdrese = value; }
+            get
+            {
+                return adresa;
+            }
+            set
+            {
+                adresa = value;
+                OnPropertyChanged("Adresa");
+            }
         }
 
 
-        private bool _aktivan;
-
-        public bool Aktivan
+        public Boolean Aktivan
         {
-            get { return _aktivan; }
-            set { _aktivan = value; }
+            get
+            {
+                return aktivan;
+            }
+            set
+            {
+                aktivan = value;
+                OnPropertyChanged("Aktivan");
+            }
         }
 
 
-        public string domZdravljaUFajl()
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(String propertyName)
         {
-            return Sifra + ";" + Naziv + ";" + SifraAdrese + ";" + Aktivan;
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
+
+
+        public object Clone()
+        {
+            DomZdravlja kopija = new DomZdravlja();
+            kopija.Sifra = Sifra;
+            kopija.Naziv = Naziv;
+            kopija.Adresa = Adresa;
+            kopija.Aktivan = Aktivan;
+            return kopija;
+
+        }
+
+
 
 
     }

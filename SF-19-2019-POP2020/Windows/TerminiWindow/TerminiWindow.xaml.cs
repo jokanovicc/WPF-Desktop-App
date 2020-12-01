@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -34,5 +35,9 @@ namespace SF_19_2019_POP2020.Windows
 
             dgTermini.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
+
+
+
+
     }
 }

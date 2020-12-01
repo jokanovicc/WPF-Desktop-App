@@ -57,6 +57,8 @@ namespace SF_19_2019_POP2020.Models
             set { _jmbg = value; }
         }
 
+
+
         private string _sifraAdrese;
 
         public string SifraAdrese
@@ -64,6 +66,8 @@ namespace SF_19_2019_POP2020.Models
             get { return _sifraAdrese; }
             set { _sifraAdrese = value; }
         }
+
+
 
         private EPol _pol;
 
@@ -96,7 +100,7 @@ namespace SF_19_2019_POP2020.Models
 
         public override string ToString()
         {
-            return "Ja sam " + KorisnickoIme + ". Moje email je:" + Email + ". Tip: " + TipKorisnika; // + ". Moja adresa je " + Adresa.ToString();
+            return KorisnickoIme;
         }
 
         public string KorisnikZaUpisUFajl()

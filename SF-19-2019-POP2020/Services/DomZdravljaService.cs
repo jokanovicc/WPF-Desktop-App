@@ -38,7 +38,7 @@ namespace SF_19_2019_POP2020.Models
                     {
                         Naziv = dzIzFajla[1],
                         Sifra = dzIzFajla[0],
-                        SifraAdrese = dzIzFajla[2],
+                      //  SifraAdrese = dzIzFajla[2],
                         Aktivan = aktivan
                         //Aktivan = Convert.ToBoolean(korisnikIzFajla[8])
 
@@ -54,7 +54,7 @@ namespace SF_19_2019_POP2020.Models
             {
                 foreach (DomZdravlja dm in Util.Instance.DomoviZdravlja)
                 {
-                    file.WriteLine(dm.domZdravljaUFajl());
+              //      file.WriteLine(dm.domZdravljaUFajl());
                 }
             }
         }

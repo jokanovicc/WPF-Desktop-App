@@ -1,72 +1,130 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SF_19_2019_POP2020.Models
 {
-    [Serializable]
-    public class Adresa
+    public class Adresa: ICloneable, INotifyPropertyChanged
     {
-        private string _sifraAdrese;
+        private string sifraAdrese;
+        private string broj;
+        private string ulica;
+        private string drzava;
+        private string grad;
+        private Boolean aktivan;
+
 
         public string SifraAdrese
         {
-            get { return _sifraAdrese; }
-            set { _sifraAdrese = value; }
+            get
+            {
+                return sifraAdrese;
+            }
+            set
+            {
+                sifraAdrese = value;
+                OnPropertyChanged("SifraAdrese");
+            }
         }
-
-        private string _ulica;
 
         public string Ulica
         {
-            get { return _ulica; }
-            set { _ulica = value; }
+            get
+            {
+                return ulica;
+            }
+            set
+            {
+                ulica = value;
+                OnPropertyChanged("Ulica");
+            }
         }
 
-        private string _broj;
 
         public string Broj
         {
-            get { return _broj; }
-            set { _broj = value; }
+            get
+            {
+                return broj;
+            }
+            set
+            {
+                broj = value;
+                OnPropertyChanged("Broj");
+            }
         }
-
-        private string _drzava;
 
         public string Drzava
         {
-            get { return _drzava; }
-            set { _drzava = value; }
+            get
+            {
+                return drzava;
+            }
+            set
+            {
+                drzava = value;
+                OnPropertyChanged("Drzava");
+            }
         }
-
-        private string _grad;
 
         public string Grad
         {
-            get { return _grad; }
-            set { _grad = value; }
+            get
+            {
+                return grad;
+            }
+            set
+            {
+                grad = value;
+                OnPropertyChanged("Grad");
+            }
         }
 
-        private bool _aktivan;
-        public bool Aktivan
+        public Boolean Aktivan
         {
-            get { return _aktivan; }
-            set { _aktivan = value; }
+            get
+            {
+                return aktivan;
+            }
+            set
+            {
+                aktivan = value;
+                OnPropertyChanged("Aktivan");
+            }
         }
+
 
 
         public override string ToString()
         {
-            return "Ulica " + Ulica + " broj " + Broj + "Grad " + Grad + " Drzava " + Drzava;
+            return SifraAdrese +"-" + Grad;
         }
 
-        public string AdresaUFajl()
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(String propertyName)
         {
-            return SifraAdrese + ";" + Ulica + ";" + Broj + ";" + Drzava + ";" + Grad + ";" + Aktivan;
-
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
+        public object Clone()
+        {
+            Adresa kopija= new Adresa();
+            kopija.SifraAdrese = SifraAdrese;
+            kopija.Drzava = Drzava;
+            kopija.Broj = Broj;
+            kopija.Aktivan = Aktivan;
+            kopija.Grad = Grad;
+            kopija.Ulica = Ulica;
+            return kopija;
+
+        }
     }
 }

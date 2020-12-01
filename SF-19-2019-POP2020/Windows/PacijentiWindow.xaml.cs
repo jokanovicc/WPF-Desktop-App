@@ -24,6 +24,7 @@ namespace SF_19_2019_POP2020.Windows
     public partial class PacijentiWindow : Window
     {
         ICollectionView view;
+        ICollectionView view2;
 
         public ObservableCollection<Korisnik> Korisnici1 { get; set; }
 
@@ -43,11 +44,21 @@ namespace SF_19_2019_POP2020.Windows
                 }
 
             }
+
+       
             dgPacijenti.ItemsSource = view;
             dgPacijenti.IsSynchronizedWithCurrentItem = true;
 
 
             dgPacijenti.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+
+
+
+            view2 = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Pacijenti);
+
+            dgPacijentiZasebno.ItemsSource = view2;
+            dgPacijentiZasebno.IsSynchronizedWithCurrentItem = true;
+            dgPacijentiZasebno.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
 
 
