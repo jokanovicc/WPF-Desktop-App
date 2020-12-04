@@ -12,7 +12,10 @@ namespace SF_19_2019_POP2020
     class Aplikacija
     {
         public ObservableCollection<Korisnik> Korisnici { get; set; }
+
+        public ObservableCollection<Korisnik> KorisniciPacijenti { get; set; }  //Ovo je za sad ovako implementirano, promenicu kasnije
         public ObservableCollection<Pacijent> Pacijenti { get; set; }
+        public ObservableCollection<Lekar> Lekari { get; set; }
 
         public ObservableCollection<DomZdravlja> DomoviZdravlja { get; set; }
 
@@ -21,8 +24,6 @@ namespace SF_19_2019_POP2020
         public ObservableCollection<Adresa> Adrese { get; set; }
 
         public ObservableCollection<Terapija> Terapije { get; set; }
-
-        public List<String> Terapije1 { get; set; }
 
         private static Aplikacija instance = new Aplikacija();
 
@@ -42,8 +43,9 @@ namespace SF_19_2019_POP2020
             Termini = new ObservableCollection<Termin>();
             Adrese = new ObservableCollection<Adresa>();
             Terapije = new ObservableCollection<Terapija>();
-            Pacijenti = new ObservableCollection<Pacijent>();
-            Terapije1 = new List<string>();
+            Pacijenti = new ObservableCollection<Pacijent>();;
+            Lekari = new ObservableCollection<Lekar>();
+            KorisniciPacijenti = new ObservableCollection<Korisnik>();
             PopuniPodatke();
         }
 
@@ -51,7 +53,10 @@ namespace SF_19_2019_POP2020
 
 
         private void PopuniPodatke()
-        {
+        {  
+
+
+            //ZABETONIRANI PODACI
             Korisnik korisnik1 = new Korisnik
             {
                 Aktivan = true,
@@ -62,13 +67,13 @@ namespace SF_19_2019_POP2020
                 Lozinka = "perica11",
                 Pol = EPol.M,
                 Prezime = "Peric",
-                SifraAdrese = "23213",
+                //SifraAdrese = adresa,
                 TipKorisnika = ETipKorisnika.PACIJENT
 
 
 
             };
-            Korisnici.Add(korisnik1);
+            KorisniciPacijenti.Add(korisnik1);
 
             Korisnik korisnik2 = new Korisnik
             {
@@ -80,13 +85,13 @@ namespace SF_19_2019_POP2020
                 Lozinka = "perica11",
                 Pol = EPol.M,
                 Prezime = "Peric",
-                SifraAdrese = "23213",
+                //SifraAdrese = "23213",
                 TipKorisnika = ETipKorisnika.PACIJENT
 
 
 
             };
-            Korisnici.Add(korisnik2);
+            KorisniciPacijenti.Add(korisnik2);
 
             Korisnik korisnik3 = new Korisnik
             {
@@ -98,19 +103,46 @@ namespace SF_19_2019_POP2020
                 Lozinka = "adminat11",
                 Pol = EPol.M,
                 Prezime = "Adminic",
-                SifraAdrese = "34223423",
+                //SifraAdrese = "34223423",
                 TipKorisnika = ETipKorisnika.ADMINISTRATOR
 
 
 
             };
 
-            Terapije1.Add("1321312");
+            Korisnik korisnik4 = new Korisnik
+            {
+                Aktivan = true,
+                Email = "ado@gmail.com",
+                Ime = "Leko",
+                JMBG = "2332213",
+                KorisnickoIme = "leko",
+                Lozinka = "leko123",
+                Pol = EPol.M,
+                Prezime = "Lekaric",
+                //SifraAdrese = "21323",
+                TipKorisnika = ETipKorisnika.LEKAR
+
+
+
+            };
+
+            Korisnici.Add(korisnik4);
+
+
+            Lekar lekar = new Lekar
+            {
+                DomZdravlja = "213213",
+                Korisnicko = korisnik4,
+
+            };
+
+            Lekari.Add(lekar);
+
 
             Pacijent pacijent = new Pacijent
             {
                 Korisnicko = korisnik2,
-                Terapije = Terapije1,
                 Termini = new ObservableCollection<string>(),
             };
 
@@ -124,8 +156,8 @@ namespace SF_19_2019_POP2020
             {
                 Aktivan = true,
                 Datum = new DateTime(2020, 5, 1, 8, 30, 52),
-                JmbgLekara = "231312",
-                JmbgPacijenta = korisnik1.JMBG,
+                Lekar = lekar,
+                Pacijent = pacijent,
                 Sifra = "232432432",
                 Status = EStatusTermina.SLOBODAN
 
@@ -151,10 +183,10 @@ namespace SF_19_2019_POP2020
             Terapija terapija = new Terapija
             {
                 Aktivan = true,
-                opis = "Sve okej",
+                Opis = "Sve okej",
                 Sifra = "332423",
-                SifraLekara = "342233",
-                SifraPacijenta = korisnik1.JMBG
+                Lekar = lekar,
+                Pacijent = pacijent
             };
 
             Terapije.Add(terapija);

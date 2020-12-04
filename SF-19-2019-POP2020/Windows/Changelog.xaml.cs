@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,20 +15,13 @@ using System.Windows.Shapes;
 namespace SF_19_2019_POP2020.Windows
 {
     /// <summary>
-    /// Interaction logic for TerapijeWindow.xaml
+    /// Interaction logic for Changelog.xaml
     /// </summary>
-    public partial class TerapijeWindow : Window
+    public partial class Changelog : Window
     {
-        ICollectionView view;
-        public TerapijeWindow()
+        public Changelog()
         {
             InitializeComponent();
-            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Terapije);
-            dgTerapije.ItemsSource = view;
-            dgTerapije.IsSynchronizedWithCurrentItem = true;
-
-
-            dgTerapije.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
     }
 }

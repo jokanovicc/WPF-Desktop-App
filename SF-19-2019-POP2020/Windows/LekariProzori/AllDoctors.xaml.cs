@@ -82,7 +82,7 @@ namespace SF19_2019_POP2020.Windows
         {
             //Korisnik selektovan = (Korisnik)DGLekari.SelectedItem;
             Korisnik selektovan = view.CurrentItem as Korisnik;
-            Korisnik stariLekar = selektovan.Clone();
+            Korisnik stariLekar = (Korisnik)selektovan.Clone();
 
             AddEditDoctor add = new AddEditDoctor(selektovan, EStatus.Izmeni);
 

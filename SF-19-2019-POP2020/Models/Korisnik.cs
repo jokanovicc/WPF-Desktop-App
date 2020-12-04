@@ -1,102 +1,168 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SF_19_2019_POP2020.Models
 {
-    [Serializable]
-    public class Korisnik
+    public class Korisnik: ICloneable, INotifyPropertyChanged
     {
-        private string _korisnickoIme;
+        private string korisnickoIme;
+        private string ime;
+        private string prezime;
+        private string lozinka;
+        private string email;
+        private string jmbg;
+        private Adresa adresa;
+        private EPol pol;
+        private ETipKorisnika tipKorisnika;
+        private bool aktivan;
+
 
         public string KorisnickoIme
         {
-            get { return _korisnickoIme; }
-            set { _korisnickoIme = value; }
+            get
+            {
+                return korisnickoIme;
+            }
+            set
+            {
+                korisnickoIme = value;
+                OnPropertyChanged("KorIme");
+            }
         }
 
-        private string _ime;
 
         public string Ime
         {
-            get { return _ime; }
-            set { _ime = value; }
+            get
+            {
+                return ime;
+            }
+            set
+            {
+                ime = value;
+                OnPropertyChanged("Ime");
+            }
         }
-
-        private string _prezime;
 
         public string Prezime
         {
-            get { return _prezime; }
-            set { _prezime = value; }
+            get
+            {
+                return prezime;
+            }
+            set
+            {
+                prezime = value;
+                OnPropertyChanged("Prezime");
+            }
         }
-
-        private string _lozinka;
-
         public string Lozinka
         {
-            get { return _lozinka; }
-            set { _lozinka = value; }
+            get
+            {
+                return lozinka;
+            }
+            set
+            {
+                lozinka = value;
+                OnPropertyChanged("Lozinka");
+            }
         }
-
-        private string _email;
-
         public string Email
         {
-            get { return _email; }
-            set { _email = value; }
+            get
+            {
+                return email;
+            }
+            set
+            {
+                email = value;
+                OnPropertyChanged("Email");
+            }
         }
 
-        private string _jmbg;
 
         public string JMBG
         {
-            get { return _jmbg; }
-            set { _jmbg = value; }
+            get
+            {
+                return jmbg;
+            }
+            set
+            {
+                jmbg = value;
+                OnPropertyChanged("Jmbg");
+            }
         }
 
 
 
-        private string _sifraAdrese;
-
-        public string SifraAdrese
+        public Adresa Adresa
         {
-            get { return _sifraAdrese; }
-            set { _sifraAdrese = value; }
+            get
+            {
+                return adresa;
+            }
+            set
+            {
+                adresa= value;
+                OnPropertyChanged("Adresa");
+            }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        protected void OnPropertyChanged(String propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
-        private EPol _pol;
 
         public EPol Pol
         {
-            get { return _pol; }
-            set { _pol = value; }
+            get
+            {
+                return pol;
+            }
+            set
+            {
+                pol = value;
+                OnPropertyChanged("Pol");
+            }
         }
-
-        private ETipKorisnika _tipKorisnika;
 
         public ETipKorisnika TipKorisnika
         {
-            get { return _tipKorisnika; }
-            set { _tipKorisnika = value; }
+            get
+            {
+                return tipKorisnika;
+            }
+            set
+            {
+                tipKorisnika = value;
+                OnPropertyChanged("Tip Korisnika");
+            }
         }
-
-        private bool _aktivan;
-
-        public bool Aktivan
+        public Boolean Aktivan
         {
-            get { return _aktivan; }
-            set { _aktivan = value; }
+            get
+            {
+                return aktivan;
+            }
+            set
+            {
+                aktivan = value;
+                OnPropertyChanged("Aktivan");
+            }
         }
 
-        public Korisnik()
-        {
-
-        }
 
         public override string ToString()
         {
@@ -109,11 +175,12 @@ namespace SF_19_2019_POP2020.Models
                 Email + ";" + Lozinka + ";" + Pol + ";" + TipKorisnika + ";" + Aktivan;
         }
 
-        public Korisnik Clone()
+        public object Clone()
         {
             Korisnik kopija = new Korisnik();
 
-            kopija.SifraAdrese = SifraAdrese;
+            kopija.KorisnickoIme = KorisnickoIme;
+            kopija.Adresa = Adresa;
             kopija.Aktivan = Aktivan;
             kopija.Email = Email;
             kopija.Ime = Ime;
@@ -121,7 +188,7 @@ namespace SF_19_2019_POP2020.Models
             kopija.Pol = Pol;
             kopija.Lozinka = Lozinka;
             kopija.JMBG = JMBG;
-            kopija.KorisnickoIme = KorisnickoIme;
+         
 
             return kopija;
         }

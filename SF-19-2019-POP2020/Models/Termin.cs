@@ -1,67 +1,125 @@
-﻿using System;
+﻿using SF_19_2019_POP2020.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SF19_2019_POP2020.Models
 {
-    [Serializable]
-    public class Termin
+    public class Termin: ICloneable, INotifyPropertyChanged
     {
-        private string _sifra;
+        private string sifra;
+        private Lekar lekar;
+        private DateTime datum;
+        private EStatusTermina status;
+        private Pacijent pacijent;
+        private Boolean aktivan;
+
+
 
         public string Sifra
         {
-            get { return _sifra; }
-            set { _sifra = value; }
+            get
+            {
+                return sifra;
+            }
+            set
+            {
+                sifra = value;
+                OnPropertyChanged("Sifra");
+            }
         }
-
-        private string _jmbgLekara;
-
-        public string JmbgLekara
+        public Lekar Lekar
         {
-            get { return _jmbgLekara; ; }
-            set { _jmbgLekara = value; }
+            get
+            {
+                return lekar;
+            }
+            set
+            {
+                lekar = value;
+                OnPropertyChanged("Lekar");
+            }
         }
-
-        private DateTime _datum;
 
         public DateTime Datum
         {
-            get { return _datum; }
-            set { _datum = value; }
+            get
+            {
+                return datum;
+            }
+            set
+            {
+                datum = value;
+                OnPropertyChanged("Datum");
+            }
         }
-
-
-        private EStatusTermina _status;
 
         public EStatusTermina Status
         {
-            get { return _status; }
-            set { _status = value; }
+            get
+            {
+                return status;
+            }
+            set
+            {
+                status = value;
+                OnPropertyChanged("Status");
+            }
+        }
+        public Pacijent Pacijent
+        {
+            get
+            {
+                return pacijent;
+            }
+            set
+            {
+                pacijent = value;
+                OnPropertyChanged("Pacijent");
+            }
         }
 
-        private string jmbgPacijenta;
 
-        public string JmbgPacijenta
+        public Boolean Aktivan
         {
-            get { return jmbgPacijenta; }
-            set { jmbgPacijenta = value; }
+            get
+            {
+                return aktivan;
+            }
+            set
+            {
+                aktivan = value;
+                OnPropertyChanged("Aktivan");
+            }
         }
 
-        private bool _aktivan;
 
-        public bool Aktivan
+        public object Clone()
         {
-            get { return _aktivan; }
-            set { _aktivan = value; }
+            Termin kopija = new Termin();
+            kopija.sifra = Sifra;
+            kopija.lekar = Lekar;
+            kopija.datum = DateTime.Now;
+            kopija.status = Status;
+            kopija.pacijent = Pacijent;
+            kopija.aktivan = Aktivan;
+            return kopija;
+
         }
 
 
-        public string terminUFajl()
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(String propertyName)
         {
-            return Sifra + ";" + Datum + ";" + Status + ";" + jmbgPacijenta + ";" + JmbgLekara + ";" + Aktivan;
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
     }

@@ -43,8 +43,6 @@ namespace SF_19_2019_POP2020.Services
 
                         Aktivan = aktivan,
                         Datum = oDate,
-                        JmbgLekara = terminIzFajla[4],
-                        JmbgPacijenta = terminIzFajla[3],
                         Sifra = terminIzFajla[0],
                         Status = status
 
@@ -64,7 +62,7 @@ namespace SF_19_2019_POP2020.Services
             {
                 foreach (Termin termin in Util.Instance.Termini)
                 {
-                    file.WriteLine(termin.terminUFajl());
+                  //  file.WriteLine(termin.terminUFajl());
                 }
             }
         }

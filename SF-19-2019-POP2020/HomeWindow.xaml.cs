@@ -1,4 +1,6 @@
 ﻿using SF_19_2019_POP2020.Windows;
+using SF_19_2019_POP2020.Windows.PacijentiProzori;
+using SF_19_2019_POP2020.Windows.TerapijaProzori;
 using SF19_2019_POP2020.Models;
 using SF19_2019_POP2020.Windows;
 using System;
@@ -53,7 +55,7 @@ namespace SF19_2019_POP2020
 
         private void BtnTermin_Click(object sender, RoutedEventArgs e)
         {
-            TerminiWindow tw = new TerminiWindow();
+            TerminiWindow1 tw = new TerminiWindow1();
             tw.ShowDialog();
         }
 
@@ -66,7 +68,7 @@ namespace SF19_2019_POP2020
 
         private void BtnTerapije_Click(object sender, RoutedEventArgs e)
         {
-            TerapijeWindow tw = new TerapijeWindow();
+            TerapijaWindow tw = new TerapijaWindow();
             tw.ShowDialog();
 
         }

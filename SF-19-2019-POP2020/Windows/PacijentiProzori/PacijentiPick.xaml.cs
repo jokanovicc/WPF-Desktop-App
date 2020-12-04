@@ -1,4 +1,4 @@
-﻿using SF_19_2019_POP2020.Models;
+﻿using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,20 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SF_19_2019_POP2020.Windows.AdresaProzori
+namespace SF_19_2019_POP2020.Windows.PacijentiProzori
 {
     /// <summary>
-    /// Interaction logic for AdresaPick.xaml
+    /// Interaction logic for PacijentiPick.xaml
     /// </summary>
-    /// <summary>
-    public partial class AdresaPick : Window
+    public partial class PacijentiPick : Window
     {
         public enum Stanje { ADMINISTRACIJA, PREUZIMANJE };
         Stanje stanje;
 
-        public Adresa SelektovanaAdresa = null;
+        public Pacijent SelektovaniPacijent = null;
 
-        public AdresaPick(Stanje stanje = Stanje.ADMINISTRACIJA)
+        public PacijentiPick(Stanje stanje = Stanje.ADMINISTRACIJA)
         {
             InitializeComponent();
             this.stanje = stanje;
@@ -42,9 +41,9 @@ namespace SF_19_2019_POP2020.Windows.AdresaProzori
                 btnPick.Visibility = System.Windows.Visibility.Hidden;
             }
 
-            dgAdrese.ItemsSource = Aplikacija.Instance.Adrese;
+            dgPacijenti.ItemsSource = Aplikacija.Instance.Pacijenti;
 
-            dgAdrese.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgPacijenti.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -54,7 +53,7 @@ namespace SF_19_2019_POP2020.Windows.AdresaProzori
 
         private void btnPick_Click(object sender, RoutedEventArgs e)
         {
-            SelektovanaAdresa = dgAdrese.SelectedItem as Adresa;
+            SelektovaniPacijent = dgPacijenti.SelectedItem as Pacijent;
             this.DialogResult = true;
             this.Close();
         }

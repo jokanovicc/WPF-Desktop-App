@@ -54,11 +54,6 @@ namespace SF_19_2019_POP2020.Windows.DomZdravljaProzori
             if (gw.ShowDialog() == true)
             {
                 domZdravlja.Adresa = gw.SelektovanaAdresa;
-                /*
-                 * Da bi se grad promenio i u text boxu mora Fakultet da implementira INotifyPropertyChanged 
-                 * i da "javi" putem dogadjaja kada se desila promena u svojstvu Fakultet
-                 * 
-                 * */
             }
         }
     }

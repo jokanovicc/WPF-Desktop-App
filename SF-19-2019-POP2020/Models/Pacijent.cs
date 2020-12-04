@@ -34,11 +34,15 @@ namespace SF19_2019_POP2020.Models
             set { _termini = value; }
         }
 
+        public override string ToString()
+        {
+            return Korisnicko.KorisnickoIme;
 
+        }
 
         public string pacijentZaUpisuFajl()
         {
-            return Korisnicko + ";" + String.Join("|", Terapije) + ";" + String.Join("|", Termini);
+            return Korisnicko.KorisnickoIme;
         }
 
 

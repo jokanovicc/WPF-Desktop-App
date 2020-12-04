@@ -44,8 +44,8 @@ namespace SF_19_2019_POP2020.Models
 
                         Aktivan = aktivan,
                         Datum = oDate,
-                        JmbgLekara = terminIzFajla[4],
-                        JmbgPacijenta = terminIzFajla[3],
+/*                        JmbgLekara = terminIzFajla[4],
+                        JmbgPacijenta = terminIzFajla[3],*/
                         Sifra = terminIzFajla[0],
                         Status = status
 

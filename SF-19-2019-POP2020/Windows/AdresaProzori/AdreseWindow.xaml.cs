@@ -69,7 +69,7 @@ namespace SF_19_2019_POP2020.Windows
                 if (few.ShowDialog() != true) //ako je kliknuo cancel, ponistavaju se izmene nad objektom
                 {
 
-                    //pronadjemo indeks selektovanog fakulteta
+                    //pronadjemo indeks selektovanog
                     int index = Aplikacija.Instance.Adrese.IndexOf(
                         selektovanaAdresa);
                     //vratimo vrednosti njegovih atributa na stare vrednosti, jer je izmena ponistena

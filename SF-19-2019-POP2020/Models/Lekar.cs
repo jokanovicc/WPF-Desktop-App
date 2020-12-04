@@ -28,7 +28,7 @@ namespace SF_19_2019_POP2020.Models
 
         public override string ToString()
         {
-            return base.ToString() + "Ja sam lekar " + Korisnicko.ToString() + ". Ja radim u " + DomZdravlja;
+            return Korisnicko.KorisnickoIme;
 
         }
 

@@ -58,11 +58,10 @@ namespace SF_19_2019_POP2020.Windows
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            DomZdravlja selektovaniDomZdravlja = view.CurrentItem as DomZdravlja; //preuzimanje selektovanog fakulteta
+            DomZdravlja selektovaniDomZdravlja = view.CurrentItem as DomZdravlja; //preuzimanje selektovanog 
 
-            if (selektovaniDomZdravlja != null)//ako je neki fakultet selektovan
+            if (selektovaniDomZdravlja != null)//ako je elektovan
             {
-                //napravimo kopiju trenutnih vrednosti u objektu,  da bi ih mogli preuzeti ako korisnik ponisti napravljenje izmene
                 DomZdravlja old = (DomZdravlja)selektovaniDomZdravlja.Clone();
                 DomoviZdravljaAddEdit few = new DomoviZdravljaAddEdit(selektovaniDomZdravlja,
                     DomoviZdravljaAddEdit.Stanje.IZMENA);

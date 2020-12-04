@@ -1,63 +1,123 @@
-﻿using System;
+﻿using SF_19_2019_POP2020.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SF19_2019_POP2020.Models
 {
-    [Serializable]
-    public class Terapija
+    public class Terapija : ICloneable, INotifyPropertyChanged
     {
-        private string _sifra;
+
+        private string sifra;
+        private string opis;
+        private Lekar lekar;
+        private Pacijent pacijent;
+        private bool aktivan;
+
+
 
         public string Sifra
         {
-            get { return _sifra; }
-            set { _sifra = value; }
+            get
+            {
+                return sifra;
+
+            }
+            set
+            {
+                sifra = value;
+                OnPropertyChanged("Sifra");
+            }
+
         }
 
-        private string _opis;
-
-        public string opis
+        public string Opis
         {
-            get { return _opis; }
-            set { _opis = value; }
+            get
+            {
+                return opis;
+
+            }
+            set
+            {
+                opis = value;
+                OnPropertyChanged("Opis");
+            }
+
         }
 
-        private string _sifraLekara;
-
-        public string SifraLekara
+        public Lekar Lekar
         {
-            get { return _sifraLekara; }
-            set { _sifraLekara = value; }
+            get
+            {
+                return lekar;
+
+            }
+            set
+            {
+                lekar = value;
+                OnPropertyChanged("Lekar");
+            }
+
         }
 
-        private string _sifraPacijenta;
-
-        public string SifraPacijenta
+        public Boolean Aktivan
         {
-            get { return _sifraPacijenta; }
-            set { _sifraPacijenta = value; }
+            get
+            {
+                return aktivan;
+            }
+            set
+            {
+                aktivan = value;
+                OnPropertyChanged("Aktivan");
+            }
         }
 
 
-        private bool _aktivan;
-
-        public bool Aktivan
+        public Pacijent Pacijent
         {
-            get { return _aktivan; }
-            set { _aktivan = value; }
+            get
+            {
+                return pacijent;
+
+            }
+            set
+            {
+                pacijent = value;
+                OnPropertyChanged("Pacijent");
+            }
+
         }
 
 
         public string terapijaUFajl()
         {
-            return Sifra + ";" + opis + ";" + SifraLekara + ";" + SifraPacijenta + ";" + Aktivan;
+            return ";";
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        protected void OnPropertyChanged(String propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        public object Clone()
+        {
+            Terapija kopija = new Terapija();
+            kopija.Opis = Opis;
+            kopija.Lekar = Lekar;
+            kopija.Pacijent = Pacijent;
+            kopija.Sifra = Sifra;
+            kopija.Aktivan = Aktivan;
+            return kopija;
 
-
+        }
     }
 }
