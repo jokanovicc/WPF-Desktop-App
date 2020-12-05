@@ -1,5 +1,6 @@
 ﻿using SF_19_2019_POP2020.Models;
 using SF_19_2019_POP2020.Windows.AdresaProzori;
+using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
     public partial class PacijentAddEdit : Window
     {
         Korisnik korisnik;
+        Pacijent pacijent;
         public enum Stanje { DODAVANJE, IZMENA };
         Stanje stanje;
 
@@ -32,6 +34,7 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
 
             this.korisnik = korisnik;
             this.stanje = stanje;
+            this.pacijent = pacijent;
 
             tbPol.ItemsSource = Enum.GetValues(typeof(EPol)).Cast<EPol>();
 
@@ -56,6 +59,11 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
             if (stanje == Stanje.DODAVANJE)
             {
                 Aplikacija.Instance.KorisniciPacijenti.Add(korisnik);
+                Pacijent pacijent = new Pacijent
+                {
+                    Korisnicko = korisnik
+                };
+                Aplikacija.Instance.Pacijenti.Add(pacijent);
             }
             this.Close();
         }

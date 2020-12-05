@@ -1,6 +1,5 @@
 ﻿using SF_19_2019_POP2020.Models;
 using SF_19_2019_POP2020.Services;
-using SF19_2019_POP2020.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,22 +19,12 @@ namespace SF19_2019_POP2020.Models
         private static readonly Util instance = new Util();
         IUserService _userService;
         IUserService _doctorService;
-        IUserService _pacijentService;
-        DomZdravljaService _domZdravljaService;
-        TerminService _terminService;
-        TerapijaService _terapijaService;
-        AdresaService _adreseService;
         ETipKorisnika tipKorisnika;
 
         private Util()
         {
             _userService = new UserService();
             _doctorService = new DoctorService();
-            _pacijentService = new PacijentService();
-            _domZdravljaService = new DomZdravljaService();
-            _terminService = new TerminService();
-            _terapijaService = new TerapijaService();
-            _adreseService = new AdresaService();
         }
         static Util()
         {
@@ -142,22 +131,6 @@ namespace SF19_2019_POP2020.Models
             {
                 _doctorService.saveUsers(filename);
             }
-            else if (filename.Contains("domoviZdravlja"))
-            {
-                _domZdravljaService.saveDomZdravlja(filename);
-            }
-            else if (filename.Contains("termini"))
-            {
-                _terminService.saveTermin(filename);
-            }
-            else if (filename.Contains("terapije"))
-            {
-                _terapijaService.saveTerapija(filename);
-            }
-            else if (filename.Contains("adrese"))
-            {
-                _adreseService.saveAdresa(filename);
-            }
         }
 
         public void CitanjeEntiteta(string filename)
@@ -170,30 +143,7 @@ namespace SF19_2019_POP2020.Models
             {
                 _doctorService.readUsers(filename);
             }
-            else if (filename.Contains("pacijenti"))
-            {
-                _pacijentService.readUsers(filename);
-            }
-            else if (filename.Contains("pacijenti"))
-            {
-                _doctorService.readUsers(filename);
-            }
-            else if (filename.Contains("domoviZdravlja"))
-            {
-                _domZdravljaService.readDomZdravlja(filename);
-            }
-            else if (filename.Contains("termini"))
-            {
-                _terminService.readTermin(filename);
-            }
-            else if (filename.Contains("terapije"))
-            {
-                _terapijaService.readTerapija(filename);
-            }
-            else if (filename.Contains("adrese"))
-            {
-                _adreseService.readAdresa(filename);
-            }
+
         }
 
         public void DeleteUser(string username)
@@ -201,9 +151,5 @@ namespace SF19_2019_POP2020.Models
             _userService.deleteUser(username);
         }
 
-        public void DeleteDomZdravlja(string sifra)
-        {
-            _domZdravljaService.deleteDomZdravlja(sifra);
-        }
     }
 }

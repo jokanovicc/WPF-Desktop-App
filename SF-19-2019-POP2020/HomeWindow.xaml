@@ -7,17 +7,16 @@
         mc:Ignorable="d"
         Title="Home" Height="450" Width="800" Name="WHome">
     <Grid>
-        <Button Name="BtnStart" Content="Lekari" Click="BtnStart_Click" Margin="38,114,571.6,254" RenderTransformOrigin="0.5,0.5"/>
+        <Button Name="BtnStart" Content="Lekari" Click="BtnStart_Click" Margin="38,114,570,253" RenderTransformOrigin="0.5,0.5"/>
         <Button Name="BtnPacijent" Content="Pacijenti" HorizontalAlignment="Left" VerticalAlignment="Top" Width="257" Height="51" RenderTransformOrigin="1.009,0.775" Margin="266,115,0,0" Click="BtnPacijent_Click"/>
         <Button Name="BtnAdmin" Content="Administratori" HorizontalAlignment="Left" Height="51" Margin="575,115,0,0" VerticalAlignment="Top" Width="181" Click="BtnAdministrator_Click"/>
         <Button Name="BtnDomZdravlja" Content="Domovi Zdravlja" HorizontalAlignment="Left" Height="45" Margin="38,211,0,0" VerticalAlignment="Top" Width="184" Click="BtnDomZdravlja_Click"/>
         <Button Name="BtnTerapija" Content="Terapije" HorizontalAlignment="Left" Height="45" Margin="266,211,0,0" VerticalAlignment="Top" Width="257" Click="BtnTerapije_Click"/>
         <Button Name="BtnTermin" Content="Termini" HorizontalAlignment="Left" Height="45" Margin="575,211,0,0" VerticalAlignment="Top" Width="181" Click="BtnTermin_Click"/>
-        <Button Name="BtnAdresa" Content="Adrese" HorizontalAlignment="Left" Height="52" Margin="38,281,0,0" VerticalAlignment="Top" Width="184" RenderTransformOrigin="0.5,0.5" Click="BtnAdresa_Click">
+        <Button Name="BtnAdresa" Content="Adrese" HorizontalAlignment="Left" Height="56" Margin="266,304,0,0" VerticalAlignment="Top" Width="257" RenderTransformOrigin="0.5,0.5" Click="BtnAdresa_Click">
 
         </Button>
         <Label Content="CRUD OPERACIJE DOMA ZDRAVLJA" HorizontalAlignment="Left" Height="58" Margin="152,31,0,0" VerticalAlignment="Top" Width="448" FontSize="24" FontFamily="Verdana"/>
-        <Button Content="CHANGELOG" HorizontalAlignment="Left" Height="70" Margin="266,292,0,0" VerticalAlignment="Top" Width="490" FontSize="24"/>
 
     </Grid>
 </Window>

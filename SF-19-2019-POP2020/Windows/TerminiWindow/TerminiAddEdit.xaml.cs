@@ -33,9 +33,9 @@ namespace SF_19_2019_POP2020.Windows.TerminiWindow
             this.termin = termin;
             this.stanje = stanje;
 
+            
 
             //BUG SA DATUMOM - ne radi odabir datuma tjst ne prolazi select.
-
 
             termin.Status = EStatusTermina.ZAKAZAN;
             termin.Aktivan = true;
@@ -43,6 +43,7 @@ namespace SF_19_2019_POP2020.Windows.TerminiWindow
             tbSifra.DataContext = termin;
             tbLekar1.DataContext = termin;
             tbPacijent.DataContext = termin;
+            dpDatum.DataContext = termin;
             
 
 

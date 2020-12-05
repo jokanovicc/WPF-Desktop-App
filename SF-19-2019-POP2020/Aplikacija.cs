@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace SF_19_2019_POP2020
 {
+    //SLUZI SAMO ZA PODATKE DA UCITAVA IZ LISTE
     class Aplikacija
     {
         public ObservableCollection<Korisnik> Korisnici { get; set; }
@@ -81,7 +82,7 @@ namespace SF_19_2019_POP2020
                 Email = "imejl@gmail.com",
                 Ime = "jovica",
                 JMBG = "2313212",
-                KorisnickoIme = "perica123",
+                KorisnickoIme = "jovica123",
                 Lozinka = "perica11",
                 Pol = EPol.M,
                 Prezime = "Peric",
@@ -143,7 +144,7 @@ namespace SF_19_2019_POP2020
             Pacijent pacijent = new Pacijent
             {
                 Korisnicko = korisnik2,
-                Termini = new ObservableCollection<string>(),
+                //Termini = new ObservableCollection<string>(),
             };
 
             Pacijenti.Add(pacijent);

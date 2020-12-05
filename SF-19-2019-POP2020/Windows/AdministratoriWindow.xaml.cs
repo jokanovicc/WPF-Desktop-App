@@ -48,5 +48,11 @@ namespace SF_19_2019_POP2020.Windows
 
             dgAdministratori.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+
+        }
     }
 }

@@ -18,7 +18,8 @@ namespace SF19_2019_POP2020.Models
             set { _korisnick = value; }
         }
 
-        private List<String> _terapije;
+        //OVO CE DRUGACIJE BITI IMPLEMENTIRANO POSLE KT1
+/*        private List<String> _terapije;
 
         public List<String> Terapije
         {
@@ -32,7 +33,7 @@ namespace SF19_2019_POP2020.Models
         {
             get { return _termini; }
             set { _termini = value; }
-        }
+        }*/
 
         public override string ToString()
         {

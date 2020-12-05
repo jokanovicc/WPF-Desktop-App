@@ -102,7 +102,7 @@ namespace SF19_2019_POP2020.Models
             Termin kopija = new Termin();
             kopija.sifra = Sifra;
             kopija.lekar = Lekar;
-            kopija.datum = DateTime.Now;
+            kopija.datum = Datum;
             kopija.status = Status;
             kopija.pacijent = Pacijent;
             kopija.aktivan = Aktivan;
