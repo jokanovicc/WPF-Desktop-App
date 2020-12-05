@@ -76,6 +76,14 @@ namespace SF_19_2019_POP2020
             };
             KorisniciPacijenti.Add(korisnik1);
 
+            Pacijent pacijent4 = new Pacijent
+            {
+                Korisnicko = korisnik1
+            };
+            Pacijenti.Add(pacijent4);
+
+
+
             Korisnik korisnik2 = new Korisnik
             {
                 Aktivan = true,
