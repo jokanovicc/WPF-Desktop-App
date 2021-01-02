@@ -3,10 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Terapije" Height="556" Width="672">
     <Grid>
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,49,0,0" Name="lbSifra" Text="Sifra" VerticalAlignment="Top" FontSize="20" Width="60" RenderTransformOrigin="0.59,1.826" />
-        <TextBox Text ="{Binding Path=Sifra}" Height="32" HorizontalAlignment="Left" Margin="95,49,0,0" Name="tbSifra" VerticalAlignment="Top" Width="501" FontSize="20" />
 
-        
+
         <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="12,124,0,0" Name="lbOpis" Text="Opis" VerticalAlignment="Top" Width="60" />
         <TextBox Text = "{Binding Path=Opis}" FontSize="20" Height="32" HorizontalAlignment="Left" Margin="95,124,0,0" Name="tbOpis" VerticalAlignment="Top" Width="501" />
 
@@ -18,11 +16,12 @@
         <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="10,191,0,0" Name="lbLekar" Text="Lekar" VerticalAlignment="Top" Width="60" />
         <TextBox Text="{Binding Path=Lekar, Mode=OneWay}" Height="23" HorizontalAlignment="Left" Margin="105,191,0,0" Name="tbLekari" VerticalAlignment="Top" Width="491" IsReadOnly="True" />
 
-        <Button Content="..." Height="23" HorizontalAlignment="Left" Margin="611,191,0,0" Name="btnPickLekar" VerticalAlignment="Top" Width="43" Click ="btnPickLekar_Click" />
+
+        <Button Content="..." Height="23" HorizontalAlignment="Left" Margin="611,196,0,0" Name="btnPickLekar" VerticalAlignment="Top" Width="43" Click ="btnPickLekar_Click" />
 
         <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="12,243,0,0" Name="lbPacijenti" Text="Pacijent" VerticalAlignment="Top" Width="81" />
-        <TextBox Text="{Binding Path=Pacijent, Mode=OneWay}" Height="23" HorizontalAlignment="Left" Margin="105,243,0,0" Name="tbPacijent" VerticalAlignment="Top" Width="491" IsReadOnly="True" />
-        <Button Content="..." Height="23" HorizontalAlignment="Left" Margin="611,249,0,0" Name="btnPickPacijent" VerticalAlignment="Top" Width="43" Click="btnPickPacijent_Click" />
+        <TextBox Text="{Binding Path=Pacijent, Mode=OneWay}" Height="23" HorizontalAlignment="Left" Margin="105,243,0,0" Name="tbPacijent" VerticalAlignment="Top" Width="120" IsReadOnly="True" />
+        <Button Content="..." Height="23" HorizontalAlignment="Left" Margin="263,243,0,0" Name="btnPickPacijent" VerticalAlignment="Top" Width="43" Click="btnPickPacijent_Click" RenderTransformOrigin="-1.326,0.691" />
 
     </Grid>
 </Window>

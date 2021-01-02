@@ -3,8 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Adrese-Izmena/Dodavanje" Height="556" Width="672">
     <Grid>
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,21,0,0" Name="lbSifra" Text="SifraAdrese" VerticalAlignment="Top" FontSize="20" Width="116" />
-        <TextBox Text ="{Binding Path=SifraAdrese}" Height="32" HorizontalAlignment="Left" Margin="128,17,0,0" Name="tbSifraAdrese" VerticalAlignment="Top" Width="498" FontSize="20" />
 
         <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="10,73,0,0" Name="lbBroj" Text="Broj" VerticalAlignment="Top" Width="60" />
         <TextBox Text = "{Binding Path=Broj}" FontSize="20" Height="32" HorizontalAlignment="Left" Margin="78,63,0,0" Name="tbBroj" VerticalAlignment="Top" Width="548" />

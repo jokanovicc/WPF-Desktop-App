@@ -17,5 +17,6 @@
         <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="12,208,0,0" Name="lbAdresa" Text="Adresa" VerticalAlignment="Top" Width="60" />
         <TextBox Text="{Binding Path=Adresa, Mode=OneWay}" Height="39" HorizontalAlignment="Left" Margin="105,191,0,0" Name="tbAdresa" VerticalAlignment="Top" Width="491" IsReadOnly="True" />
         <Button Content="..." Height="39" HorizontalAlignment="Left" Margin="611,191,0,0" Name="btnPickAdresa" VerticalAlignment="Top" Width="43" Click="btnPicAdresa_Click" />
+
     </Grid>
 </Window>

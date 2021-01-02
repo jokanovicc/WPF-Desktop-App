@@ -27,36 +27,48 @@ namespace SF_19_2019_POP2020.Windows
         ICollectionView view;
         ICollectionView view2;
 
-        public ObservableCollection<Korisnik> Korisnici1 { get; set; }
 
         public PacijentiWindow()
         {
             InitializeComponent();
-            Korisnici1 = new ObservableCollection<Korisnik>();
+            view = CollectionViewSource.GetDefaultView(Util.Instance.Pacijenti);
+            view.Filter = CustomFilter;
 
-
-
-            
-
-                
-            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.KorisniciPacijenti);
-
-
-       
             dgPacijenti.ItemsSource = view;
             dgPacijenti.IsSynchronizedWithCurrentItem = true;
 
-
             dgPacijenti.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
-
-
-
-            view2 = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Pacijenti);
-
+           // view2 = CollectionViewSource.GetDefaultView(Util.Instance.Pacijenti);
+           // view2.Filter = PrikazFiltera;
 /*            dgPacijentiZasebno.ItemsSource = view2;
             dgPacijentiZasebno.IsSynchronizedWithCurrentItem = true;
             dgPacijentiZasebno.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);*/
         }
+        private void TxtPretraga_KeyUp(object sender, KeyEventArgs e)
+        {
+            view.Refresh();
+        }
+
+        private bool CustomFilter(object obj)
+        {
+            Pacijent korisnik = obj as Pacijent;
+            // Korisnik korisnik1 = (Korisnik)obj;
+
+            if (korisnik.Aktivan)
+                if (TxtPretraga.Text != "")
+                {
+                    return korisnik.Ime.Contains(TxtPretraga.Text);
+                }
+                else if (TxtPretraga.Text != "")
+                {
+                    return korisnik.Prezime.Contains(TxtPretraga.Text);
+                }
+
+                else
+                    return true;
+            return false;
+        }
+
 
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -64,11 +76,15 @@ namespace SF_19_2019_POP2020.Windows
             if (MessageBox.Show("Da li ste sigurni?", "Potvrda",
                 MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                Korisnik selektovaniKorisnik = view.CurrentItem as Korisnik;
-                Aplikacija.Instance.KorisniciPacijenti.Remove(selektovaniKorisnik);
+                Pacijent selektovaniKorisnik = view.CurrentItem as Pacijent;
+                Util.Instance.DeletePacijent(selektovaniKorisnik.ID);
             }
         }
 
+        private bool PrikazFiltera(object obj)
+        {
+            return ((Pacijent)obj).Aktivan;
+        }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -77,28 +93,29 @@ namespace SF_19_2019_POP2020.Windows
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Korisnik novKorisnik = new Korisnik();
-            PacijentAddEdit few = new PacijentAddEdit(novKorisnik);
+            Pacijent novPacijent = new Pacijent();
+            PacijentAddEdit few = new PacijentAddEdit(novPacijent);
+        //    Util.Instance.CitanjeEntiteta();
             few.ShowDialog();
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            Korisnik selektovaniKorisnik = view.CurrentItem as Korisnik; //preuzimanje selektovane adrese
+            Pacijent selektovaniKorisnik = view.CurrentItem as Pacijent; //preuzimanje selektovane adrese
 
             if (selektovaniKorisnik != null)
             {
-                Korisnik old = (Korisnik)selektovaniKorisnik.Clone();
+                Pacijent old = (Pacijent)selektovaniKorisnik.Clone();
                 PacijentAddEdit few = new PacijentAddEdit(selektovaniKorisnik,
                     PacijentAddEdit.Stanje.IZMENA);
                 if (few.ShowDialog() != true) //ako je kliknuo cancel, ponistavaju se izmene nad objektom
                 {
 
    
-                    int index = Aplikacija.Instance.KorisniciPacijenti.IndexOf(
+                    int index = Util.Instance.Pacijenti.IndexOf(
                         selektovaniKorisnik);
                     //vratimo vrednosti njegovih atributa na stare vrednosti, jer je izmena ponistena
-                    Aplikacija.Instance.KorisniciPacijenti[index] = old;
+                    Util.Instance.Pacijenti[index] = old;
                 }
             }
         }

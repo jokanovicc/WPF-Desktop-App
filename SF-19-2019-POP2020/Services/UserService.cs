@@ -4,6 +4,7 @@ using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,54 +21,100 @@ namespace SF_19_2019_POP2020.Services
             if (k == null)
                 throw new UserNotFoundException($"Ne postoji korisnik sa korisnickim imenom {username}");
             k.Aktivan = false;
-            Util.Instance.SacuvajEntite("korisnici.txt");
+
+            updateUser(k);
         }
 
-        public void readUsers(string filename)
+        public void readUsers()
         {
             Util.Instance.Korisnici = new ObservableCollection<Korisnik>();
 
-            using (StreamReader file = new StreamReader(@"../../Resources/" + filename))
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
-                string line;
-                while ((line = file.ReadLine()) != null)
-                {
-                    string[] korisnikIzFajla = line.Split(';');
+                conn.Open();
 
-                    Enum.TryParse(korisnikIzFajla[6], out EPol pol);
-                    Enum.TryParse(korisnikIzFajla[7], out ETipKorisnika tip);
+                SqlCommand command = conn.CreateCommand();
 
-                    Boolean.TryParse(korisnikIzFajla[8], out Boolean aktivan);
-                    Korisnik korisnik = new Korisnik
-                    {
-                        KorisnickoIme = korisnikIzFajla[0],
-                        Ime = korisnikIzFajla[1],
-                        Prezime = korisnikIzFajla[2],
-                        JMBG = korisnikIzFajla[3],
-                        Email = korisnikIzFajla[4],
-                        Lozinka = korisnikIzFajla[5],
-                        Pol = pol,
-                        TipKorisnika = tip,
-                        Aktivan = aktivan
-                        //Aktivan = Convert.ToBoolean(korisnikIzFajla[8])
+                command.CommandText = @"select * from users";
 
-                    };
-                    Util.Instance.Korisnici.Add(korisnik);
-                }
             }
+
         }
 
-        public void saveUsers(string filename)
+        public int saveUser(Object obj)
         {
-            using (StreamWriter file = new StreamWriter(@"../../Resources/" + filename))
+            Korisnik korisnik = obj as Korisnik;
+
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
-                foreach (Korisnik korisnik in Util.Instance.Korisnici)
-                {
-                    file.WriteLine(korisnik.KorisnikZaUpisUFajl());
-                }
+                conn.Open();
+
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = @"insert into dbo.Users (Username, Firstname, TypeOfUser,Lastname, Email , Active, Pol,Jmbg)
+                                        output inserted.id VALUES (@Username, @Firstname, @TypeOfUser,@Lastname, @Email, @Active,@Pol,@Jmbg)";
+
+                command.Parameters.Add(new SqlParameter("Username", korisnik.KorisnickoIme));
+                command.Parameters.Add(new SqlParameter("Firstname", korisnik.Ime));
+                command.Parameters.Add(new SqlParameter("Lastname", korisnik.Prezime));
+                command.Parameters.Add(new SqlParameter("TypeOfUser", korisnik.TipKorisnika.ToString()));
+                command.Parameters.Add(new SqlParameter("Email", korisnik.Email));
+                command.Parameters.Add(new SqlParameter("Active", korisnik.Aktivan));
+                command.Parameters.Add(new SqlParameter("Pol", EPol.M));
+                command.Parameters.Add(new SqlParameter("Lozinka", korisnik.Lozinka));
+                command.Parameters.Add(new SqlParameter("Jmbg", korisnik.JMBG));
+
+                return (int)command.ExecuteScalar();
+            }
+            //return -1;
+        }
+
+        public void updateUser(object obj)
+        {
+            Korisnik korisnik = obj as Korisnik;
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"update dbo.Users 
+                                        SET Active = @Active
+                                        where username = @Username";
+
+                command.Parameters.Add(new SqlParameter("Active", korisnik.Aktivan));
+                command.Parameters.Add(new SqlParameter("Username", korisnik.KorisnickoIme));
+
+                command.ExecuteNonQuery();
             }
         }
 
 
+
+        public void updateUser1(object obj)
+        {
+            Korisnik korisnik = obj as Korisnik;
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"update dbo.Users 
+                                        SET firstname = @Firstname,
+                                        lastname = @Lastname,
+                                        jmbg = @JMBG,
+                                        email = @Email,
+                                        pol = @Pol
+                                        where username = @Username";
+
+                command.Parameters.Add(new SqlParameter("Username", korisnik.KorisnickoIme));
+                command.Parameters.Add(new SqlParameter("firstname", korisnik.Ime));
+                command.Parameters.Add(new SqlParameter("lastname", korisnik.Prezime));
+                command.Parameters.Add(new SqlParameter("JMBG", korisnik.JMBG));
+                command.Parameters.Add(new SqlParameter("email", korisnik.Email));
+                command.Parameters.Add(new SqlParameter("pol", korisnik.Pol.ToString()));
+
+
+                command.ExecuteScalar();
+            }
+        }
     }
 }

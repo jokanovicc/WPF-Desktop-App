@@ -1,8 +1,10 @@
 ﻿using SF_19_2019_POP2020.Models;
+using SF_19_2019_POP2020.Services;
 using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +29,7 @@ namespace SF_19_2019_POP2020
         public ObservableCollection<Terapija> Terapije { get; set; }
 
         private static Aplikacija instance = new Aplikacija();
+        IService _adresaService;
 
 
         public static Aplikacija Instance
@@ -47,7 +50,9 @@ namespace SF_19_2019_POP2020
             Pacijenti = new ObservableCollection<Pacijent>();;
             Lekari = new ObservableCollection<Lekar>();
             KorisniciPacijenti = new ObservableCollection<Korisnik>();
+            _adresaService = new AdresaService();
             PopuniPodatke();
+            _adresaService.readAdrese();
         }
 
 
@@ -78,7 +83,7 @@ namespace SF_19_2019_POP2020
 
             Pacijent pacijent4 = new Pacijent
             {
-                Korisnicko = korisnik1
+                //Korisnicko = korisnik1
             };
             Pacijenti.Add(pacijent4);
 
@@ -139,19 +144,11 @@ namespace SF_19_2019_POP2020
             Korisnici.Add(korisnik4);
 
 
-            Lekar lekar = new Lekar
-            {
-                DomZdravlja = "213213",
-                Korisnicko = korisnik4,
-
-            };
-
-            Lekari.Add(lekar);
 
 
             Pacijent pacijent = new Pacijent
             {
-                Korisnicko = korisnik2,
+                //Korisnicko = korisnik2,
                 //Termini = new ObservableCollection<string>(),
             };
 
@@ -165,9 +162,9 @@ namespace SF_19_2019_POP2020
             {
                 Aktivan = true,
                 Datum = new DateTime(2020, 5, 1, 8, 30, 52),
-                Lekar = lekar,
-                Pacijent = pacijent,
-                Sifra = "232432432",
+           //     Lekar = lekar,
+                //Pacijent = pacijent,
+              //  Sifra = "232432432",
                 Status = EStatusTermina.SLOBODAN
 
 
@@ -175,42 +172,33 @@ namespace SF_19_2019_POP2020
             Termini.Add(termin);
 
 
-            Adresa adresa = new Adresa
-            {
-                Aktivan = true,
-                Broj = "23342",
-                Drzava = "Srbija",
-                Grad = "Beograd",
-                SifraAdrese = "232432",
-                Ulica = "Nemanjina 23"
-
-            };
-
-            Adrese.Add(adresa);
 
 
             Terapija terapija = new Terapija
             {
                 Aktivan = true,
                 Opis = "Sve okej",
-                Sifra = "332423",
-                Lekar = lekar,
-                Pacijent = pacijent
+          //      Sifra = "332423",
+           //     Lekar = lekar,
+           //     Pacijent = pacijent
             };
 
             Terapije.Add(terapija);
 
 
-            DomZdravlja domZdravlja = new DomZdravlja
+/*            DomZdravlja domZdravlja = new DomZdravlja
             {
                 Naziv = "DOM ZDRAVLJA SECANJ",
                 Sifra = "255366",
-                Adresa = adresa,
+               // Adresa = adresa,
                 Aktivan = true
             };
-            DomoviZdravlja.Add(domZdravlja);
+            DomoviZdravlja.Add(domZdravlja);*/
 
         }
+
+
+        
 
         private Terapija NadjiTerapiju(string sifra)
         {

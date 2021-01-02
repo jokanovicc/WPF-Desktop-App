@@ -1,5 +1,7 @@
 ﻿using SF_19_2019_POP2020.Models;
+using SF_19_2019_POP2020.Services;
 using SF_19_2019_POP2020.Windows.AdresaProzori;
+using SF_19_2019_POP2020.Windows.DomZdravljaProzori;
 using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
@@ -13,21 +15,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SF_19_2019_POP2020.Windows.PacijentiProzori
+namespace SF_19_2019_POP2020.Windows.DoktoriProzori
 {
     /// <summary>
-    /// Interaction logic for PacijentAddEdit.xaml
+    /// Interaction logic for DoktorAddEdit.xaml
     /// </summary>
-    public partial class PacijentAddEdit : Window
+    public partial class DoktorAddEdit : Window
     {
-        Pacijent korisnik;
+        Lekar korisnik;
         public enum Stanje { DODAVANJE, IZMENA };
         Stanje stanje;
 
-        public PacijentAddEdit(Pacijent korisnik, Stanje stanje = Stanje.DODAVANJE)
+        public DoktorAddEdit(Lekar korisnik, Stanje stanje = Stanje.DODAVANJE)
         {
             InitializeComponent();
 
@@ -36,9 +37,8 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
 
             tbPol.ItemsSource = Enum.GetValues(typeof(EPol)).Cast<EPol>();
             Random random = new Random();
-        //    korisnik.ID = random.Next(1, 1000);
+      //      korisnik.ID = random.Next(1, 1000);
             korisnik.Aktivan = true;
-            korisnik.AdresaID = 836;
             tbLozinka.DataContext = korisnik;
             tbIme.DataContext = korisnik;
             tbEmail.DataContext = korisnik;
@@ -47,8 +47,11 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
             tbPol.DataContext = korisnik;
             tbPrezime.DataContext = korisnik;
             tbPol.DataContext = korisnik;
+            korisnik.AdresaID = 836;
+            korisnik.DomZdravljaID = 641;
             tbAdresa.DataContext = korisnik;
-            
+            tbDomZdravlja.DataContext = korisnik;
+
         }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
@@ -56,13 +59,14 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
             this.DialogResult = true;
             if (stanje == Stanje.DODAVANJE)
             {
-                Util.Instance.Pacijenti.Add(korisnik);
+                Util.Instance.Lekari.Add(korisnik);
                 Util.Instance.SacuvajEntitet(korisnik);
+            
             }
             if (stanje == Stanje.IZMENA)
             {
                 //Util.Instance.Adrese.Add(adresa);
-                Util.Instance.updatePacijent(korisnik);
+                Util.Instance.updateDoktor(korisnik);
 
 
             }
@@ -71,7 +75,6 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
 
         private void btnPicAdresa_Click(object sender, RoutedEventArgs e)
         {
-           // Util.Instance.CitanjeEntiteta();
             AdresaPick gw = new AdresaPick(AdresaPick.Stanje.PREUZIMANJE);
             if (gw.ShowDialog() == true)
             {
@@ -79,5 +82,13 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
             }
         }
 
+        private void btnPicDomZdravlja_Click(object sender, RoutedEventArgs e)
+        {
+            DomZdravljaPick gw = new DomZdravljaPick(DomZdravljaPick.Stanje.PREUZIMANJE);
+            if (gw.ShowDialog() == true)
+            {
+                korisnik.DomZdravljaID = gw.SelektovaniDomZdravlja.Sifra;
+            }
+        }
     }
 }

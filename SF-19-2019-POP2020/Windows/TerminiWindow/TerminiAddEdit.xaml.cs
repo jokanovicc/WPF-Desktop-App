@@ -33,17 +33,26 @@ namespace SF_19_2019_POP2020.Windows.TerminiWindow
             this.termin = termin;
             this.stanje = stanje;
 
-            
+
 
             //BUG SA DATUMOM - ne radi odabir datuma tjst ne prolazi select.
 
+            tbStatus.ItemsSource = Enum.GetValues(typeof(EStatusTermina)).Cast<EStatusTermina>();
+
+            Random random = new Random();
+            termin.Sifra = random.Next(1, 1000);
             termin.Status = EStatusTermina.ZAKAZAN;
             termin.Aktivan = true;
             termin.Datum = DateTime.Now;
+           // termin.LekarID = 14;
+         //   termin.PacijentID = 323;
+            tbStatus.DataContext = termin;
             tbSifra.DataContext = termin;
-            tbLekar1.DataContext = termin;
+        //    tbLekar1.DataContext = termin;
             tbPacijent.DataContext = termin;
             dpDatum.DataContext = termin;
+         //   tbLekar1.DataContext = termin;
+         //   tbPacijent.DataContext = termin;
             
 
 
@@ -58,7 +67,15 @@ namespace SF_19_2019_POP2020.Windows.TerminiWindow
             this.DialogResult = true;
             if (stanje == Stanje.DODAVANJE)
             {
-                Aplikacija.Instance.Termini.Add(termin);
+                Util.Instance.Termini.Add(termin);
+                Util.Instance.SacuvajEntitet(termin);
+            }
+            if (stanje == Stanje.IZMENA)
+            {
+                //Util.Instance.Adrese.Add(adresa);
+                Util.Instance.updateTermin(termin);
+
+
             }
             this.Close();
         }
@@ -68,7 +85,7 @@ namespace SF_19_2019_POP2020.Windows.TerminiWindow
             LekariPick gw = new LekariPick(LekariPick.Stanje.PREUZIMANJE);
             if (gw.ShowDialog() == true)
             {
-                termin.Lekar = gw.SelektovaniLekar;
+                termin.LekarID = gw.SelektovaniLekar.ID;
             }
         }
 
@@ -78,7 +95,7 @@ namespace SF_19_2019_POP2020.Windows.TerminiWindow
             PacijentiPick gw = new PacijentiPick(PacijentiPick.Stanje.PREUZIMANJE);
             if (gw.ShowDialog() == true)
             {
-                termin.Pacijent = gw.SelektovaniPacijent;
+                termin.PacijentID = gw.SelektovaniPacijent.ID;
             }
         }
     }

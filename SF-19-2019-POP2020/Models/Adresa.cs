@@ -9,7 +9,7 @@ namespace SF_19_2019_POP2020.Models
 {
     public class Adresa: ICloneable, INotifyPropertyChanged
     {
-        private string sifraAdrese;
+        private int sifraAdrese;
         private string broj;
         private string ulica;
         private string drzava;
@@ -17,7 +17,7 @@ namespace SF_19_2019_POP2020.Models
         private Boolean aktivan;
 
 
-        public string SifraAdrese
+        public int SifraAdrese
         {
             get
             {

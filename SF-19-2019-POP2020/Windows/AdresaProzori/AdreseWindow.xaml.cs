@@ -1,5 +1,7 @@
 ﻿using SF_19_2019_POP2020.Models;
+using SF_19_2019_POP2020.Services;
 using SF_19_2019_POP2020.Windows.AdresaEditUpdate;
+using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,14 +25,14 @@ namespace SF_19_2019_POP2020.Windows
     public partial class AdreseWindow : Window
     {
         ICollectionView view;
+        AdresaService adresa1;
         public AdreseWindow()
         {
             InitializeComponent();
-            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Adrese);
+            view = CollectionViewSource.GetDefaultView(Util.Instance.Adrese);
+            view.Filter = PrikazFiltera;
             dgAdresa.ItemsSource = view;
             dgAdresa.IsSynchronizedWithCurrentItem = true;
-
-
             dgAdresa.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
 
@@ -39,9 +41,16 @@ namespace SF_19_2019_POP2020.Windows
             if (MessageBox.Show("Da li ste sigurni?", "Potvrda",
                 MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                Adresa selektovanaAdresa = view.CurrentItem as Adresa;
-                Aplikacija.Instance.Adrese.Remove(selektovanaAdresa);
+               Adresa selektovanaAdresa = view.CurrentItem as Adresa;
+                Util.Instance.DeleteAdresa(selektovanaAdresa.SifraAdrese);
+                view.Refresh();
             }
+        }
+
+
+        private bool PrikazFiltera(object obj)
+        {
+            return ((Adresa)obj).Aktivan;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -51,8 +60,11 @@ namespace SF_19_2019_POP2020.Windows
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+
             Adresa novaAdresa = new Adresa();
+            novaAdresa.Aktivan = true;
             AdresaEditAddDelete few = new AdresaEditAddDelete(novaAdresa);
+           // Util.Instance.CitanjeEntiteta();
             few.ShowDialog();
         }
 
@@ -66,14 +78,15 @@ namespace SF_19_2019_POP2020.Windows
                 Adresa old = (Adresa)selektovanaAdresa.Clone();
                 AdresaEditAddDelete few = new AdresaEditAddDelete(selektovanaAdresa,
                     AdresaEditAddDelete.Stanje.IZMENA);
+
                 if (few.ShowDialog() != true) //ako je kliknuo cancel, ponistavaju se izmene nad objektom
                 {
 
                     //pronadjemo indeks selektovanog
-                    int index = Aplikacija.Instance.Adrese.IndexOf(
+                    int index = Util.Instance.Adrese.IndexOf(
                         selektovanaAdresa);
                     //vratimo vrednosti njegovih atributa na stare vrednosti, jer je izmena ponistena
-                    Aplikacija.Instance.Adrese[index] = old;
+                    Util.Instance.Adrese[index] = old;
                 }
             }
         }

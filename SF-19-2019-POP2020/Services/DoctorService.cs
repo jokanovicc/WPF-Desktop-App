@@ -3,6 +3,7 @@ using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,37 +18,71 @@ namespace SF_19_2019_POP2020.Services
 
         }
 
-        public void readUsers(string filename)
+        public void readUsers()
         {
             Util.Instance.Lekari = new ObservableCollection<Lekar>();
-            using (StreamReader file = new StreamReader(@"../../Resources/" + filename))
-            {
-                string line;
-                while ((line = file.ReadLine()) != null)
-                {
-                    string[] lekarIzFajla = line.Split(';');
+            Util.Instance.Korisnici = new ObservableCollection<Korisnik>();
 
-                    Korisnik korisnik = Util.Instance.Korisnici.ToList().Find(kori => kori.KorisnickoIme.Equals(lekarIzFajla[1]));
-                    //Korisnik korisnik = NadjiKorisnika(lekarIzFajla[1]);
-                    Lekar lekar = new Lekar
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"select * from users where TypeOfUser like 'LEKAR'";
+
+                SqlDataReader reader = command.ExecuteReader();
+
+
+                while (reader.Read())
+                {
+                    Util.Instance.Korisnici.Add(new Korisnik
                     {
-                        DomZdravlja = lekarIzFajla[0],
-                        Korisnicko = korisnik
-                    };
-                    Util.Instance.Lekari.Add(lekar);
+                        ID = reader.GetInt32(0),
+                        KorisnickoIme = reader.GetString(1),
+                        Ime = reader.GetString(2),
+                        TipKorisnika = ETipKorisnika.LEKAR,
+                        Email = reader.GetString(4),
+                        Aktivan = reader.GetBoolean(5),
+                        Pol = (EPol)Enum.Parse(typeof(EPol), reader.GetString(6)),
+                        JMBG = reader.GetString(7),
+                        Prezime = reader.GetString(8)
+
+
+                    }); ;
+
                 }
+
+                reader.Close();
             }
         }
 
-        public void saveUsers(string filename)
+        public int saveUser(Object obj)
         {
-            using (StreamWriter file = new StreamWriter(@"../../Resources/" + filename))
+            Lekar lekar = obj as Lekar;
+
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
-                foreach (Lekar lekar in Util.Instance.Lekari)
-                {
-                    file.WriteLine(lekar.LekarUpisUFajl());
-                }
+                conn.Open();
+
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = @"insert into dbo.Doctors (Id)
+                                        output inserted.id VALUES (@Id)";
+
+                command.Parameters.Add(new SqlParameter("Id", lekar.ID));
+
+                return (int)command.ExecuteScalar();
             }
+        }
+
+        public void updateUser(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void updateUser1(object obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

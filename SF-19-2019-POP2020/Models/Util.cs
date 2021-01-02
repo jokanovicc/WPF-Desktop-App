@@ -16,15 +16,29 @@ namespace SF19_2019_POP2020.Models
 {
     public sealed class Util
     {
+        public static string CONNECTION_STRING = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         private static readonly Util instance = new Util();
         IUserService _userService;
         IUserService _doctorService;
-        ETipKorisnika tipKorisnika;
+        IPacijentService _pacijentService;
+        IService _adresaService;
+        IDomZdravljaServis _domZdravljaServis;
+        IUserService _lekariServis;
+        ITerapijaService _terapijaService;
+        ITerminService _terminService;
+        Random _random;
 
         private Util()
         {
+            _adresaService = new AdresaService();
             _userService = new UserService();
             _doctorService = new DoctorService();
+            _domZdravljaServis = new DomZdravljaService();
+            _pacijentService = new PacijentService();
+            _lekariServis = new LekariServis();
+            _terapijaService = new TerapijaService();
+            _terminService = new TerminiService();
+            _random = new Random();
         }
         static Util()
         {
@@ -41,109 +55,81 @@ namespace SF19_2019_POP2020.Models
 
         public ObservableCollection<Korisnik> Korisnici { get; set; }
         public ObservableCollection<Lekar> Lekari { get; set; }
-        public ObservableCollection<Pacijent> Pacijenti { get; set; }
-        public ObservableCollection<Termin> Termini { get; set; }
-        public ObservableCollection<Terapija> Terapije { get; set; }
 
-        public ObservableCollection<DomZdravlja> DomoviZdravlja { get; set; }
+        public ObservableCollection<Pacijent> Pacijenti { get; set; }
+
 
         public ObservableCollection<Adresa> Adrese { get; set; }
-        public ObservableCollection<Korisnik> Pacijenti1 { get; private set; }
+        public ObservableCollection<DomZdravlja> DomoviZdravlja { get; set; }
+
+        public ObservableCollection<Terapija> Terapije { get; set; }
+
+        public ObservableCollection<Termin> Termini { get; set; }
+        public Random Random { get;  set; }
 
         public void Initialize()
         {
             Korisnici = new ObservableCollection<Korisnik>();
+            Adrese = new ObservableCollection<Adresa>();
             Lekari = new ObservableCollection<Lekar>();
+            DomoviZdravlja = new ObservableCollection<DomZdravlja>();
             Pacijenti = new ObservableCollection<Pacijent>();
+            Lekari = new ObservableCollection<Lekar>();
             Terapije = new ObservableCollection<Terapija>();
             Termini = new ObservableCollection<Termin>();
-            DomoviZdravlja = new ObservableCollection<DomZdravlja>();
-            Adrese = new ObservableCollection<Adresa>();
-
-            Adresa adresa = new Adresa
-            {
-                Grad = "Grad 1",
-                Broj = "Broj 1",
-                Drzava = "Drzava 1",
-                Ulica = "Ulica 1",
-                SifraAdrese = "1"
-            };
-
-            Korisnik korisnik1 = new Korisnik();
-            korisnik1.KorisnickoIme = "pera";
-            korisnik1.Ime = "petar";
-            korisnik1.Prezime = "peric";
-            korisnik1.JMBG = "123456";
-            korisnik1.Lozinka = "pera";
-            korisnik1.Email = "pera@gmail.com";
-            korisnik1.Pol = EPol.M;
-            korisnik1.TipKorisnika = ETipKorisnika.ADMINISTRATOR;
-            korisnik1.Aktivan = true;
-            //korisnik1.Adresa = adresa;
-
-            Korisnik korisnik2 = new Korisnik
-            {
-                Email = "zika@gmail.com",
-                Ime = "zika",
-                Prezime = "zikic",
-                KorisnickoIme = "ziza",
-                JMBG = "654321",
-                Lozinka = "zika",
-                Pol = EPol.Z,
-                TipKorisnika = ETipKorisnika.PACIJENT,
-                //Adresa = adresa
-            };
-
-
-            Korisnici.Add(korisnik1);
-            Korisnici.Add(korisnik2);
-
-   
-
-                Pacijenti1 = new ObservableCollection<Korisnik>();
-                foreach (Korisnik korisnik in Korisnici)
-                {
-                    if (korisnik.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
-                    {
-                        Pacijenti1.Add(korisnik);
-
-                    }
-                }
-            
-
+            Random = new Random();
 
         }
 
 
 
-        public void SacuvajEntite(string filename)
+        public int SacuvajEntitet(Object obj)
         {
-            if (filename.Contains("korisnici"))
+            if (obj is Korisnik)
             {
-                _userService.saveUsers(filename);
+                return _userService.saveUser(obj);
             }
-            else if (filename.Contains("lekari"))
+            else if(obj is Adresa)
             {
-                _doctorService.saveUsers(filename);
+                return _adresaService.saveAdresa(obj);
+            }
+            else if(obj is DomZdravlja)
+            {
+                return _domZdravljaServis.saveDomZdravlja(obj);
+            }
+            else if(obj is Pacijent)
+            {
+                return _pacijentService.savePacijent(obj);
+            }
+            else if (obj is Lekar)
+            {
+                return _lekariServis.saveUser(obj);
+            }
+            else if(obj is Terapija)
+            {
+                return _terapijaService.saveTerapija(obj);
+            }
+            else if(obj is Termin)
+            {
+                return _terminService.saveTermin(obj);
             }
 
-            else if (filename.Contains("pacijenti"))
-            {
-                _doctorService.saveUsers(filename);
-            }
+            return -1;
         }
 
-        public void CitanjeEntiteta(string filename)
+        public void CitanjeEntiteta()
         {
-            if (filename.Contains("korisnici"))
-            {
-                _userService.readUsers(filename);
-            }
-            else if (filename.Contains("lekari"))
-            {
-                _doctorService.readUsers(filename);
-            }
 
+                _userService.readUsers();
+
+                _doctorService.readUsers();
+
+                _adresaService.readAdrese();
+            _domZdravljaServis.readDomZdravlja();
+            _pacijentService.readPacijent();
+            _lekariServis.readUsers();
+            _terapijaService.readTerapija();
+            _terminService.readTermin();
         }
 
         public void DeleteUser(string username)
@@ -151,5 +137,70 @@ namespace SF19_2019_POP2020.Models
             _userService.deleteUser(username);
         }
 
+        public void DeleteDomZdravlja(int id)
+        {
+            _domZdravljaServis.deleteDomZdravlja(id);
+
+        }
+
+        public void DeleteAdresa(int id)
+        {
+            _adresaService.deleteAdresa(id);
+        }
+        public void DeletePacijent(int id)
+        {
+            _pacijentService.deletePacijent(id);
+        }
+        public void DeleteDoktor(string username)
+        {
+            _lekariServis.deleteUser(username);
+        }
+        
+        public void DeleteTerapija(int id)
+        {
+            _terapijaService.deleteTerapija(id);
+        }
+
+        public void DeleteTermin(int id)
+        {
+            _terminService.deleteTermin(id);
+        }
+
+        public void UpdateUser(Korisnik korisnik)
+        {
+            _userService.updateUser1(korisnik);
+        }
+
+        public void updateAdresa(Adresa adresa)
+        {
+            _adresaService.updateAdresa1(adresa);
+        }
+
+        public void updateDomZdravlja(DomZdravlja domZdravlja)
+        {
+            _domZdravljaServis.updateDomZdravlja1(domZdravlja);
+        }
+
+        public void updatePacijent(Pacijent pacijent)
+        {
+            _pacijentService.updatePacijent1(pacijent);
+        }
+
+        public void updateDoktor(Lekar lekar)
+        {
+            _lekariServis.updateUser1(lekar);
+        }
+
+        public void updateTerapija(Terapija terapija)
+        {
+            _terapijaService.updateTerapija1(terapija);
+        }
+
+        public void updateTermin(Termin termin)
+        {
+            _terminService.updateTermin1(termin);
+        }
     }
+
 }
+

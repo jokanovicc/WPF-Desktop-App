@@ -15,20 +15,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SF_19_2019_POP2020.Windows.LekariProzori
+namespace SF_19_2019_POP2020.Windows.DoktoriProzori
 {
     /// <summary>
-    /// Interaction logic for LekariPick.xaml
+    /// Interaction logic for DoktoriPick.xaml
     /// </summary>
-    public partial class LekariPick : Window
+    public partial class DoktoriPick : Window
     {
         public enum Stanje { ADMINISTRACIJA, PREUZIMANJE };
         Stanje stanje;
         ICollectionView view;
+        public Lekar selektovaniLekar = null;
 
-        public Lekar SelektovaniLekar = null;
-
-        public LekariPick(Stanje stanje = Stanje.ADMINISTRACIJA)
+        public DoktoriPick(Stanje stanje = Stanje.ADMINISTRACIJA)
         {
             InitializeComponent();
             this.stanje = stanje;
@@ -43,11 +42,11 @@ namespace SF_19_2019_POP2020.Windows.LekariProzori
             {
                 btnPick.Visibility = System.Windows.Visibility.Hidden;
             }
+            //   Util.Instance.CitanjeEntiteta();
             view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
             view.Filter = PrikazFiltera;
-            dgLekari.ItemsSource = view;
-
-            dgLekari.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgDoktori.ItemsSource = view;
+            dgDoktori.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -61,7 +60,7 @@ namespace SF_19_2019_POP2020.Windows.LekariProzori
         }
         private void btnPick_Click(object sender, RoutedEventArgs e)
         {
-            SelektovaniLekar = dgLekari.SelectedItem as Lekar;
+            selektovaniLekar = dgDoktori.SelectedItem as Lekar;
             this.DialogResult = true;
             this.Close();
         }

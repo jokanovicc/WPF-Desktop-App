@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace SF19_2019_POP2020.Windows
 {
-    /// <summary>
-    /// Interaction logic for AddEditDoctor.xaml
-    /// </summary>
     public partial class AddEditDoctor : Window
     {
         private EStatus odabranStatus;
@@ -28,7 +25,7 @@ namespace SF19_2019_POP2020.Windows
             InitializeComponent();
 
             this.DataContext = lekar;
-
+            lekar.Aktivan = true;
             odabranLekar = lekar;
             odabranStatus = status;
 
@@ -37,10 +34,10 @@ namespace SF19_2019_POP2020.Windows
             if (status.Equals(EStatus.Izmeni) && lekar != null)
             {
                 this.Title = "Izmeni lekara";
-                /*TxtEmail.Text = lekar.Email;
+                TxtEmail.Text = lekar.Email;
                 TxtKorisnickoIme.Text = lekar.KorisnickoIme;
                 TxtName.Text = lekar.Ime;
-                TxtPrezime.Text = lekar.Prezime;*/
+                TxtPrezime.Text = lekar.Prezime;
                 TxtKorisnickoIme.IsEnabled = false;
             }
             else
@@ -58,50 +55,32 @@ namespace SF19_2019_POP2020.Windows
 
         private void BtnOk_Click(object sender, RoutedEventArgs e)
         {
-            /*ComboBoxItem item = (ComboBoxItem)CmbTipKorisnika.SelectedItem;
-            string value = item.Content.ToString();
-            Enum.TryParse(value, out ETipKorisnika tip);*/
-
-            /*Korisnik k = new Korisnik
-            {
-                Ime = TxtName.Text,
-                Prezime = TxtPrezime.Text,
-                KorisnickoIme = TxtKorisnickoIme.Text,
-                Email = TxtEmail.Text,
-                TipKorisnika = tip,
-                Aktivan = true, 
-                JMBG = "1234", 
-                Lozinka = "1234"
-            };*/
-
-
-
-            if (odabranStatus.Equals(EStatus.Dodaj))
-            {
-                odabranLekar.Aktivan = true;
-                Lekar lekar = new Lekar
+                if (odabranStatus.Equals(EStatus.Dodaj))
                 {
-                    DomZdravlja = "Dom zdravlja 1",
-                    Korisnicko = odabranLekar
-                };
+                    odabranLekar.Aktivan = true;
+                    Lekar lekar = new Lekar
+                    {
+                      //  DomZdravlja = "Dom zdravlja 1",
+                       // Korisnicko = odabranLekar
+                    };
 
-                Util.Instance.Korisnici.Add(odabranLekar);
-                Util.Instance.Lekari.Add(lekar);
+                    Util.Instance.Korisnici.Add(odabranLekar);
+                    Util.Instance.Lekari.Add(lekar);
+
+                    int id = Util.Instance.SacuvajEntitet(odabranLekar);
+                    lekar.ID = id;
+                    Util.Instance.SacuvajEntitet(lekar);
             }
             else
             {
-                /*int izmenaLekar = Util.Instance.Lekari.ToList().FindIndex(u => u.Korisnicko.KorisnickoIme.Equals(TxtKorisnickoIme.Text));
-                int izmenaKorisnik = Util.Instance.Korisnici.ToList().FindIndex(u => u.KorisnickoIme.Equals(TxtKorisnickoIme.Text));
-
-                Util.Instance.Korisnici[izmenaKorisnik] = k;
-                Util.Instance.Lekari[izmenaLekar] = lekar;*/
+                Util.Instance.UpdateUser(odabranLekar);
             }
 
-            Util.Instance.SacuvajEntite("korisnici.txt");
-            Util.Instance.SacuvajEntite("lekari.txt");
+                this.DialogResult = true;
+                this.Close();
+            }
 
-            this.DialogResult = true;
-            this.Close();
+
         }
-    }
+    
 }

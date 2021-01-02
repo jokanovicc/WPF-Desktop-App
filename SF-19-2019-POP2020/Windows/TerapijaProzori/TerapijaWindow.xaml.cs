@@ -25,7 +25,8 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
         public TerapijaWindow()
         {
             InitializeComponent();
-            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Terapije);
+            view = CollectionViewSource.GetDefaultView(Util.Instance.Terapije);
+            view.Filter = PrikazFiltera;
             dgTerapije.ItemsSource = view;
             dgTerapije.IsSynchronizedWithCurrentItem = true;
 
@@ -39,8 +40,14 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
                 MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 Terapija selektovanaTerapija = view.CurrentItem as Terapija;
-                Aplikacija.Instance.Terapije.Remove(selektovanaTerapija);
+                Util.Instance.DeleteTerapija(selektovanaTerapija.Sifra);
+                view.Refresh();
             }
+        }
+
+        private bool PrikazFiltera(object obj)
+        {
+            return ((Terapija)obj).Aktivan;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -64,12 +71,13 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
                 Terapija old = (Terapija)selektovanaTerapija.Clone();
                 TerapijeAddEdit few = new TerapijeAddEdit(selektovanaTerapija,
                     TerapijeAddEdit.Stanje.IZMENA);
+
                 if (few.ShowDialog() != true) 
                 {
 
                     int index = Aplikacija.Instance.Terapije.IndexOf(
                         selektovanaTerapija);
-                    Aplikacija.Instance.Terapije[index] = old;
+               //     Aplikacija.Instance.Terapije[index] = old;
                 }
             }
         }

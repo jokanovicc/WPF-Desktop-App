@@ -2,51 +2,172 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SF19_2019_POP2020.Models
 {
-    [Serializable]
-    public class Pacijent
+    public class Pacijent : ICloneable, INotifyPropertyChanged
     {
-        private Korisnik _korisnick;
-        public Korisnik Korisnicko
+        private int id;
+        private string ime;
+        private string prezime;
+        private string lozinka;
+        private string email;
+        private string jmbg;
+        private int adresaID;
+        private EPol pol;
+        private bool aktivan;
+
+
+
+        private int _id;
+
+        public int ID
         {
-            get { return _korisnick; }
-            set { _korisnick = value; }
-        }
-
-        //OVO CE DRUGACIJE BITI IMPLEMENTIRANO POSLE KT1
-/*        private List<String> _terapije;
-
-        public List<String> Terapije
-        {
-            get { return _terapije; }
-            set { _terapije = value; }
-        }
-
-        private ObservableCollection<String> _termini;
-
-        public ObservableCollection<String> Termini
-        {
-            get { return _termini; }
-            set { _termini = value; }
-        }*/
-
-        public override string ToString()
-        {
-            return Korisnicko.KorisnickoIme;
-
-        }
-
-        public string pacijentZaUpisuFajl()
-        {
-            return Korisnicko.KorisnickoIme;
+            get { return _id; }
+            set { _id = value; }
         }
 
 
+
+        public string Ime
+        {
+            get
+            {
+                return ime;
+            }
+            set
+            {
+                ime = value;
+                OnPropertyChanged("Ime");
+            }
+        }
+
+        public string Prezime
+        {
+            get
+            {
+                return prezime;
+            }
+            set
+            {
+                prezime = value;
+                OnPropertyChanged("Prezime");
+            }
+        }
+        public string Lozinka
+        {
+            get
+            {
+                return lozinka;
+            }
+            set
+            {
+                lozinka = value;
+                OnPropertyChanged("Lozinka");
+            }
+        }
+        public string Email
+        {
+            get
+            {
+                return email;
+            }
+            set
+            {
+                email = value;
+                OnPropertyChanged("Email");
+            }
+        }
+
+
+        public string JMBG
+        {
+            get
+            {
+                return jmbg;
+            }
+            set
+            {
+                jmbg = value;
+                OnPropertyChanged("Jmbg");
+            }
+        }
+
+
+
+        public int AdresaID
+        {
+            get
+            {
+                return adresaID;
+            }
+            set
+            {
+                adresaID = value;
+                OnPropertyChanged("AdresaID");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(String propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+
+        public EPol Pol
+        {
+            get
+            {
+                return pol;
+            }
+            set
+            {
+                pol = value;
+                OnPropertyChanged("Pol");
+            }
+        }
+
+        public Boolean Aktivan
+        {
+            get
+            {
+                return aktivan;
+            }
+            set
+            {
+                aktivan = value;
+                OnPropertyChanged("Aktivan");
+            }
+        }
+
+
+
+        public object Clone()
+        {
+            Pacijent kopija = new Pacijent();
+
+            kopija.ID = ID;
+            kopija.AdresaID = adresaID;
+            kopija.Aktivan = Aktivan;
+            kopija.Email = Email;
+            kopija.Ime = Ime;
+            kopija.Prezime = Prezime;
+            kopija.Pol = Pol;
+            kopija.Lozinka = Lozinka;
+            kopija.JMBG = JMBG;
+
+
+            return kopija;
+        }
     }
 }
 

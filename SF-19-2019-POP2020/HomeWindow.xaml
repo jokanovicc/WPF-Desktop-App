@@ -5,18 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF19_2019_POP2020"
         mc:Ignorable="d"
-        Title="Home" Height="450" Width="800" Name="WHome">
+        Title="Home" Height="450" Width="800" Name="WHome"  ResizeMode="NoResize">
     <Grid>
-        <Button Name="BtnStart" Content="Lekari" Click="BtnStart_Click" Margin="38,114,570,253" RenderTransformOrigin="0.5,0.5"/>
-        <Button Name="BtnPacijent" Content="Pacijenti" HorizontalAlignment="Left" VerticalAlignment="Top" Width="257" Height="51" RenderTransformOrigin="1.009,0.775" Margin="266,115,0,0" Click="BtnPacijent_Click"/>
-        <Button Name="BtnAdmin" Content="Administratori" HorizontalAlignment="Left" Height="51" Margin="575,115,0,0" VerticalAlignment="Top" Width="181" Click="BtnAdministrator_Click"/>
-        <Button Name="BtnDomZdravlja" Content="Domovi Zdravlja" HorizontalAlignment="Left" Height="45" Margin="38,211,0,0" VerticalAlignment="Top" Width="184" Click="BtnDomZdravlja_Click"/>
-        <Button Name="BtnTerapija" Content="Terapije" HorizontalAlignment="Left" Height="45" Margin="266,211,0,0" VerticalAlignment="Top" Width="257" Click="BtnTerapije_Click"/>
-        <Button Name="BtnTermin" Content="Termini" HorizontalAlignment="Left" Height="45" Margin="575,211,0,0" VerticalAlignment="Top" Width="181" Click="BtnTermin_Click"/>
-        <Button Name="BtnAdresa" Content="Adrese" HorizontalAlignment="Left" Height="56" Margin="266,304,0,0" VerticalAlignment="Top" Width="257" RenderTransformOrigin="0.5,0.5" Click="BtnAdresa_Click">
+        <Button Name="BtnStart" Content="Lekari" Click="BtnStart_Click" Margin="358,125,384,266" RenderTransformOrigin="4.308,-4.1"/>
+        <Button Name="BtnPacijent" Content="Pacijenti" HorizontalAlignment="Left" VerticalAlignment="Top" Width="273" Height="56" RenderTransformOrigin="1.009,0.775" Margin="473,112,0,0" Click="BtnPacijent_Click"/>
+        <Button Name="BtnAdmin" Content="Administratori" HorizontalAlignment="Left" Height="29" Margin="358,298,0,0" VerticalAlignment="Top" Width="52" Click="BtnAdministrator_Click" RenderTransformOrigin="3.904,-1.138"/>
+        <Button Name="BtnDomZdravlja" Content="Domovi Zdravlja" HorizontalAlignment="Left" Height="56" Margin="489,201,0,0" VerticalAlignment="Top" Width="257" Click="BtnDomZdravlja_Click"/>
+        <Button Name="BtnTerapija" Content="Terapije" HorizontalAlignment="Left" Height="59" Margin="489,282,0,0" VerticalAlignment="Top" Width="257" Click="BtnTerapije_Click"/>
+        <Button Name="BtnTermin" Content="Termini" HorizontalAlignment="Left" Height="59" Margin="38,282,0,0" VerticalAlignment="Top" Width="240" Click="BtnTermin_Click"/>
+        <Button Name="BtnAdresa" Content="Adrese" HorizontalAlignment="Left" Height="56" Margin="38,201,0,0" VerticalAlignment="Top" Width="240" RenderTransformOrigin="0.5,0.5" Click="BtnAdresa_Click">
 
         </Button>
-        <Label Content="CRUD OPERACIJE DOMA ZDRAVLJA" HorizontalAlignment="Left" Height="58" Margin="152,31,0,0" VerticalAlignment="Top" Width="448" FontSize="24" FontFamily="Verdana"/>
+        <Button Name="BtnDoktori" Content="Doktori" HorizontalAlignment="Left" Height="56" Margin="38,112,0,0" VerticalAlignment="Top" Width="240" RenderTransformOrigin="0.5,0.5" Click="BtnDoktori_Click">
+
+        </Button>
+        <Label Content="ADMINISTRATORSKI PROZOR" HorizontalAlignment="Left" Height="58" Margin="215,30,0,0" VerticalAlignment="Top" Width="381" FontSize="24" FontFamily="Verdana"/>
 
     </Grid>
 </Window>

@@ -1,6 +1,7 @@
 ﻿using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,8 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
     {
         public enum Stanje { ADMINISTRACIJA, PREUZIMANJE };
         Stanje stanje;
+        ICollectionView view;
+
 
         public Pacijent SelektovaniPacijent = null;
 
@@ -40,10 +43,16 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
             {
                 btnPick.Visibility = System.Windows.Visibility.Hidden;
             }
-
-            dgPacijenti.ItemsSource = Aplikacija.Instance.Pacijenti;
+            view = CollectionViewSource.GetDefaultView(Util.Instance.Pacijenti);
+            view.Filter = PrikazFiltera;
+            dgPacijenti.ItemsSource = view;
+       //     dgPacijenti.IsSynchronizedWithCurrentItem = true;
 
             dgPacijenti.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+        }
+        private bool PrikazFiltera(object obj)
+        {
+            return ((Pacijent)obj).Aktivan;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)

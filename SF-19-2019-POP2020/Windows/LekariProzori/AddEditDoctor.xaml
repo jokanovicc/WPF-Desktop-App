@@ -20,20 +20,28 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="0" Grid.Row="0" Name="LblName" Content="Ime:"/>
-        <TextBox Grid.Column="1" Grid.Row="0" Name="TxtName" Text="{Binding Path=Ime}"/>
+        <Label Grid.Column="0" Grid.Row="0" Name="LblName" Content="Ime:" Margin="0,5,0,28"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Name="TxtName" Text="{Binding Path=Ime}" Margin="0,0,0,28"/>
 
-        <Label Grid.Column="0" Grid.Row="1" Name="LblPrezime" Content="Prezime:"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Name="TxtPrezime" Text="{Binding Path=Prezime}"/>
+        <Label Grid.Column="0" Name="LblPrezime" Content="Prezime:" Margin="0,0,0,24" Grid.Row="1"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Name="TxtPrezime" Text="{Binding Path=Prezime}" Margin="0,0,0,24"/>
 
-        <Label Grid.Column="0" Grid.Row="2" Name="LblKorisnickoIme" Content="Korisnicko ime:"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Name="TxtKorisnickoIme" Text="{Binding Path=KorisnickoIme}"/>
+        <Label Grid.Column="0" Grid.Row="1" Name="LblKorisnickoIme" Content="Korisnicko ime:" Margin="0,46,0,55" Grid.RowSpan="2"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Name="TxtKorisnickoIme" Text="{Binding Path=KorisnickoIme}" Margin="0,46,0,55" Grid.RowSpan="2"/>
 
-        <Label Grid.Column="0" Grid.Row="3" Name="LblEmail" Content="Email:" />
-        <TextBox Grid.Column="1" Grid.Row="3" Name="TxtEmail" Text="{Binding Path=Email}"/>
+        <Label Grid.Column="0" Grid.Row="2" Name="LblEmail" Content="Email:" Margin="0,15,0,55" Grid.RowSpan="2" />
+        <TextBox Grid.Column="1" Grid.Row="2" Name="TxtEmail" Text="{Binding Path=Email}" Margin="0,0,0,30"/>
 
         <Label Grid.Column="0" Grid.Row="4" Name="LblTipKorisnika" Content="Tip korisnika:"/>
         <ComboBox Name="CmbTipKorisnika" Grid.Column="1" Grid.Row="4" SelectedItem="{Binding Path=TipKorisnika}"/>
+
+        <Label Grid.Column="0" Grid.Row="2" Name="LblLozinka" Content="lozinka:" Margin="0,40,0,0" />
+        <TextBox Grid.Column="1" Grid.Row="2" Name="TxtLozinka" Text="{Binding Path=Lozinka}" Margin="0,40,0,0"/>
+
+        <Label Grid.Column="0" Grid.Row="3" Name="LblJmbg" Content="jmbg:" Margin="0,5,0,35" />
+        <TextBox Grid.Column="1" Grid.Row="3" Name="Txtjmbg" Text="{Binding Path=JMBG}" Margin="5,5,-5,35"/>
+
+
 
         <Button Grid.Column="0" Grid.Row="5" Content="Cancel" Name="BtnCancel" Click="BtnCancel_Click"/>
         <Button Grid.Column="1" Grid.Row="5" Content="Ok" Name="BtnOk" Click="BtnOk_Click"/>

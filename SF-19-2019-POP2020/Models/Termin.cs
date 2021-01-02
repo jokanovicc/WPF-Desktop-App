@@ -10,16 +10,16 @@ namespace SF19_2019_POP2020.Models
 {
     public class Termin: ICloneable, INotifyPropertyChanged
     {
-        private string sifra;
-        private Lekar lekar;
+        private int sifra;
+        private int lekarID;
         private DateTime datum;
         private EStatusTermina status;
-        private Pacijent pacijent;
+        private int pacijentID;
         private Boolean aktivan;
 
 
 
-        public string Sifra
+        public int Sifra
         {
             get
             {
@@ -31,15 +31,15 @@ namespace SF19_2019_POP2020.Models
                 OnPropertyChanged("Sifra");
             }
         }
-        public Lekar Lekar
+        public int LekarID
         {
             get
             {
-                return lekar;
+                return lekarID;
             }
             set
             {
-                lekar = value;
+                lekarID = value;
                 OnPropertyChanged("Lekar");
             }
         }
@@ -69,15 +69,15 @@ namespace SF19_2019_POP2020.Models
                 OnPropertyChanged("Status");
             }
         }
-        public Pacijent Pacijent
+        public int PacijentID
         {
             get
             {
-                return pacijent;
+                return pacijentID;
             }
             set
             {
-                pacijent = value;
+                pacijentID = value;
                 OnPropertyChanged("Pacijent");
             }
         }
@@ -101,10 +101,10 @@ namespace SF19_2019_POP2020.Models
         {
             Termin kopija = new Termin();
             kopija.sifra = Sifra;
-            kopija.lekar = Lekar;
+            kopija.lekarID = lekarID;
             kopija.datum = Datum;
             kopija.status = Status;
-            kopija.pacijent = Pacijent;
+            kopija.pacijentID = pacijentID;
             kopija.aktivan = Aktivan;
             return kopija;
 

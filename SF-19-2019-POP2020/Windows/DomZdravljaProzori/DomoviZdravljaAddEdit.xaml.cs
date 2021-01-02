@@ -31,9 +31,10 @@ namespace SF_19_2019_POP2020.Windows.DomZdravljaProzori
             InitializeComponent();
             this.domZdravlja = domZdravlja;
             this.stanje = stanje;
-
+            Random random = new Random();
+          //  domZdravlja.Sifra = random.Next(1, 1000);
             domZdravlja.Aktivan = true;
-            tbSifra.DataContext = domZdravlja;
+         //   tbSifra.DataContext = domZdravlja;
             tbNaziv.DataContext = domZdravlja;
             tbAdresa.DataContext = domZdravlja;
         }
@@ -43,7 +44,17 @@ namespace SF_19_2019_POP2020.Windows.DomZdravljaProzori
             this.DialogResult = true;
             if (stanje == Stanje.DODAVANJE)
             {
-                Aplikacija.Instance.DomoviZdravlja.Add(domZdravlja);
+                domZdravlja.Aktivan = true;
+                Util.Instance.DomoviZdravlja.Add(domZdravlja);
+                Util.Instance.SacuvajEntitet(domZdravlja);
+            }
+            if (stanje == Stanje.IZMENA)
+            {
+                //Util.Instance.Adrese.Add(adresa);
+                Util.Instance.updateDomZdravlja(domZdravlja);
+                
+
+
             }
             this.Close();
         }
@@ -53,7 +64,8 @@ namespace SF_19_2019_POP2020.Windows.DomZdravljaProzori
             AdresaPick gw = new AdresaPick(AdresaPick.Stanje.PREUZIMANJE);
             if (gw.ShowDialog() == true)
             {
-                domZdravlja.Adresa = gw.SelektovanaAdresa;
+              //  domZdravlja.Adresa = gw.SelektovanaAdresa;
+                domZdravlja.AdresaID = gw.SelektovanaAdresa.SifraAdrese;
             }
         }
     }

@@ -1,5 +1,4 @@
-﻿using SF_19_2019_POP2020.Models;
-using SF19_2019_POP2020.Models;
+﻿using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,20 +14,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SF_19_2019_POP2020.Windows.LekariProzori
+namespace SF_19_2019_POP2020.Windows.DomZdravljaProzori
 {
     /// <summary>
-    /// Interaction logic for LekariPick.xaml
+    /// Interaction logic for DomZdravljaPick.xaml
     /// </summary>
-    public partial class LekariPick : Window
+    public partial class DomZdravljaPick : Window
     {
         public enum Stanje { ADMINISTRACIJA, PREUZIMANJE };
         Stanje stanje;
         ICollectionView view;
 
-        public Lekar SelektovaniLekar = null;
+        public DomZdravlja SelektovaniDomZdravlja = null;
 
-        public LekariPick(Stanje stanje = Stanje.ADMINISTRACIJA)
+        public DomZdravljaPick(Stanje stanje = Stanje.ADMINISTRACIJA)
         {
             InitializeComponent();
             this.stanje = stanje;
@@ -43,25 +42,24 @@ namespace SF_19_2019_POP2020.Windows.LekariProzori
             {
                 btnPick.Visibility = System.Windows.Visibility.Hidden;
             }
-            view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
+            view = CollectionViewSource.GetDefaultView(Util.Instance.DomoviZdravlja);
             view.Filter = PrikazFiltera;
-            dgLekari.ItemsSource = view;
+            dgDomoviZdravlja.ItemsSource = view;
 
-            dgLekari.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgDomoviZdravlja.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
         private bool PrikazFiltera(object obj)
         {
-            return ((Lekar)obj).Aktivan;
+            return ((DomZdravlja)obj).Aktivan;
         }
         private void btnPick_Click(object sender, RoutedEventArgs e)
         {
-            SelektovaniLekar = dgLekari.SelectedItem as Lekar;
+            SelektovaniDomZdravlja = dgDomoviZdravlja.SelectedItem as DomZdravlja;
             this.DialogResult = true;
             this.Close();
         }

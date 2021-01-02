@@ -11,15 +11,15 @@ namespace SF19_2019_POP2020.Models
     public class Terapija : ICloneable, INotifyPropertyChanged
     {
 
-        private string sifra;
+        private int sifra;
         private string opis;
-        private Lekar lekar;
-        private Pacijent pacijent;
+        private int lekarID;
+        private int pacijentID;
         private bool aktivan;
 
 
 
-        public string Sifra
+        public int Sifra
         {
             get
             {
@@ -49,16 +49,16 @@ namespace SF19_2019_POP2020.Models
 
         }
 
-        public Lekar Lekar
+        public int LekarID
         {
             get
             {
-                return lekar;
+                return lekarID;
 
             }
             set
             {
-                lekar = value;
+                lekarID = value;
                 OnPropertyChanged("Lekar");
             }
 
@@ -78,16 +78,16 @@ namespace SF19_2019_POP2020.Models
         }
 
 
-        public Pacijent Pacijent
+        public int PacijentID
         {
             get
             {
-                return pacijent;
+                return pacijentID;
 
             }
             set
             {
-                pacijent = value;
+                pacijentID = value;
                 OnPropertyChanged("Pacijent");
             }
 
@@ -112,8 +112,8 @@ namespace SF19_2019_POP2020.Models
         {
             Terapija kopija = new Terapija();
             kopija.Opis = Opis;
-            kopija.Lekar = Lekar;
-            kopija.Pacijent = Pacijent;
+            kopija.lekarID = lekarID;
+            kopija.pacijentID = pacijentID;
             kopija.Sifra = Sifra;
             kopija.Aktivan = Aktivan;
             return kopija;

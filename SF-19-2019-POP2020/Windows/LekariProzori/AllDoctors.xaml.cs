@@ -20,6 +20,9 @@ namespace SF19_2019_POP2020.Windows
     /// <summary>
     /// Interaction logic for AllDoctors.xaml
     /// </summary>
+    /// <summary>
+    /// Interaction logic for AllDoctors.xaml
+    /// </summary>
     public partial class AllDoctors : Window
     {
         ICollectionView view;
@@ -31,6 +34,7 @@ namespace SF19_2019_POP2020.Windows
             UpdateView();
 
             view.Filter = CustomFilter;
+
         }
 
         private bool CustomFilter(object obj)
@@ -59,8 +63,8 @@ namespace SF19_2019_POP2020.Windows
 
         private void DGLekari_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            /*if (e.PropertyName.Equals("Aktivan"))
-                e.Column.Visibility = Visibility.Collapsed;*/
+            if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
+                e.Column.Visibility = Visibility.Collapsed;
         }
 
         private void MIDodajLekara_Click(object sender, RoutedEventArgs e)
@@ -110,6 +114,37 @@ namespace SF19_2019_POP2020.Windows
 
         private void TxtPretraga_KeyUp(object sender, KeyEventArgs e)
         {
+            view.Refresh();
+        }
+
+        private void DGLekari_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Korisnik selektovan = view.CurrentItem as Korisnik;
+            if (selektovan != null)
+            {
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem mi = new MenuItem();
+                mi.Header = "Edit";
+                mi.Click += Edit_Click;
+                contextMenu.Items.Add(mi);
+                DGLekari.ContextMenu = contextMenu;
+            }
+        }
+
+        void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            Korisnik selektovan = view.CurrentItem as Korisnik;
+            Korisnik stariLekar = (Korisnik)selektovan.Clone();
+
+            AddEditDoctor add = new AddEditDoctor(selektovan, EStatus.Izmeni);
+
+            //this.Hide();
+            if (!(bool)add.ShowDialog())
+            {
+                int index = Util.Instance.Korisnici.ToList().FindIndex(k => k.KorisnickoIme.Equals(selektovan.KorisnickoIme));
+                Util.Instance.Korisnici[index] = stariLekar;
+            }
+            //this.Show();
             view.Refresh();
         }
     }

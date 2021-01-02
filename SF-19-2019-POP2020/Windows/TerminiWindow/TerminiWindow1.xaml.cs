@@ -30,7 +30,8 @@ namespace SF_19_2019_POP2020.Windows
         public TerminiWindow1()
         {
             InitializeComponent();
-            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Termini);
+            view = CollectionViewSource.GetDefaultView(Util.Instance.Termini);
+          //  view.Filter = PrikazFiltera;
             dgTermini.ItemsSource = view;
             dgTermini.IsSynchronizedWithCurrentItem = true;
 
@@ -43,9 +44,16 @@ namespace SF_19_2019_POP2020.Windows
                 MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 Termin selektovaniTermin = view.CurrentItem as Termin;
-                Aplikacija.Instance.Termini.Remove(selektovaniTermin);
+                Util.Instance.DeleteTermin(selektovaniTermin.Sifra);
+                view.Refresh();
             }
         }
+
+
+    //    private bool PrikazFiltera(object obj)
+      //  {
+      //      return ((Termin)obj).Aktivan;
+      //  }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -74,9 +82,10 @@ namespace SF_19_2019_POP2020.Windows
 
                     int index = Aplikacija.Instance.Termini.IndexOf(
                         selektovaniTermin);
-                    Aplikacija.Instance.Termini[index] = old;
+                 //   Aplikacija.Instance.Termini[index] = old;
                 }
             }
+            view.Refresh();
         }
 
 

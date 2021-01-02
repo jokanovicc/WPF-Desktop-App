@@ -1,4 +1,5 @@
 ﻿using SF_19_2019_POP2020.Windows;
+using SF_19_2019_POP2020.Windows.DoktoriProzori;
 using SF_19_2019_POP2020.Windows.PacijentiProzori;
 using SF_19_2019_POP2020.Windows.TerapijaProzori;
 using SF19_2019_POP2020.Models;
@@ -27,8 +28,8 @@ namespace SF19_2019_POP2020
         public HomeWindow()
         {
             InitializeComponent();
-            Util.Instance.CitanjeEntiteta("korisnici.txt");
-            Util.Instance.CitanjeEntiteta("lekari.txt");
+            Util.Instance.CitanjeEntiteta();
+            Util.Instance.CitanjeEntiteta();
 
         }
 
@@ -78,6 +79,13 @@ namespace SF19_2019_POP2020
         {
             AdministratoriWindow aw = new AdministratoriWindow();
             aw.ShowDialog();
+
+        }
+
+        private void BtnDoktori_Click(object sender, RoutedEventArgs e)
+        {
+            DoktoriWindow dw = new DoktoriWindow();
+            dw.ShowDialog();
 
         }
 

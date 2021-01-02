@@ -26,9 +26,12 @@ namespace SF_19_2019_POP2020.Windows
         public DomoviZdravljaWindow()
         {
             InitializeComponent();
-            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.DomoviZdravlja);
+
+            view = CollectionViewSource.GetDefaultView(Util.Instance.DomoviZdravlja);
+            view.Filter = PrikazFiltera;
             dgDomZdravlja.ItemsSource = view;
             dgDomZdravlja.IsSynchronizedWithCurrentItem = true;
+
 
 
             dgDomZdravlja.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
@@ -40,10 +43,16 @@ namespace SF_19_2019_POP2020.Windows
                 MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 DomZdravlja selektovaniDomZdravlja = view.CurrentItem as DomZdravlja;
-                Aplikacija.Instance.DomoviZdravlja.Remove(selektovaniDomZdravlja);
+                Util.Instance.DeleteDomZdravlja(selektovaniDomZdravlja.Sifra);
+                view.Refresh();
             }
         }
 
+        private bool PrikazFiltera(object obj)
+        {
+            return ((DomZdravlja)obj).Aktivan;
+        }
+        
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -53,6 +62,7 @@ namespace SF_19_2019_POP2020.Windows
         {
             DomZdravlja noviDomZdravlja = new DomZdravlja();
             DomoviZdravljaAddEdit few = new DomoviZdravljaAddEdit(noviDomZdravlja);
+  
             few.ShowDialog();
         }
 
@@ -65,6 +75,7 @@ namespace SF_19_2019_POP2020.Windows
                 DomZdravlja old = (DomZdravlja)selektovaniDomZdravlja.Clone();
                 DomoviZdravljaAddEdit few = new DomoviZdravljaAddEdit(selektovaniDomZdravlja,
                     DomoviZdravljaAddEdit.Stanje.IZMENA);
+                view.Refresh();
                 if (few.ShowDialog() != true) //ako je kliknuo cancel, ponistavaju se izmene nad objektom
                 {
 
@@ -72,7 +83,7 @@ namespace SF_19_2019_POP2020.Windows
                     int index = Aplikacija.Instance.DomoviZdravlja.IndexOf(
                         selektovaniDomZdravlja);
                     //vratimo vrednosti njegovih atributa na stare vrednosti, jer je izmena ponistena
-                    Aplikacija.Instance.DomoviZdravlja[index] = old;
+                   // Aplikacija.Instance.DomoviZdravlja[index] = old;
                 }
             }
         }

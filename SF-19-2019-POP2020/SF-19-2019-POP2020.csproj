@@ -59,17 +59,41 @@
     <Compile Include="HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Datoteke.cs" />
     <Compile Include="Models\EStatus.cs" />
     <Compile Include="Models\EStatusTermina.cs" />
     <Compile Include="Models\Pacijent.cs" />
     <Compile Include="Models\Terapija.cs" />
     <Compile Include="Models\Termin.cs" />
     <Compile Include="MyExceptions\UserNotFoundException.cs" />
+    <Compile Include="Services\AdresaService.cs" />
     <Compile Include="Services\DoctorService.cs" />
+    <Compile Include="Services\DomZdravljaService.cs" />
+    <Compile Include="Services\IDomZdravljaServis.cs" />
+    <Compile Include="Services\IPacijentService.cs" />
+    <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\ITerapijaService.cs" />
+    <Compile Include="Services\ITerminService.cs" />
     <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\LekariServis.cs" />
+    <Compile Include="Services\PacijentService.cs" />
+    <Compile Include="Services\TerapijaService.cs" />
+    <Compile Include="Services\TerminiService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Windows\Changelog.xaml.cs">
       <DependentUpon>Changelog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DoktoriProzori\DoktorAddEdit.xaml.cs">
+      <DependentUpon>DoktorAddEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DoktoriProzori\DoktoriPick.xaml.cs">
+      <DependentUpon>DoktoriPick.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DoktoriProzori\DoktoriWindow.xaml.cs">
+      <DependentUpon>DoktoriWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DomZdravljaProzori\DomZdravljaPick.xaml.cs">
+      <DependentUpon>DomZdravljaPick.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LekariProzori\AddEditDoctor.xaml.cs">
       <DependentUpon>AddEditDoctor.xaml</DependentUpon>
@@ -107,7 +131,6 @@
     <Compile Include="Windows\PacijentiProzori\PacijentiWindow.xaml.cs">
       <DependentUpon>PacijentiWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\TerapijaProzori\TerapijaAddEdit.cs" />
     <Compile Include="Windows\TerapijaProzori\TerapijaWindow.xaml.cs">
       <DependentUpon>TerapijaWindow.xaml</DependentUpon>
     </Compile>
@@ -129,6 +152,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Windows\Changelog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DoktoriProzori\DoktorAddEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DoktoriProzori\DoktoriPick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DoktoriProzori\DoktoriWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DomZdravljaProzori\DomZdravljaPick.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

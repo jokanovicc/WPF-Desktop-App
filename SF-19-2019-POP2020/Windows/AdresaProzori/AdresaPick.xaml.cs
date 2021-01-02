@@ -1,6 +1,8 @@
 ﻿using SF_19_2019_POP2020.Models;
+using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +25,7 @@ namespace SF_19_2019_POP2020.Windows.AdresaProzori
     {
         public enum Stanje { ADMINISTRACIJA, PREUZIMANJE };
         Stanje stanje;
-
+        ICollectionView view;
         public Adresa SelektovanaAdresa = null;
 
         public AdresaPick(Stanje stanje = Stanje.ADMINISTRACIJA)
@@ -41,9 +43,10 @@ namespace SF_19_2019_POP2020.Windows.AdresaProzori
             {
                 btnPick.Visibility = System.Windows.Visibility.Hidden;
             }
-
-            dgAdrese.ItemsSource = Aplikacija.Instance.Adrese;
-
+            //   Util.Instance.CitanjeEntiteta();
+          //  view = CollectionViewSource.GetDefaultView(Util.Instance.Adrese);
+          //  view.Filter = PrikazFiltera;
+            dgAdrese.ItemsSource = Util.Instance.Adrese;
             dgAdrese.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
 
@@ -52,6 +55,10 @@ namespace SF_19_2019_POP2020.Windows.AdresaProzori
             this.Close();
         }
 
+        private bool PrikazFiltera(object obj)
+        {
+            return ((Adresa)obj).Aktivan;
+        }
         private void btnPick_Click(object sender, RoutedEventArgs e)
         {
             SelektovanaAdresa = dgAdrese.SelectedItem as Adresa;

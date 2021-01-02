@@ -11,14 +11,14 @@ namespace SF19_2019_POP2020.Models
     public class DomZdravlja : ICloneable, INotifyPropertyChanged
     {
 
-        private string sifra;
+        private int sifra;
         private string naziv;
-        private Adresa adresa;
         private Boolean aktivan;
+        private int adresaID;
 
 
 
-        public string Sifra
+        public int Sifra
         {
             get
             {
@@ -27,6 +27,19 @@ namespace SF19_2019_POP2020.Models
             set {
                 sifra = value;
                 OnPropertyChanged("Sifra");
+            }
+        }
+
+        public int AdresaID
+        {
+            get
+            {
+                return adresaID;
+            }
+            set
+            {
+                adresaID = value;
+                OnPropertyChanged("AdresaID");
             }
         }
 
@@ -46,20 +59,6 @@ namespace SF19_2019_POP2020.Models
 
 
 
-
-
-        public Adresa Adresa
-        {
-            get
-            {
-                return adresa;
-            }
-            set
-            {
-                adresa = value;
-                OnPropertyChanged("Adresa");
-            }
-        }
 
 
         public Boolean Aktivan
@@ -92,8 +91,8 @@ namespace SF19_2019_POP2020.Models
             DomZdravlja kopija = new DomZdravlja();
             kopija.Sifra = Sifra;
             kopija.Naziv = Naziv;
-            kopija.Adresa = Adresa;
             kopija.Aktivan = Aktivan;
+            kopija.adresaID = adresaID;
             return kopija;
 
         }
