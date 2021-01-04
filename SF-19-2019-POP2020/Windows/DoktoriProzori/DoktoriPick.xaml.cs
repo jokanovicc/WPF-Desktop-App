@@ -43,9 +43,9 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
                 btnPick.Visibility = System.Windows.Visibility.Hidden;
             }
             //   Util.Instance.CitanjeEntiteta();
-            view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
-            view.Filter = PrikazFiltera;
-            dgDoktori.ItemsSource = view;
+            //view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
+          //  view.Filter = PrikazFiltera;
+            dgDoktori.ItemsSource = Util.Instance.Lekari;
             dgDoktori.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
 

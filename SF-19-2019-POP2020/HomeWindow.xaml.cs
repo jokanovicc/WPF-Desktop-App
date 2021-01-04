@@ -69,7 +69,7 @@ namespace SF19_2019_POP2020
 
         private void BtnTerapije_Click(object sender, RoutedEventArgs e)
         {
-            TerapijaWindow tw = new TerapijaWindow();
+            TerapijeWindow tw = new TerapijeWindow();
             tw.ShowDialog();
 
         }

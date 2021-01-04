@@ -40,14 +40,13 @@ namespace SF_19_2019_POP2020.Windows.TerminiWindow
             tbStatus.ItemsSource = Enum.GetValues(typeof(EStatusTermina)).Cast<EStatusTermina>();
 
             Random random = new Random();
-            termin.Sifra = random.Next(1, 1000);
             termin.Status = EStatusTermina.ZAKAZAN;
             termin.Aktivan = true;
             termin.Datum = DateTime.Now;
            // termin.LekarID = 14;
          //   termin.PacijentID = 323;
             tbStatus.DataContext = termin;
-            tbSifra.DataContext = termin;
+          //  tbSifra.DataContext = termin;
         //    tbLekar1.DataContext = termin;
             tbPacijent.DataContext = termin;
             dpDatum.DataContext = termin;

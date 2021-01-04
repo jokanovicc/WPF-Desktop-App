@@ -17,32 +17,56 @@ using System.Windows.Shapes;
 namespace SF_19_2019_POP2020.Windows.TerapijaProzori
 {
     /// <summary>
-    /// Interaction logic for TerapijaWindow.xaml
+    /// Interaction logic for TerapijeWindow.xaml
     /// </summary>
-    public partial class TerapijaWindow : Window
+    public partial class TerapijeWindow : Window
     {
         ICollectionView view;
-        public TerapijaWindow()
+
+
+
+        public TerapijeWindow()
         {
             InitializeComponent();
+
+
+
+
+
+
             view = CollectionViewSource.GetDefaultView(Util.Instance.Terapije);
             view.Filter = PrikazFiltera;
-            dgTerapije.ItemsSource = view;
-            dgTerapije.IsSynchronizedWithCurrentItem = true;
 
 
-            dgTerapije.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgLekari.ItemsSource = view;
+            dgLekari.IsSynchronizedWithCurrentItem = true;
+
+
+            dgLekari.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+
+
+
+            /*            dgPacijentiZasebno.ItemsSource = view2;
+                        dgPacijentiZasebno.IsSynchronizedWithCurrentItem = true;
+                        dgPacijentiZasebno.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);*/
         }
+
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Da li ste sigurni?", "Potvrda",
                 MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                Terapija selektovanaTerapija = view.CurrentItem as Terapija;
-                Util.Instance.DeleteTerapija(selektovanaTerapija.Sifra);
+                Terapija selektovaniTerapija= view.CurrentItem as Terapija;
+                Util.Instance.DeleteTerapija(selektovaniTerapija.Sifra);
                 view.Refresh();
             }
+        }
+
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private bool PrikazFiltera(object obj)
@@ -50,40 +74,35 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
             return ((Terapija)obj).Aktivan;
         }
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Terapija novaTerapija = new Terapija();
-            TerapijeAddEdit few = new TerapijeAddEdit(novaTerapija);
+            TerapijaAddEdit few = new TerapijaAddEdit(novaTerapija);
+            //     Util.Instance.CitanjeEntiteta();
             few.ShowDialog();
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            Terapija selektovanaTerapija= view.CurrentItem as Terapija; 
+            Terapija selektovaniKorisnik = view.CurrentItem as Terapija; //preuzimanje selektovane adrese
 
-            if (selektovanaTerapija != null)
+            if (selektovaniKorisnik != null)
             {
-                Terapija old = (Terapija)selektovanaTerapija.Clone();
-                TerapijeAddEdit few = new TerapijeAddEdit(selektovanaTerapija,
-                    TerapijeAddEdit.Stanje.IZMENA);
-
-                if (few.ShowDialog() != true) 
+                Terapija old = (Terapija)selektovaniKorisnik.Clone();
+                TerapijaAddEdit few = new TerapijaAddEdit(selektovaniKorisnik,
+                    TerapijaAddEdit.Stanje.IZMENA);
+                if (few.ShowDialog() != true) //ako je kliknuo cancel, ponistavaju se izmene nad objektom
                 {
 
-                    int index = Aplikacija.Instance.Terapije.IndexOf(
-                        selektovanaTerapija);
-               //     Aplikacija.Instance.Terapije[index] = old;
+
+                    int index = Util.Instance.Terapije.IndexOf(
+                        selektovaniKorisnik);
+                    //vratimo vrednosti njegovih atributa na stare vrednosti, jer je izmena ponistena
+                    Util.Instance.Terapije[index] = old;
                 }
             }
+            view.Refresh();
         }
 
-
     }
-
-
 }

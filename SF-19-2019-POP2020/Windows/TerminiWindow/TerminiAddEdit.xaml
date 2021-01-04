@@ -3,8 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Termini" Height="556" Width="672">
     <Grid>
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,21,0,0" Name="lbSifra" Text="Sifra" VerticalAlignment="Top" FontSize="20" Width="60" />
-        <TextBox Text ="{Binding Path=Sifra}" Height="32" HorizontalAlignment="Left" Margin="78,12,0,0" Name="tbSifra" VerticalAlignment="Top" Width="569" FontSize="20" />
 
 
         <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="12,109,0,0" Name="lbLekar1" Text="Lekar" VerticalAlignment="Top" Width="60" />

@@ -3,8 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Dom Zdravlja Izmeni/Dodaj" Height="556" Width="672">
     <Grid>
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,49,0,0" Name="lbSifra" Text="Sifra" VerticalAlignment="Top" FontSize="20" Width="60" RenderTransformOrigin="0.59,1.826" />
-        <TextBox Text ="{Binding Path=Sifra}" Height="32" HorizontalAlignment="Left" Margin="105,49,0,0" Name="tbSifra" VerticalAlignment="Top" Width="491" FontSize="20" />
 
         <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="12,124,0,0" Name="lbNaziv" Text="Naziv" VerticalAlignment="Top" Width="60" />
         <TextBox Text = "{Binding Path=Naziv}" FontSize="20" Height="32" HorizontalAlignment="Left" Margin="105,124,0,0" Name="tbNaziv" VerticalAlignment="Top" Width="491" />

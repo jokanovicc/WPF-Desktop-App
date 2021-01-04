@@ -32,7 +32,7 @@ namespace SF_19_2019_POP2020.Windows
         {
             InitializeComponent();
             view = CollectionViewSource.GetDefaultView(Util.Instance.Pacijenti);
-            view.Filter = CustomFilter;
+            view.Filter = PrikazFiltera;
 
             dgPacijenti.ItemsSource = view;
             dgPacijenti.IsSynchronizedWithCurrentItem = true;

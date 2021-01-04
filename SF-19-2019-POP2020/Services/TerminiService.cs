@@ -55,6 +55,7 @@ namespace SF_19_2019_POP2020.Services
         public int saveTermin(object obj)
         {
             Termin termin = obj as Termin;
+            Random random = new Random();
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
@@ -63,7 +64,7 @@ namespace SF_19_2019_POP2020.Services
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText = @"insert into dbo.Termini (id,lekar_id,datum,status,pacijent_id,active)
                                         output inserted.id VALUES (@id,@lekar_id,@datum,@status,@pacijent_id,@active)";
-                command.Parameters.Add(new SqlParameter("id", termin.Sifra));
+                command.Parameters.Add(new SqlParameter("id", termin.Sifra = random.Next(1,1000)));
                 command.Parameters.Add(new SqlParameter("lekar_id", termin.LekarID));
                 command.Parameters.Add(new SqlParameter("datum", termin.Datum));
                 command.Parameters.Add(new SqlParameter("status", termin.Status));
