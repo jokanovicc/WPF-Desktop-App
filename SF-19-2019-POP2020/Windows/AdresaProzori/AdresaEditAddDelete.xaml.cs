@@ -46,23 +46,62 @@ namespace SF_19_2019_POP2020.Windows.AdresaEditUpdate
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
-            if (stanje == Stanje.DODAVANJE)
-            {
-                Util.Instance.Adrese.Add(adresa);
-                Util.Instance.SacuvajEntitet(adresa);
+
+                if (stanje == Stanje.DODAVANJE)
+                {
+                if (validacije())
+                {
+                    Util.Instance.Adrese.Add(adresa);
+                    Util.Instance.SacuvajEntitet(adresa);
+                }
+
+                }
+                if (stanje == Stanje.IZMENA)
+                {
                 
+                    //Util.Instance.Adrese.Add(adresa);
+                    Util.Instance.updateAdresa(adresa);
+
+                
+                }
+                this.Close();
             }
-            if (stanje == Stanje.IZMENA)
+        
+
+        private bool validacije()
+        {
+            bool ok = true;
+            String poruka = "Korisnik se nije sacuvao\nMolimo popravite sledece greske u unosu:\n";
+            if (tbBroj.Text.Equals(""))
             {
-                //Util.Instance.Adrese.Add(adresa);
-                Util.Instance.updateAdresa(adresa);
-
-
+                poruka += "\n- Polje Broj ne sme biti Prazno!\n";
+                ok = false;
             }
-            this.Close();
-        }
+            if (tbDrzava.Text.Equals(""))
+            {
+                poruka += "- Polje Drzava ne sme biti Prazno!\n";
+                ok = false;
+            }
+            if (tbUlica1.Text.Equals(""))
+            {
+                poruka += "- Polje Ulice ne sme biti Prazno\n";
+                ok = false;
+            }
+            if (tbGrad.Text.Equals(""))
+            {
+                poruka += "- Polje lozinke ne sme biti prazno!!\n";
+                ok = false;
+            }
+            if (ok == false)
+            {
+                MessageBox.Show(poruka, "Probajte ponovo");
+            }
+            return ok;
 
- 
+
+
+
+        }
 
     }
 }

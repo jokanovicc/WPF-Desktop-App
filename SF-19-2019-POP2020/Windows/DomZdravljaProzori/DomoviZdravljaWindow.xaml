@@ -12,6 +12,7 @@
         <Button Content="Zatvori" Height="39" HorizontalAlignment="Right" Margin="0,0,12,12" Name="btnClose" VerticalAlignment="Bottom" Width="102" Click="btnClose_Click" />
         <Button Content="Dodaj" Height="39" HorizontalAlignment="Left" Margin="12,0,0,12" Name="btnAdd" VerticalAlignment="Bottom" Width="66"  Click="btnAdd_Click"/>
         <Button Content="Izmeni" Height="39" HorizontalAlignment="Left" Margin="84,0,0,12" Name="btnUpdate" VerticalAlignment="Bottom" Width="75" Click="btnUpdate_Click" />
-        
+        <TextBox Name="TxtPretraga" HorizontalAlignment="Left" Height="39" Margin="324,370,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" KeyUp="TxtPretraga_KeyUp" Background="#FF709AD6"/>
+
     </Grid>
 </Window>

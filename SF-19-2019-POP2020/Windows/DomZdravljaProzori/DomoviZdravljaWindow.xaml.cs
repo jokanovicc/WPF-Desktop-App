@@ -28,7 +28,7 @@ namespace SF_19_2019_POP2020.Windows
             InitializeComponent();
 
             view = CollectionViewSource.GetDefaultView(Util.Instance.DomoviZdravlja);
-            view.Filter = PrikazFiltera;
+            view.Filter = CustomFilter;
             dgDomZdravlja.ItemsSource = view;
             dgDomZdravlja.IsSynchronizedWithCurrentItem = true;
 
@@ -46,6 +46,32 @@ namespace SF_19_2019_POP2020.Windows
                 Util.Instance.DeleteDomZdravlja(selektovaniDomZdravlja.Sifra);
                 view.Refresh();
             }
+        }
+
+        private bool CustomFilter(object obj)
+        {
+            DomZdravlja korisnik = obj as DomZdravlja;
+            // Korisnik korisnik1 = (Korisnik)obj;
+
+            if (korisnik.Aktivan)
+            {
+                if (TxtPretraga.Text != "")
+                {
+                    if (korisnik.Naziv.Contains(TxtPretraga.Text))
+                    {
+                        return korisnik.Naziv.Contains(TxtPretraga.Text);
+                    }
+
+                }
+                else
+                    return true;
+
+            }
+            return false;
+        }
+        private void TxtPretraga_KeyUp(object sender, KeyEventArgs e)
+        {
+            view.Refresh();
         }
 
         private bool PrikazFiltera(object obj)
@@ -80,10 +106,10 @@ namespace SF_19_2019_POP2020.Windows
                 {
 
                     //pronadjemo indeks selektovanog fakulteta
-                    int index = Aplikacija.Instance.DomoviZdravlja.IndexOf(
+                    int index = Util.Instance.DomoviZdravlja.IndexOf(
                         selektovaniDomZdravlja);
                     //vratimo vrednosti njegovih atributa na stare vrednosti, jer je izmena ponistena
-                   // Aplikacija.Instance.DomoviZdravlja[index] = old;
+                    Util.Instance.DomoviZdravlja[index] = old;
                 }
             }
         }

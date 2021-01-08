@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SF19_2019_POP2020.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,14 +13,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SF_19_2019_POP2020.Windows.NEPRIJAVLJENIWindow
+namespace SF_19_2019_POP2020.Windows.PacijentWindowi
 {
     /// <summary>
-    /// Interaction logic for NeprijaveljeniGlavna.xaml
+    /// Interaction logic for PacijentZakazivanjeTermina.xaml
     /// </summary>
-    public partial class NeprijaveljeniGlavna : Window
+    public partial class PacijentZakazivanjeTermina : Window
     {
-        public NeprijaveljeniGlavna()
+        public PacijentZakazivanjeTermina(Pacijent pacijent)
         {
             InitializeComponent();
         }

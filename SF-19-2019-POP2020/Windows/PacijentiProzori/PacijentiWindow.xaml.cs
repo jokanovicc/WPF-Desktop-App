@@ -32,7 +32,7 @@ namespace SF_19_2019_POP2020.Windows
         {
             InitializeComponent();
             view = CollectionViewSource.GetDefaultView(Util.Instance.Pacijenti);
-            view.Filter = PrikazFiltera;
+            view.Filter = CustomFilter;
 
             dgPacijenti.ItemsSource = view;
             dgPacijenti.IsSynchronizedWithCurrentItem = true;
@@ -55,17 +55,30 @@ namespace SF_19_2019_POP2020.Windows
             // Korisnik korisnik1 = (Korisnik)obj;
 
             if (korisnik.Aktivan)
+            {
                 if (TxtPretraga.Text != "")
                 {
-                    return korisnik.Ime.Contains(TxtPretraga.Text);
+                    if (korisnik.Ime.Contains(TxtPretraga.Text))
+                    {
+                        return korisnik.Ime.Contains(TxtPretraga.Text);
+                    }
+                    if (korisnik.Prezime.Contains(TxtPretraga.Text))
+                    {
+                        return korisnik.Prezime.Contains(TxtPretraga.Text);
+                    }
+                    if (korisnik.Email.Contains(TxtPretraga.Text))
+                    {
+                        return korisnik.Email.Contains(TxtPretraga.Text);
+                    }
+                    if (korisnik.AdresaID.ToString().Contains(TxtPretraga.Text))
+                    {
+                        return korisnik.AdresaID.ToString().Contains(TxtPretraga.Text);
+                    }
                 }
-                else if (TxtPretraga.Text != "")
-                {
-                    return korisnik.Prezime.Contains(TxtPretraga.Text);
-                }
-
                 else
                     return true;
+
+            }
             return false;
         }
 
@@ -79,6 +92,7 @@ namespace SF_19_2019_POP2020.Windows
                 Pacijent selektovaniKorisnik = view.CurrentItem as Pacijent;
                 Util.Instance.DeletePacijent(selektovaniKorisnik.ID);
             }
+            view.Refresh();
         }
 
         private bool PrikazFiltera(object obj)

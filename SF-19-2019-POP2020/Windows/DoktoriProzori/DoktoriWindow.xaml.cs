@@ -37,7 +37,8 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
 
 
             view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
-            view.Filter = PrikazFiltera;
+            view.Filter = CustomFilter;
+
 
 
             dgLekari.ItemsSource = view;
@@ -53,7 +54,43 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
                         dgPacijentiZasebno.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);*/
         }
 
+        private bool CustomFilter(object obj)
+        {
+            Lekar korisnik = obj as Lekar;
+            // Korisnik korisnik1 = (Korisnik)obj;
 
+            if (korisnik.Aktivan)
+            {
+                if (TxtPretraga.Text != "")
+                {
+                    if (korisnik.Ime.Contains(TxtPretraga.Text))
+                    {
+                        return korisnik.Ime.Contains(TxtPretraga.Text);
+                    }
+                    if (korisnik.Prezime.Contains(TxtPretraga.Text))
+                    {
+                        return korisnik.Prezime.Contains(TxtPretraga.Text);
+                    }
+                    if (korisnik.Email.Contains(TxtPretraga.Text))
+                    {
+                        return korisnik.Email.Contains(TxtPretraga.Text);
+                    }
+                    if (korisnik.AdresaID.ToString().Contains(TxtPretraga.Text))
+                    {
+                        return korisnik.AdresaID.ToString().Contains(TxtPretraga.Text);
+                    }
+                }
+                else
+                    return true;
+
+            }
+            return false;
+        }
+
+        private void TxtPretraga_KeyUp(object sender, KeyEventArgs e)
+        {
+            view.Refresh();
+        }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
                         if (MessageBox.Show("Da li ste sigurni?", "Potvrda",

@@ -74,7 +74,7 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
 
         private void btnLekar_Click(object sender, RoutedEventArgs e)
         {
-            DoktoriPick gw = new DoktoriPick(DoktoriPick.Stanje.PREUZIMANJE);
+            LekariPick gw = new LekariPick(LekariPick.Stanje.PREUZIMANJE);
             if (gw.ShowDialog() == true)
             {
                 terapija.LekarID= gw.selektovaniLekar.ID;

@@ -1,0 +1,23 @@
+﻿<Window x:Class="SF_19_2019_POP2020.Windows.LekariWindowProfil.LekarGlavna"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.LekariWindowProfil"
+        mc:Ignorable="d"
+        Title="LekarGlavna" Height="450" Width="800">
+    <Grid>
+        <DataGrid   AutoGenerateColumns="True" Margin="12,32,10,281" Name="dgLekar" IsReadOnly="True" FontSize="16"/>
+        <Button Background="#545d6a" Foreground="White"  Content="Izmeni" Height="39" HorizontalAlignment="Left" Margin="12,0,0,242" Name="btnUpdate" VerticalAlignment="Bottom" Width="75" Click="btnUpdate_Click" RenderTransformOrigin="0.4,1.025" />
+        <Button Background="#545d6a" Foreground="White"  Content="Nadji Dom Zdravlja po Adresi" Height="39" HorizontalAlignment="Left" Margin="170,0,0,237" Name="btnInstitucija" VerticalAlignment="Bottom" Width="197" Click="btnInstitucija_Click" />
+
+        <Button Background="#545d6a" Foreground="White"  Content="Nadji Termin po Domu Zdravlja" Height="39" HorizontalAlignment="Left" Margin="0,0,0,163" Name="btnDz" VerticalAlignment="Bottom" Width="197" Click="btnDz_Click" />
+
+        <DataGrid   AutoGenerateColumns="True" Margin="348,240,10,10" Name="dgTerapije" IsReadOnly="True" FontSize="16"
+/>
+        <Button Background="#545d6a" Foreground="White"  Content="Dodaj Terapiju" Height="39" HorizontalAlignment="Left" Margin="227,0,0,29" Name="btnT" VerticalAlignment="Bottom" Width="100" Click="btnT_Click" />
+        <Button Background="#545d6a" Foreground="White"  Content="osvezi" Height="39" HorizontalAlignment="Left" Margin="628,0,0,184" x:Name="btnosvezi_Copy" VerticalAlignment="Bottom" Width="100" Click="btnO_Click" />
+        <Button Background="#545d6a" Foreground="White"  Content="Termini" Height="39" HorizontalAlignment="Left" Margin="68,0,0,29" x:Name="btntermin_Copy" VerticalAlignment="Bottom" Width="100" Click="btnTermin_Click" />
+
+    </Grid>
+</Window>

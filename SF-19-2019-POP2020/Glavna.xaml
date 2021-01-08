@@ -9,6 +9,7 @@
     <Grid>
         <Button Content="Admin" HorizontalAlignment="Left" Height="47" Margin="115,118,0,0" VerticalAlignment="Top" Click="btnAdmin_click" Width="127"/>
         <Button Content="Neregistrovani" HorizontalAlignment="Left" Height="47" Margin="511,118,0,0" VerticalAlignment="Top" Click="btnNeregistrovani_click" Width="127"/>
+        <Button Content="login" HorizontalAlignment="Left" Height="47" Margin="115,256,0,0" VerticalAlignment="Top" Click="btnLogin_click" Width="127"/>
 
     </Grid>
 </Window>

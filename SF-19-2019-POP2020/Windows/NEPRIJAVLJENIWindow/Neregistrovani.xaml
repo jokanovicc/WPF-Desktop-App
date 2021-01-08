@@ -1,0 +1,21 @@
+﻿<Window x:Class="SF_19_2019_POP2020.Windows.NEPRIJAVLJENIWindow.Neregistrovani"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.NEPRIJAVLJENIWindow"
+        mc:Ignorable="d"
+        Title="Neregistrovani" Height="400" Width="1200">
+    <Grid Margin="0,0,0,168">
+        <DataGrid AutoGeneratingColumn="DGAdrese_AutoGeneratingColumn" AutoGenerateColumns="True" Margin="15,36,773,10" Name="dgAdresa" IsReadOnly="True" FontSize="16"/>
+        <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="DGDZ_AutoGeneratingColumn" Margin="420,36,337,10" Name="dgDomZdravlja" IsReadOnly="True" FontSize="16"/>
+        <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="DGL_AutoGeneratingColumn" Margin="859,36,10,10" Name="dgLekari" IsReadOnly="True" FontSize="16"/>
+        <Label Content="Adrese u Kojima se nalaze domoviZdravlja i Lekari" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" Width="294"/>
+        <Label Content="DomoviZdravlja u kojima rade Lekari" HorizontalAlignment="Left" Margin="467,5,0,0" VerticalAlignment="Top" Width="294"/>
+        <Label Content="Lekari" HorizontalAlignment="Left" Margin="1008,5,0,0" VerticalAlignment="Top" Width="77"/>
+        <Button Content="Nadji Dom Zdravlja" HorizontalAlignment="Left" Height="58" Margin="490,210,0,-67" Click="btn_DomZdravlja" VerticalAlignment="Top" Width="226"/>
+
+
+
+    </Grid>
+</Window>

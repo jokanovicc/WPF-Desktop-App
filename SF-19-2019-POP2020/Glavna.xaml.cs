@@ -1,4 +1,6 @@
-﻿using SF19_2019_POP2020;
+﻿using SF_19_2019_POP2020.Windows.NEPRIJAVLJENIWindow;
+using SF19_2019_POP2020;
+using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,9 @@ namespace SF_19_2019_POP2020
         public Glavna()
         {
             InitializeComponent();
+            Util.Instance.CitanjeEntiteta();
+
+
         }
         private void btnAdmin_click(object sender, RoutedEventArgs e)
         {
@@ -33,9 +38,18 @@ namespace SF_19_2019_POP2020
 
         private void btnNeregistrovani_click(object sender, RoutedEventArgs e)
         {
-            HomeWindow window = new HomeWindow();
+            Neregistrovani nn = new Neregistrovani();
+            nn.Show();
 
-            window.Show();
         }
+
+        private void btnLogin_click(object sender, RoutedEventArgs e)
+        {
+            Login nn = new Login();
+            nn.Show();
+
+        }
+
+
     }
 }

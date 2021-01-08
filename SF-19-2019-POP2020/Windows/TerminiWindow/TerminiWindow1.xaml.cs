@@ -31,7 +31,7 @@ namespace SF_19_2019_POP2020.Windows
         {
             InitializeComponent();
             view = CollectionViewSource.GetDefaultView(Util.Instance.Termini);
-          //  view.Filter = PrikazFiltera;
+            view.Filter = PrikazFiltera;
             dgTermini.ItemsSource = view;
             dgTermini.IsSynchronizedWithCurrentItem = true;
 
@@ -50,10 +50,10 @@ namespace SF_19_2019_POP2020.Windows
         }
 
 
-    //    private bool PrikazFiltera(object obj)
-      //  {
-      //      return ((Termin)obj).Aktivan;
-      //  }
+        private bool PrikazFiltera(object obj)
+        {
+            return ((Termin)obj).Aktivan;
+       }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -80,9 +80,9 @@ namespace SF_19_2019_POP2020.Windows
                 if (few.ShowDialog() != true) 
                 {
 
-                    int index = Aplikacija.Instance.Termini.IndexOf(
+                    int index = Util.Instance.Termini.IndexOf(
                         selektovaniTermin);
-                 //   Aplikacija.Instance.Termini[index] = old;
+                    Util.Instance.Termini[index] = old;
                 }
             }
             view.Refresh();

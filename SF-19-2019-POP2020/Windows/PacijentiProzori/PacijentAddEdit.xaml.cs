@@ -56,17 +56,25 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
             this.DialogResult = true;
             if (stanje == Stanje.DODAVANJE)
             {
-                Util.Instance.Pacijenti.Add(korisnik);
-                Util.Instance.SacuvajEntitet(korisnik);
+                if (validacije())
+                {
+                    //   if (!tbIme.Text.Equals("") && !tbPrezime.Text.Equals("") && !tbJmbg.Text.Equals("") && !tbLozinka.Text.Equals("") && !tbEmail.Text.Equals("") && tbEmail.Text.Contains("@")) {
+                    Util.Instance.Pacijenti.Add(korisnik);
+                    Util.Instance.SacuvajEntitet(korisnik);
+
+                    //     }
+                }
             }
+           
+        
             if (stanje == Stanje.IZMENA)
             {
                 //Util.Instance.Adrese.Add(adresa);
                 Util.Instance.updatePacijent(korisnik);
 
-
             }
             this.Close();
+
         }
 
         private void btnPicAdresa_Click(object sender, RoutedEventArgs e)
@@ -78,6 +86,48 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
                 korisnik.AdresaID = gw.SelektovanaAdresa.SifraAdrese;
             }
         }
+
+        private bool validacije()
+        {
+            bool ok = true;
+            String poruka = "Korisnik se nije sacuvao\nMolimo popravite sledece greske u unosu:\n";
+            if (tbIme.Text.Equals(""))
+            {
+                poruka += "- Polje Ime ne sme biti Prazno!\n";
+                ok = false;
+            }
+            if (tbPrezime.Text.Equals(""))
+            {
+                poruka += "- Polje Prezime ne sme biti Prazno!\n";
+                ok = false;
+            }
+            if (!tbEmail.Text.Contains("@"))
+            {
+                poruka += "- Polje email nije u odgovarajucem formatu!\n";
+                ok = false;
+            }
+            if (tbJmbg.Text.Length != 13)
+            {
+                poruka += "- Jmbg mora imati 13 cifara!\n";
+                ok = false;
+            }
+            if (tbLozinka.Text.Equals(""))
+            {
+                poruka += "- Jmbg mora imati 13 cifara!\n";
+                ok = false;
+            }
+            if (ok == false)
+            {
+                MessageBox.Show( poruka, "Probajte ponovo");
+            }
+            return ok;
+
+
+
+
+        }
+
+
 
     }
 }

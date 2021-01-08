@@ -66,9 +66,11 @@ namespace SF_19_2019_POP2020.Windows.TerminiWindow
             this.DialogResult = true;
             if (stanje == Stanje.DODAVANJE)
             {
+                if (validacije()) { 
                 Util.Instance.Termini.Add(termin);
                 Util.Instance.SacuvajEntitet(termin);
             }
+        }
             if (stanje == Stanje.IZMENA)
             {
                 //Util.Instance.Adrese.Add(adresa);
@@ -96,6 +98,26 @@ namespace SF_19_2019_POP2020.Windows.TerminiWindow
             {
                 termin.PacijentID = gw.SelektovaniPacijent.ID;
             }
+        }
+
+        private bool validacije()
+        {
+            bool ok = true;
+            String poruka = "Termin se nije sacuvao\nMolimo popravite sledece greske u unosu:\n";
+            if (dpDatum.SelectedDate < DateTime.Now)
+            {
+                poruka += "\n- Izabrali ste datum u proslosti!\n";
+                ok = false;
+            }
+            if (ok == false)
+            {
+                MessageBox.Show(poruka, "Probajte ponovo");
+            }
+            return ok;
+
+
+
+
         }
     }
 }

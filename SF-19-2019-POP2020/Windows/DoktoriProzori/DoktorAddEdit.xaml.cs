@@ -47,8 +47,8 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
             tbPol.DataContext = korisnik;
             tbPrezime.DataContext = korisnik;
             tbPol.DataContext = korisnik;
-            korisnik.AdresaID = 836;
-            korisnik.DomZdravljaID = 641;
+            korisnik.AdresaID = 390;
+            korisnik.DomZdravljaID = 847;
             tbAdresa.DataContext = korisnik;
             tbDomZdravlja.DataContext = korisnik;
 
@@ -59,10 +59,11 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
             this.DialogResult = true;
             if (stanje == Stanje.DODAVANJE)
             {
+                if (validacije()) { 
                 Util.Instance.Lekari.Add(korisnik);
                 Util.Instance.SacuvajEntitet(korisnik);
-            
             }
+        }
             if (stanje == Stanje.IZMENA)
             {
                 //Util.Instance.Adrese.Add(adresa);
@@ -89,6 +90,46 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
             {
                 korisnik.DomZdravljaID = gw.SelektovaniDomZdravlja.Sifra;
             }
+        }
+
+        private bool validacije()
+        {
+            bool ok = true;
+            String poruka = "Korisnik se nije sacuvao\nMolimo popravite sledece greske u unosu:\n";
+            if (tbIme.Text.Equals(""))
+            {
+                poruka += "\n- Polje Ime ne sme biti Prazno!\n";
+                ok = false;
+            }
+            if (tbPrezime.Text.Equals(""))
+            {
+                poruka += "- Polje Prezime ne sme biti Prazno!\n";
+                ok = false;
+            }
+            if (!tbEmail.Text.Contains("@"))
+            {
+                poruka += "- Polje email nije u odgovarajucem formatu!\n";
+                ok = false;
+            }
+            if (tbJmbg.Text.Length != 13)
+            {
+                poruka += "- Jmbg mora imati 13 cifara!\n";
+                ok = false;
+            }
+            if (tbLozinka.Text.Equals(""))
+            {
+                poruka += "- Polje lozinke ne sme biti prazno!!\n";
+                ok = false;
+            }
+            if (ok == false)
+            {
+                MessageBox.Show(poruka, "Probajte ponovo");
+            }
+            return ok;
+
+
+
+
         }
     }
 }

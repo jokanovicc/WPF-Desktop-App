@@ -20,14 +20,14 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
     /// <summary>
     /// Interaction logic for DoktoriPick.xaml
     /// </summary>
-    public partial class DoktoriPick : Window
+    public partial class LekariPick : Window
     {
         public enum Stanje { ADMINISTRACIJA, PREUZIMANJE };
         Stanje stanje;
         ICollectionView view;
         public Lekar selektovaniLekar = null;
 
-        public DoktoriPick(Stanje stanje = Stanje.ADMINISTRACIJA)
+        public LekariPick(Stanje stanje = Stanje.ADMINISTRACIJA)
         {
             InitializeComponent();
             this.stanje = stanje;
