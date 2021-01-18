@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.LekariWindowProfil"
         mc:Ignorable="d"
-        Title="LekariZakazivanje" Height="450" Width="800">
-    <Grid>
-        <TextBlock FontSize="36" Height="52" HorizontalAlignment="Left" Margin="69,105,0,0" Name="lbDatum" Text="Izaberi Datum" VerticalAlignment="Top" Width="229" RenderTransformOrigin="0.369,0.482" >
-        </TextBlock>
-        <DatePicker Name="dpDatum" SelectedDate="{Binding Path=Datum}" HorizontalAlignment="Left" Width="262" Margin="319,116,0,249" FontSize="22"/>
+        Title="LekariZakazivanje" Height="450" Width="800"  Background="#04c582">
+    <Border Background="#2e3137" CornerRadius="20" Margin="15">
+        <Grid>
+            <TextBlock Foreground="White" FontSize="36" Height="52" HorizontalAlignment="Left" Margin="76,110,0,0" Name="lbDatum" Text="Izaberi Datum" VerticalAlignment="Top" Width="243" RenderTransformOrigin="0.369,0.482" >
+            </TextBlock>
+            <DatePicker Name="dpDatum" SelectedDate="{Binding Path=Datum}" HorizontalAlignment="Left" Width="262" Margin="338,121,0,232" FontSize="22"/>
 
-        <Button Content="Potvrdi" Height="82" HorizontalAlignment="Right" Margin="0,0,273,66" Name="btnOK" VerticalAlignment="Bottom" Width="154" FontSize="20" IsDefault="True" Click="btnOK_Click" />
-        <Button Content="Odustani" FontSize="20" Height="39" Margin="0,0,494,87" Name="btnCancel" VerticalAlignment="Bottom" IsCancel="True" HorizontalAlignment="Right" Width="98" />
-    </Grid>
+            <Button Background="#545d6a" Foreground="White" Content="Potvrdi" Height="82" HorizontalAlignment="Right" Margin="0,0,219,55" Name="btnOK" VerticalAlignment="Bottom" Width="154" FontSize="20" IsDefault="True" Click="btnOK_Click" />
+            <Button Background="#545d6a" Foreground="White" Content="Odustani" FontSize="20" Height="47" Margin="0,0,432,72" Name="btnCancel" VerticalAlignment="Bottom" IsCancel="True" HorizontalAlignment="Right" Width="128" />
+        </Grid>
+    </Border>
 </Window>

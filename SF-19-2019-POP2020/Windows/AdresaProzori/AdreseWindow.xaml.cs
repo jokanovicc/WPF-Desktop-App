@@ -29,6 +29,12 @@ namespace SF_19_2019_POP2020.Windows
         public AdreseWindow()
         {
             InitializeComponent();
+            viewA();
+
+        }
+
+        public void viewA()
+        {
             view = CollectionViewSource.GetDefaultView(Util.Instance.Adrese);
             view.Filter = PrikazFiltera;
             dgAdresa.ItemsSource = view;
@@ -46,6 +52,9 @@ namespace SF_19_2019_POP2020.Windows
                 view.Refresh();
             }
         }
+
+
+
 
 
         private bool PrikazFiltera(object obj)
@@ -78,6 +87,7 @@ namespace SF_19_2019_POP2020.Windows
                 Adresa old = (Adresa)selektovanaAdresa.Clone();
                 AdresaEditAddDelete few = new AdresaEditAddDelete(selektovanaAdresa,
                     AdresaEditAddDelete.Stanje.IZMENA);
+                viewA();
 
                 if (few.ShowDialog() != true) //ako je kliknuo cancel, ponistavaju se izmene nad objektom
                 {
@@ -89,6 +99,7 @@ namespace SF_19_2019_POP2020.Windows
                     Util.Instance.Adrese[index] = old;
                 }
             }
+            viewA();
         }
 
 

@@ -1,4 +1,5 @@
-﻿using SF_19_2019_POP2020.Windows.LekariProzori;
+﻿
+using SF_19_2019_POP2020.Windows.DoktoriProzori;
 using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;

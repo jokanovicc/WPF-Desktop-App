@@ -1,4 +1,4 @@
-﻿using SF_19_2019_POP2020.Windows.LekariProzori;
+﻿using SF_19_2019_POP2020.Windows.DoktoriProzori;
 using SF_19_2019_POP2020.Windows.PacijentiProzori;
 using SF19_2019_POP2020.Models;
 using System;
@@ -35,20 +35,18 @@ namespace SF_19_2019_POP2020.Windows.TerminiWindow
 
 
 
-            //BUG SA DATUMOM - ne radi odabir datuma tjst ne prolazi select.
 
             tbStatus.ItemsSource = Enum.GetValues(typeof(EStatusTermina)).Cast<EStatusTermina>();
 
             Random random = new Random();
-            termin.Status = EStatusTermina.ZAKAZAN;
+            termin.Status = EStatusTermina.SLOBODAN;
             termin.Aktivan = true;
             termin.Datum = DateTime.Now;
-           // termin.LekarID = 14;
-         //   termin.PacijentID = 323;
+            termin.LekarID = 768;
+            termin.PacijentID = 100;
             tbStatus.DataContext = termin;
           //  tbSifra.DataContext = termin;
         //    tbLekar1.DataContext = termin;
-            tbPacijent.DataContext = termin;
             dpDatum.DataContext = termin;
          //   tbLekar1.DataContext = termin;
          //   tbPacijent.DataContext = termin;
@@ -64,21 +62,27 @@ namespace SF_19_2019_POP2020.Windows.TerminiWindow
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
+
             if (stanje == Stanje.DODAVANJE)
             {
                 if (validacije()) { 
                 Util.Instance.Termini.Add(termin);
                 Util.Instance.SacuvajEntitet(termin);
-            }
+                    this.Close();
+                }
         }
             if (stanje == Stanje.IZMENA)
             {
+                if (validacije()) { 
                 //Util.Instance.Adrese.Add(adresa);
                 Util.Instance.updateTermin(termin);
+                this.Close();
+                   
 
+                    }
 
             }
-            this.Close();
+
         }
 
         private void btnPickLekar_Click(object sender, RoutedEventArgs e)

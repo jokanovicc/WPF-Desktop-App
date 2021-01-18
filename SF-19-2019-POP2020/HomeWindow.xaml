@@ -9,7 +9,6 @@
     <Border Background="#2e3137" CornerRadius="20" Margin="15">
 
         <Grid>
-            <Button Name="BtnStart" Background="#545d6a" Foreground="White"  Content="Lekari" Click="BtnStart_Click" Margin="358,125,384,266" RenderTransformOrigin="4.308,-4.1"/>
             <Button Name="BtnPacijent" Background="#545d6a" Foreground="White"  Content="Pacijenti" HorizontalAlignment="Left" VerticalAlignment="Top" Width="273" Height="56" RenderTransformOrigin="1.009,0.775" Margin="473,112,0,0" Click="BtnPacijent_Click" FontSize="20"/>
             <Button Name="BtnAdmin" Background="#545d6a" Foreground="White"  Content="Administratori" HorizontalAlignment="Left" Height="29" Margin="358,298,0,0" VerticalAlignment="Top" Width="52" Click="BtnAdministrator_Click" RenderTransformOrigin="3.904,-1.138"/>
             <Button Name="BtnDomZdravlja" Background="#545d6a" Foreground="White"  Content="Domovi Zdravlja" HorizontalAlignment="Left" Height="56" Margin="473,201,0,0" VerticalAlignment="Top" Width="273" Click="BtnDomZdravlja_Click" FontSize="16"/>

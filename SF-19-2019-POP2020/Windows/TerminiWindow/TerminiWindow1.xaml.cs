@@ -30,6 +30,11 @@ namespace SF_19_2019_POP2020.Windows
         public TerminiWindow1()
         {
             InitializeComponent();
+            viewT();
+        }
+
+        public void viewT()
+        {
             view = CollectionViewSource.GetDefaultView(Util.Instance.Termini);
             view.Filter = PrikazFiltera;
             dgTermini.ItemsSource = view;
@@ -38,6 +43,8 @@ namespace SF_19_2019_POP2020.Windows
 
             dgTermini.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
+
+
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Da li ste sigurni?", "Potvrda",
@@ -77,6 +84,7 @@ namespace SF_19_2019_POP2020.Windows
                 Termin old = (Termin)selektovaniTermin.Clone();
                 TerminiAddEdit few = new TerminiAddEdit(selektovaniTermin,
                     TerminiAddEdit.Stanje.IZMENA);
+                viewT();
                 if (few.ShowDialog() != true) 
                 {
 
@@ -85,7 +93,7 @@ namespace SF_19_2019_POP2020.Windows
                     Util.Instance.Termini[index] = old;
                 }
             }
-            view.Refresh();
+            viewT();
         }
 
 

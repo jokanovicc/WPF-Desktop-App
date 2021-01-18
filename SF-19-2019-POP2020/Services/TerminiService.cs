@@ -29,7 +29,7 @@ namespace SF_19_2019_POP2020.Services
 
                 SqlCommand command = conn.CreateCommand();
 
-                command.CommandText = @"select * from Termini";
+                command.CommandText = @"select * from Termini where datum >= CAST(CURRENT_TIMESTAMP AS DATE);";
 
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())

@@ -43,19 +43,45 @@ namespace SF_19_2019_POP2020.Windows.DomZdravljaProzori
                 btnPick.Visibility = System.Windows.Visibility.Hidden;
             }
             view = CollectionViewSource.GetDefaultView(Util.Instance.DomoviZdravlja);
-            view.Filter = PrikazFiltera;
+            view.Filter = CustomFilter;
             dgDomoviZdravlja.ItemsSource = view;
 
             dgDomoviZdravlja.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
-
+        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan"))
+                e.Column.Visibility = Visibility.Collapsed;
+        }
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-        private bool PrikazFiltera(object obj)
+        private bool CustomFilter(object obj)
         {
-            return ((DomZdravlja)obj).Aktivan;
+            DomZdravlja korisnik = obj as DomZdravlja;
+            // Korisnik korisnik1 = (Korisnik)obj;
+
+            if (korisnik.Aktivan)
+            {
+                if (TxtPretraga.Text != "")
+                {
+                    if (korisnik.Naziv.Contains(TxtPretraga.Text))
+                    {
+                        return korisnik.Naziv.Contains(TxtPretraga.Text);
+                    }
+
+                }
+                else
+                    return true;
+
+            }
+            return false;
+        }
+
+        private void TxtPretraga_KeyUp(object sender, KeyEventArgs e)
+        {
+            view.Refresh();
         }
         private void btnPick_Click(object sender, RoutedEventArgs e)
         {

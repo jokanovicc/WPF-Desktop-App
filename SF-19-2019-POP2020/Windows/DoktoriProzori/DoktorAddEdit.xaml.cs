@@ -47,8 +47,8 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
             tbPol.DataContext = korisnik;
             tbPrezime.DataContext = korisnik;
             tbPol.DataContext = korisnik;
-            korisnik.AdresaID = 390;
-            korisnik.DomZdravljaID = 847;
+            korisnik.AdresaID = 847;
+            korisnik.DomZdravljaID = 390;
             tbAdresa.DataContext = korisnik;
             tbDomZdravlja.DataContext = korisnik;
 
@@ -57,21 +57,26 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
+
             if (stanje == Stanje.DODAVANJE)
             {
                 if (validacije()) { 
                 Util.Instance.Lekari.Add(korisnik);
                 Util.Instance.SacuvajEntitet(korisnik);
-            }
+                this.Close();
+                }
         }
             if (stanje == Stanje.IZMENA)
             {
-                //Util.Instance.Adrese.Add(adresa);
-                Util.Instance.updateDoktor(korisnik);
+
+                    //Util.Instance.Adrese.Add(adresa);
+                    Util.Instance.updateDoktor(korisnik);
+                    this.Close();
 
 
-            }
-            this.Close();
+
+        }
+           
         }
 
         private void btnPicAdresa_Click(object sender, RoutedEventArgs e)
@@ -98,7 +103,7 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
             String poruka = "Korisnik se nije sacuvao\nMolimo popravite sledece greske u unosu:\n";
             if (tbIme.Text.Equals(""))
             {
-                poruka += "\n- Polje Ime ne sme biti Prazno!\n";
+                poruka += "- Polje Ime ne sme biti Prazno!\n";
                 ok = false;
             }
             if (tbPrezime.Text.Equals(""))
@@ -111,14 +116,24 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
                 poruka += "- Polje email nije u odgovarajucem formatu!\n";
                 ok = false;
             }
-            if (tbJmbg.Text.Length != 13)
+
+            if (!tbJmbg.Text.All(char.IsDigit))
             {
-                poruka += "- Jmbg mora imati 13 cifara!\n";
+                poruka += "- jmbg ne valj!\n";
                 ok = false;
             }
+
+            if (jelUnikat(tbJmbg.Text) == true && tbJmbg.Text.Length != 13)
+            {
+                poruka += "- jmbg je zauzet!\n";
+                ok = false;
+            }
+
+
+
             if (tbLozinka.Text.Equals(""))
             {
-                poruka += "- Polje lozinke ne sme biti prazno!!\n";
+                poruka += "- Jmbg mora imati 13 cifara!\n";
                 ok = false;
             }
             if (ok == false)
@@ -130,6 +145,78 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
 
 
 
+        }
+
+
+        private bool validacijeIzmena()
+        {
+            bool ok = true;
+            String poruka = "Korisnik se nije sacuvao\nMolimo popravite sledece greske u unosu:\n";
+            if (tbIme.Text.Equals(""))
+            {
+                poruka += "- Polje Ime ne sme biti Prazno!\n";
+                ok = false;
+            }
+            if (tbPrezime.Text.Equals(""))
+            {
+                poruka += "- Polje Prezime ne sme biti Prazno!\n";
+                ok = false;
+            }
+            if (!tbEmail.Text.Contains("@"))
+            {
+                poruka += "- Polje email nije u odgovarajucem formatu!\n";
+                ok = false;
+            }
+
+            if (!tbJmbg.Text.All(char.IsDigit))
+            {
+                poruka += "- jmbg ne valj!\n";
+                ok = false;
+            }
+
+            if (tbJmbg.Text.Length != 13)
+            {
+                poruka += "- jmbg je zauzet!\n";
+                ok = false;
+            }
+
+
+
+            if (tbLozinka.Text.Equals(""))
+            {
+                poruka += "- Jmbg mora imati 13 cifara!\n";
+                ok = false;
+            }
+            if (ok == false)
+            {
+                MessageBox.Show(poruka, "Probajte ponovo");
+            }
+            return ok;
+
+
+
+
+        }
+
+
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+
+        private bool jelUnikat(string jmbg)
+        {
+
+            foreach (Pacijent pacijent in Util.Instance.Pacijenti)
+            {
+                if (jmbg.Equals(pacijent.JMBG))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

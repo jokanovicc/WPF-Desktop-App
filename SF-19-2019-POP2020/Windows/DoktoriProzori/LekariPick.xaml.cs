@@ -1,4 +1,5 @@
-﻿using SF_19_2019_POP2020.Windows.Pretrage;
+﻿using SF_19_2019_POP2020.Models;
+using SF_19_2019_POP2020.Windows.Pretrage;
 using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
@@ -15,21 +16,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SF_19_2019_POP2020.Windows.PacijentiProzori
+namespace SF_19_2019_POP2020.Windows.DoktoriProzori
 {
     /// <summary>
-    /// Interaction logic for PacijentiPick.xaml
+    /// Interaction logic for LekariPick.xaml
     /// </summary>
-    public partial class PacijentiPick : Window
+    public partial class LekariPick : Window
     {
-        public enum Stanje { ADMINISTRACIJA, PREUZIMANJE };
+        public enum Stanje { ADMINISTRACIJA, PREUZIMANJE,GLEDANJE };
         Stanje stanje;
         ICollectionView view;
 
+        public Lekar SelektovaniLekar = null;
 
-        public Pacijent SelektovaniPacijent = null;
-
-        public PacijentiPick(Stanje stanje = Stanje.ADMINISTRACIJA)
+        public LekariPick(Stanje stanje = Stanje.ADMINISTRACIJA)
         {
             InitializeComponent();
             this.stanje = stanje;
@@ -39,29 +39,32 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
                 btnAdd.Visibility = System.Windows.Visibility.Collapsed;
                 btnDelete.Visibility = System.Windows.Visibility.Collapsed;
                 btnUpdate.Visibility = System.Windows.Visibility.Collapsed;
-               
             }
-            else
+
+            else if(stanje == Stanje.GLEDANJE)
             {
+                btnAdd.Visibility = System.Windows.Visibility.Collapsed;
+                btnDelete.Visibility = System.Windows.Visibility.Collapsed;
+                btnUpdate.Visibility = System.Windows.Visibility.Collapsed;
                 btnPick.Visibility = System.Windows.Visibility.Hidden;
-                btnAdresa.Visibility = System.Windows.Visibility.Collapsed;
+
             }
-            view = CollectionViewSource.GetDefaultView(Util.Instance.Pacijenti);
+
+            view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
             view.Filter = CustomFilter;
-            dgPacijenti.ItemsSource = view;
-       //     dgPacijenti.IsSynchronizedWithCurrentItem = true;
+            dgLekari.ItemsSource = view;
 
-            dgPacijenti.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgLekari.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
 
-        private void TxtPretraga_KeyUp(object sender, KeyEventArgs e)
+        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            view.Refresh();
+            if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("ID") || e.PropertyName.Equals("JMBG") || e.PropertyName.Equals("Lozinka"))
+                e.Column.Visibility = Visibility.Collapsed;
         }
-
         private bool CustomFilter(object obj)
         {
-            Pacijent korisnik = obj as Pacijent;
+            Lekar korisnik = obj as Lekar;
             // Korisnik korisnik1 = (Korisnik)obj;
 
             if (korisnik.Aktivan)
@@ -92,27 +95,37 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
             return false;
         }
 
-        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        private void TxtPretraga_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("ID") || e.PropertyName.Equals("JMBG") || e.PropertyName.Equals("Lozinka"))
-                e.Column.Visibility = Visibility.Collapsed;
+            view.Refresh();
         }
+
+
+
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+
+        private void btnAdresa_Click(object sender, RoutedEventArgs e)
+        {
+            LekarViaAdresa lva = new LekarViaAdresa();
+            lva.Show();
+            
+        }
+
+
+        private bool PrikazFiltera(object obj)
+        {
+            return ((Lekar)obj).Aktivan;
+        }
         private void btnPick_Click(object sender, RoutedEventArgs e)
         {
-            SelektovaniPacijent = dgPacijenti.SelectedItem as Pacijent;
+            SelektovaniLekar = dgLekari.SelectedItem as Lekar;
             this.DialogResult = true;
             this.Close();
         }
-        private void btnAdresa_Click(object sender, RoutedEventArgs e)
-        {
-            PacijentPoAdresi lva = new PacijentPoAdresi();
-            lva.Show();
-
-        }
     }
+
 }

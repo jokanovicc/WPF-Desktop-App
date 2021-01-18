@@ -1,6 +1,4 @@
 ﻿using SF_19_2019_POP2020.Windows.AdresaProzori;
-using SF_19_2019_POP2020.Windows.DoktoriProzori;
-using SF_19_2019_POP2020.Windows.DomZdravljaProzori;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,45 +13,35 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SF_19_2019_POP2020.Windows.NEPRIJAVLJENIWindow
+namespace SF_19_2019_POP2020.Windows.Pretrage
 {
     /// <summary>
-    /// Interaction logic for OdaberiDomZdravljaMesto.xaml
+    /// Interaction logic for LekarViaAdresa.xaml
     /// </summary>
-    public partial class OdaberiDomZdravljaMesto : Window
+    public partial class LekarViaAdresa : Window
     {
         int id;
-        int id2;
-
-        public OdaberiDomZdravljaMesto()
+        public LekarViaAdresa()
         {
+            int id;
             InitializeComponent();
         }
 
-        private void btnPicAdresa_Click(object sender, RoutedEventArgs e)
+        private void btnPicDomZdravlja_Click(object sender, RoutedEventArgs e)
         {
             AdresaPick gw = new AdresaPick(AdresaPick.Stanje.PREUZIMANJE);
             if (gw.ShowDialog() == true)
             {
                 //  domZdravlja.Adresa = gw.SelektovanaAdresa;
-               id= gw.SelektovanaAdresa.SifraAdrese;
+                id = gw.SelektovanaAdresa.SifraAdrese;
             }
         }
-
-        private void btnPicLekar_Click(object sender, RoutedEventArgs e)
-        {
-            LekariPick gw = new LekariPick(LekariPick.Stanje.PREUZIMANJE);
-            if (gw.ShowDialog() == true)
-            {
-                id2 = gw.SelektovaniLekar.ID;
-            }
-        }
-
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            IzabraniDomZdravlja izd = new IzabraniDomZdravlja(id,id2);
+            PrikazLekaraAdresa izd = new PrikazLekaraAdresa(id);
             izd.Show();
         }
     }
 }
+

@@ -28,8 +28,8 @@ namespace SF_19_2019_POP2020.Windows.LekariWindowProfil
         {
  
             this.lekar = lekar;
-   
 
+ 
             InitializeComponent();
         }
 
@@ -43,10 +43,20 @@ namespace SF_19_2019_POP2020.Windows.LekariWindowProfil
             }
         }
 
+
+
+
+
+
+
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            PrikazTerminaZaDz izd = new PrikazTerminaZaDz(id,lekar);
+            DateTime datum = (DateTime)dpDatum.SelectedDate;
+             PrikazTerminaZaDz izd = new PrikazTerminaZaDz(id, lekar, datum);
             izd.Show();
+
+
+
         }
 
     }

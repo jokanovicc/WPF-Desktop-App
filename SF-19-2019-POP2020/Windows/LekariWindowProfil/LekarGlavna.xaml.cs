@@ -31,10 +31,11 @@ namespace SF_19_2019_POP2020.Windows.LekariWindowProfil
         ICollectionView view;
         Lekar lekar;
         ICollectionView view2;
+        ObservableCollection<Lekar> pac2;
         public LekarGlavna(string jmbg)
         {
             InitializeComponent();
-            ObservableCollection<Lekar> pac2 = nadjiLekara(jmbg);
+            pac2 = nadjiLekara(jmbg);
             lekar = nadjiLekara2(jmbg);
 
             view = CollectionViewSource.GetDefaultView(pac2);
@@ -47,14 +48,19 @@ namespace SF_19_2019_POP2020.Windows.LekariWindowProfil
             viewT();
           
         }
+        private void btnDoktori_Click(object sender, RoutedEventArgs e)
+        {
 
+            LekariPick odzm = new LekariPick(LekariPick.Stanje.GLEDANJE);
+            odzm.Show();
+        }
         public void viewT()
         {
 
             view2 = CollectionViewSource.GetDefaultView(nadjiLekarauTerapiji(lekar.ID));
-
             dgTerapije.ItemsSource = view2;
             dgTerapije.IsSynchronizedWithCurrentItem = true;
+               
 
             dgTerapije.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
@@ -74,6 +80,20 @@ namespace SF_19_2019_POP2020.Windows.LekariWindowProfil
             }
             return pac;
 
+        }
+
+
+
+        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("LekarID"))
+                e.Column.Visibility = Visibility.Collapsed;
+        }
+
+        private void DGA_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan"))
+                e.Column.Visibility = Visibility.Collapsed;
         }
         public ObservableCollection<Terapija> nadjiLekarauTerapiji(int id)
         {
@@ -140,10 +160,10 @@ namespace SF_19_2019_POP2020.Windows.LekariWindowProfil
                 {
 
 
-                    int index = Util.Instance.Lekari.IndexOf(
+                    int index = pac2.IndexOf(
                         selektovaniKorisnik);
                     //vratimo vrednosti njegovih atributa na stare vrednosti, jer je izmena ponistena
-              //      Util.Instance.Pacijenti[index] = old;
+                    pac2[index] = old;
                 }
             }
         }
@@ -166,7 +186,7 @@ namespace SF_19_2019_POP2020.Windows.LekariWindowProfil
         {
 
             Terapija novaTerapija = new Terapija();
-            TerapijaAddEdit few = new TerapijaAddEdit(novaTerapija);
+            LekarZTerapija few = new LekarZTerapija(novaTerapija,lekar);
             //     Util.Instance.CitanjeEntiteta();
             few.ShowDialog();
             viewT();

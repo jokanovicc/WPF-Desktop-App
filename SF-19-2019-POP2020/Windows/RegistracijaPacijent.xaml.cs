@@ -1,5 +1,6 @@
 ﻿using SF_19_2019_POP2020.Models;
 using SF_19_2019_POP2020.Windows.AdresaProzori;
+using SF_19_2019_POP2020.Windows.PacijentWindowi;
 using SF19_2019_POP2020;
 using SF19_2019_POP2020.Models;
 using System;
@@ -48,14 +49,18 @@ namespace SF_19_2019_POP2020.Windows
         }
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-         //   this.DialogResult = true;
+
+
+            if (validacije())
+            {
+
+                //   this.DialogResult = true;
                 Util.Instance.Pacijenti.Add(korisnik);
                 Util.Instance.SacuvajEntitet(korisnik);
-            HomeWindow hw = new HomeWindow();
-            hw.Show();
-
-
-            this.Close();
+                PacijentGlavna hw = new PacijentGlavna(tbJmbg.Text);
+                hw.Show();
+                this.Close();
+            }
         }
 
 
@@ -69,5 +74,81 @@ namespace SF_19_2019_POP2020.Windows
                 korisnik.AdresaID = gw.SelektovanaAdresa.SifraAdrese;
             }
         }
+
+        private bool validacije()
+        {
+            bool ok = true;
+            String poruka = "Korisnik se nije sacuvao\nMolimo popravite sledece greske u unosu:\n";
+            if (tbIme.Text.Equals(""))
+            {
+                poruka += "- Polje Ime ne sme biti Prazno!\n";
+                ok = false;
+            }
+            if (tbPrezime.Text.Equals(""))
+            {
+                poruka += "- Polje Prezime ne sme biti Prazno!\n";
+                ok = false;
+            }
+
+            if (tbLozinka.Text.Equals(""))
+            {
+                poruka += "- Polje Lozinka ne sme biti Prazno!\n";
+                ok = false;
+            }
+            if (!tbEmail.Text.Contains("@"))
+            {
+                poruka += "- Polje email nije u odgovarajucem formatu!\n";
+                ok = false;
+            }
+
+            if (!tbJmbg.Text.All(char.IsDigit))
+            {
+                poruka += "- jmbg ne valj!\n";
+                ok = false;
+            }
+
+            if (jelUnikat(tbJmbg.Text))
+            {
+                poruka += "- jmbg je zauzet!\n";
+                ok = false;
+            }
+
+            if(tbJmbg.Text.Length != 13)
+            {
+                poruka += "- jmbg mora imati 13 cifara!\n";
+                ok = false;
+            }
+
+
+
+            if (tbLozinka.Text.Equals(""))
+            {
+                poruka += "- Jmbg mora imati 13 cifara!\n";
+                ok = false;
+            }
+            if (ok == false)
+            {
+                MessageBox.Show(poruka, "Probajte ponovo");
+            }
+            return ok;
+
+
+
+
+        }
+
+        private bool jelUnikat(string jmbg)
+        {
+
+            foreach (Pacijent pacijent in Util.Instance.Pacijenti)
+            {
+                if (jmbg.Equals(pacijent.JMBG))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
     }
 }

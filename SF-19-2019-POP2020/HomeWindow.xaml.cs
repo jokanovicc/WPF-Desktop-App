@@ -3,7 +3,6 @@ using SF_19_2019_POP2020.Windows.DoktoriProzori;
 using SF_19_2019_POP2020.Windows.PacijentiProzori;
 using SF_19_2019_POP2020.Windows.TerapijaProzori;
 using SF19_2019_POP2020.Models;
-using SF19_2019_POP2020.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,12 +32,6 @@ namespace SF19_2019_POP2020
 
         }
 
-        private void BtnStart_Click(object sender, RoutedEventArgs e)
-        {
-            AllDoctors window = new AllDoctors();
-
-            window.Show();
-        }
 
         private void BtnPacijent_Click(object sender, RoutedEventArgs e)
         {

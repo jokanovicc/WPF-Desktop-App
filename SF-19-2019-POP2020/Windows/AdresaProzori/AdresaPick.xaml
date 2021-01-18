@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Adrese" Height="404" Width="466">
     <Grid>
-        <DataGrid AutoGenerateColumns="True" Margin="12,12,12,92" Name="dgAdrese" IsReadOnly="True" />
+        <DataGrid AutoGeneratingColumn="DGL_AutoGeneratingColumn" AutoGenerateColumns="True" Margin="12,12,12,92" Name="dgAdrese" IsReadOnly="True" />
         <Button Content="Obriši" Height="39" HorizontalAlignment="Left" Margin="165,0,0,31" Name="btnDelete" VerticalAlignment="Bottom" Width="66" />
         <Button Content="Zatvori" Height="39" HorizontalAlignment="Right" Margin="0,0,12,31" Name="btnClose" VerticalAlignment="Bottom" Width="102" Click="btnClose_Click" />
         <Button Content="Dodaj" Height="39" HorizontalAlignment="Left" Margin="12,0,0,31" Name="btnAdd" VerticalAlignment="Bottom" Width="66" />

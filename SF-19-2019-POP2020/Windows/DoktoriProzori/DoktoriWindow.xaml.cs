@@ -32,10 +32,19 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
             InitializeComponent();
 
 
+            viewT();
 
 
 
 
+            /*            dgPacijentiZasebno.ItemsSource = view2;
+                        dgPacijentiZasebno.IsSynchronizedWithCurrentItem = true;
+                        dgPacijentiZasebno.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);*/
+        }
+
+
+        public void viewT()
+        {
             view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
             view.Filter = CustomFilter;
 
@@ -46,12 +55,6 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
 
 
             dgLekari.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
-
-
-
-            /*            dgPacijentiZasebno.ItemsSource = view2;
-                        dgPacijentiZasebno.IsSynchronizedWithCurrentItem = true;
-                        dgPacijentiZasebno.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);*/
         }
 
         private bool CustomFilter(object obj)
@@ -97,15 +100,42 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
                             MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                         {
                             Lekar selektovaniKorisnik = view.CurrentItem as Lekar;
-                            Util.Instance.DeleteDoktor(selektovaniKorisnik.JMBG);
-                            view.Refresh();
+
+                            if(terminProvera(selektovaniKorisnik) == false)
+                                {
+                                    Util.Instance.DeleteDoktor(selektovaniKorisnik.JMBG);
+                                    view.Refresh();
+                                }
+
                         }
         }
+
+        private bool terminProvera(Lekar lekar)
+        {
+            foreach(Termin termini in Util.Instance.Termini)
+            {
+                if(termini.LekarID == lekar.ID)
+                {
+                    MessageBox.Show("Ne mozete obrisati lekara koji ima zakazan termin", "GRESKA");
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
 
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+
+        private void btnAdresa_Click(object sender, RoutedEventArgs e)
+        {
+            LekariPick lp = new LekariPick(LekariPick.Stanje.PREUZIMANJE);
+            lp.Show();
         }
 
         private bool PrikazFiltera(object obj)
@@ -140,7 +170,10 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
                     Util.Instance.Lekari[index] = old;
                 }
             }
+            viewT();
         }
+ 
+
 
     }
 }

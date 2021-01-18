@@ -1,4 +1,5 @@
-﻿using SF_19_2019_POP2020.Windows.NEPRIJAVLJENIWindow;
+﻿using SF_19_2019_POP2020.Windows.DoktoriProzori;
+using SF_19_2019_POP2020.Windows.NEPRIJAVLJENIWindow;
 using SF_19_2019_POP2020.Windows.PacijentiProzori;
 using SF_19_2019_POP2020.Windows.Pretrage;
 using SF_19_2019_POP2020.Windows.TerminiWindow;
@@ -30,11 +31,12 @@ namespace SF_19_2019_POP2020.Windows.PacijentWindowi
         ICollectionView view2;
         ICollectionView view3;
         Pacijent pacijent;
+        ObservableCollection<Pacijent> pac2;
 
         public PacijentGlavna(string jmbg)
         {
             InitializeComponent();
-            ObservableCollection<Pacijent> pac2 = nadjiPacijenta(jmbg);
+            pac2 = nadjiPacijenta(jmbg);
 
             pacijent = nadjiPacijenta2(jmbg);
 
@@ -84,7 +86,11 @@ namespace SF_19_2019_POP2020.Windows.PacijentWindowi
         }
 
 
-
+        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("PacijentID"))
+                e.Column.Visibility = Visibility.Collapsed;
+        }
 
 
 
@@ -134,10 +140,18 @@ namespace SF_19_2019_POP2020.Windows.PacijentWindowi
                 {
 
 
-                    int index = Util.Instance.Pacijenti.IndexOf(
+/*                    int index = Util.Instance.Pacijenti.IndexOf(
                         selektovaniKorisnik);
                     //vratimo vrednosti njegovih atributa na stare vrednosti, jer je izmena ponistena
-                    Util.Instance.Pacijenti[index] = old;
+                    Util.Instance.Pacijenti[index] = old;*/
+
+
+                    int index2 = pac2.IndexOf(
+                selektovaniKorisnik);
+                    //vratimo vrednosti njegovih atributa na stare vrednosti, jer je izmena ponistena
+                    pac2[index2] = old;
+
+
                 }
             }
         }
@@ -156,6 +170,17 @@ namespace SF_19_2019_POP2020.Windows.PacijentWindowi
             LekaraViaDomZdravlja odzm = new LekaraViaDomZdravlja();
             odzm.Show();
         }
+
+
+        private void btnDoktori_Click(object sender, RoutedEventArgs e)
+        {
+
+            LekariPick odzm = new LekariPick(LekariPick.Stanje.GLEDANJE);
+            odzm.Show();
+        }
+
+
+
 
         private void btnTermin_Click(object sender, RoutedEventArgs e)
         {

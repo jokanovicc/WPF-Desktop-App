@@ -1,4 +1,5 @@
-﻿using SF19_2019_POP2020.Models;
+﻿using SF_19_2019_POP2020.Windows.Pretrage;
+using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,7 +36,7 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
 
 
             view = CollectionViewSource.GetDefaultView(Util.Instance.Terapije);
-            view.Filter = PrikazFiltera;
+            view.Filter = CustomFilter;
 
 
             dgLekari.ItemsSource = view;
@@ -52,6 +53,10 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
         }
 
 
+        private void TxtPretraga_KeyUp(object sender, KeyEventArgs e)
+        {
+            view.Refresh();
+        }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Da li ste sigurni?", "Potvrda",
@@ -69,6 +74,14 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
             this.Close();
         }
 
+
+        private void btnLekar_Click(object sender, RoutedEventArgs e)
+        {
+            TerapijaViaLekar tvl = new TerapijaViaLekar();
+            tvl.Show();
+        }
+
+
         private bool PrikazFiltera(object obj)
         {
             return ((Terapija)obj).Aktivan;
@@ -81,6 +94,32 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
             //     Util.Instance.CitanjeEntiteta();
             few.ShowDialog();
         }
+
+
+        private bool CustomFilter(object obj)
+        {
+            Terapija t = obj as Terapija;
+            // Korisnik korisnik1 = (Korisnik)obj;
+
+            if (t.Aktivan)
+            {
+                if (TxtPretraga.Text != "")
+                {
+                    if (t.Opis.Contains(TxtPretraga.Text))
+                    {
+                        return t.Opis.Contains(TxtPretraga.Text);
+                    }
+ 
+                }
+                else
+                    return true;
+
+            }
+            return false;
+        }
+
+
+
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {

@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.LekariWindowProfil"
         mc:Ignorable="d"
-        Title="TerapijeKodLekara" Height="450" Width="800">
+        Title="TerapijeKodLekara" Height="450" Width="800" Background="#04c582">
+    <Border Background="#2e3137" CornerRadius="20" Margin="15">
     <Grid>
-        <DataGrid   AutoGenerateColumns="True" Margin="12,32,10,281" Name="dgTerapije" IsReadOnly="True" FontSize="16"/>
+        <DataGrid   AutoGenerateColumns="True" Margin="12,101,10,10" Name="dgTerapije" IsReadOnly="True" FontSize="16"/>
+        <Label Content="Terapije kod Lekara" Foreground="White" HorizontalAlignment="Left" Margin="12,38,0,0" VerticalAlignment="Top" Width="347" FontSize="36"/>
 
     </Grid>
+    </Border>
 </Window>

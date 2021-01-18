@@ -27,14 +27,16 @@ namespace SF_19_2019_POP2020.Windows.Pretrage
         ICollectionView view;
         int id;
         Lekar lekar;
+        DateTime datum;
 
-        public PrikazTerminaZaDz(int id,Lekar lekar)
+        public PrikazTerminaZaDz(int id,Lekar lekar,DateTime datum)
         {
             InitializeComponent();
             this.id = id;
             this.lekar = lekar;
+            this.datum = datum;
 
-            ObservableCollection<Termin> pac2 = readTermin(id, lekar);
+            ObservableCollection<Termin> pac2 = readTermin(id, lekar,datum);
 
             view = CollectionViewSource.GetDefaultView(pac2);
             dgDomZdravlja.ItemsSource = view;
@@ -43,31 +45,34 @@ namespace SF_19_2019_POP2020.Windows.Pretrage
 
         }
 
-        public ObservableCollection<Termin> readTermin(int sifraAdrese, Lekar lekar)
+        public ObservableCollection<Termin> readTermin(int sifraAdrese, Lekar lekar,DateTime datum)
         {
             ObservableCollection<Termin> pac = new ObservableCollection<Termin>();
+            ObservableCollection<Termin> pac2 = new ObservableCollection<Termin>();
+
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
                 conn.Open();
 
                 SqlCommand command = conn.CreateCommand();
 
-                command.CommandText = @"select * from Termini  where active = 1 and lekar_id = " + lekar.ID  +  " and lekar_id in (select id from Doktori where domZdravlja_id = " + sifraAdrese+")";
+                command.CommandText = @"select * from Termini  where active = 1 and datum >= CAST(CURRENT_TIMESTAMP AS DATE) and lekar_id = " + lekar.ID  +  " and lekar_id in (select id from Doktori where domZdravlja_id = " + sifraAdrese+ ")";
 
                 SqlDataReader reader = command.ExecuteReader();
 
 
                 while (reader.Read())
                 {
-                    pac.Add(new Termin
-                    {
-                        Sifra = reader.GetInt32(0),
-                        LekarID = reader.GetInt32(1),
-                        Datum = reader.GetDateTime(2),
-                        Status = (EStatusTermina)Enum.Parse(typeof(EStatusTermina), reader.GetString(3)),
-                        PacijentID = reader.GetInt32(4),
-                        Aktivan = reader.GetBoolean(5)
-                    });
+
+                            pac.Add(new Termin
+                            {
+                                Sifra = reader.GetInt32(0),
+                                LekarID = reader.GetInt32(1),
+                                Datum = reader.GetDateTime(2),
+                                Status = (EStatusTermina)Enum.Parse(typeof(EStatusTermina), reader.GetString(3)),
+                                PacijentID = reader.GetInt32(4),
+                                Aktivan = reader.GetBoolean(5)
+                            });
 
 
                 }
@@ -76,7 +81,16 @@ namespace SF_19_2019_POP2020.Windows.Pretrage
 
                 reader.Close();
 
-                return pac;
+                foreach(Termin t in pac)
+                {
+                    if(t.Datum == datum)
+                    {
+                        pac2.Add(t);
+                    }
+                }
+
+
+                return pac2;
             }
         }
     }

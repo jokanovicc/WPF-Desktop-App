@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.NEPRIJAVLJENIWindow"
         mc:Ignorable="d"
-        Title="DomZdravljaPrekoAdresePrikaz" Height="450" Width="800">
+        Title="DomZdravljaPrekoAdresePrikaz" Height="450" Width="800" Background="#04c582">
+    <Border Background="#2e3137" CornerRadius="20" Margin="15">
     <Grid>
-        <DataGrid AutoGenerateColumns="True" Margin="12,12,12,57" Name="dgDomZdravlja" IsReadOnly="True" FontSize="16"/>
+        <DataGrid  AutoGenerateColumns="True" Margin="10,113,14,26" Name="dgDomZdravlja" IsReadOnly="True" FontSize="16"/>
+            <Label Foreground="White" Content="Dom Zdravlja preko selektovane adrese" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="482" FontSize="24"/>
 
-    </Grid>
+        </Grid>
+    </Border>
 </Window>

@@ -54,7 +54,11 @@ namespace SF_19_2019_POP2020.Windows.AdresaProzori
         {
             this.Close();
         }
-
+        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan"))
+                e.Column.Visibility = Visibility.Collapsed;
+        }
         private bool PrikazFiltera(object obj)
         {
             return ((Adresa)obj).Aktivan;

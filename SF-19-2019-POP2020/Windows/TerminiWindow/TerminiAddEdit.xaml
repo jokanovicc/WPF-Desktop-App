@@ -7,17 +7,16 @@
 
         <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="12,109,0,0" Name="lbLekar1" Text="Lekar" VerticalAlignment="Top" Width="60" />
 
-        <Button Content="..." Height="28" HorizontalAlignment="Left" Margin="258,109,0,0" Name="btnPickLekar" VerticalAlignment="Top" Width="53"  RenderTransformOrigin="0.876,-0.368" Click="btnPickLekar_Click" />
+        <Button Content="izaberi lekara" Height="36" HorizontalAlignment="Left" Margin="91,113,0,0" Name="btnPickLekar" VerticalAlignment="Top" Width="185"  RenderTransformOrigin="0.876,-0.368" Click="btnPickLekar_Click" FontSize="18" />
         <TextBlock FontSize="20" Height="26" HorizontalAlignment="Left" Margin="12,253,0,0" Name="lbDatum" Text="Izaberi Datum" VerticalAlignment="Top" Width="132" RenderTransformOrigin="0.369,0.482" >
         </TextBlock>
-        <DatePicker Name="dpDatum" SelectedDate="{Binding Path=Datum}" HorizontalAlignment="Left" Width="261" Margin="165,253,0,219.4"/>
+        <DatePicker Name="dpDatum" SelectedDate="{Binding Path=Datum}" HorizontalAlignment="Left" Width="261" Margin="165,253,0,229" FontSize="18"/>
 
         <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="0,187,0,0" Name="lbPacijent" Text="Pacijent" VerticalAlignment="Top" Width="87" />
 
         <ComboBox Text = "{Binding Path=Status}"  Name="tbStatus" HorizontalAlignment="Left" Margin="12,345,0,0" VerticalAlignment="Top" Width="166" Height="24" />
-        
-        <TextBox Text="{Binding Path=PacijentID}" Height="23" HorizontalAlignment="Left" Margin="276,360,0,0" Name="tbPacijent" VerticalAlignment="Top" Width="102" IsReadOnly="True" />
-        <Button Content="..." Height="23" HorizontalAlignment="Left" Margin="305,187,0,0" Name="btnPickPacijent" VerticalAlignment="Top" Width="43" RenderTransformOrigin="0.876,-0.368" Click="btnPickPacijent_Click" />
+
+        <Button Content="Izaberi pacijenta" Height="43" HorizontalAlignment="Left" Margin="101,187,0,0" Name="btnPickPacijent" VerticalAlignment="Top" Width="153" RenderTransformOrigin="0.876,-0.368" Click="btnPickPacijent_Click" FontSize="14" />
 
         <Button Content="Potvrdi" Height="39" HorizontalAlignment="Right" Margin="0,0,12,12" Name="btnOK" VerticalAlignment="Bottom" Width="98" FontSize="20" IsDefault="True" Click="btnOK_Click" />
         <Button Content="Odustani" FontSize="20" Height="39" Margin="0,0,116,12" Name="btnCancel" VerticalAlignment="Bottom" IsCancel="True" HorizontalAlignment="Right" Width="98" />

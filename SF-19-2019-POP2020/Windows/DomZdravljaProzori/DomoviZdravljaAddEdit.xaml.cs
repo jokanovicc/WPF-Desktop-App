@@ -34,7 +34,8 @@ namespace SF_19_2019_POP2020.Windows.DomZdravljaProzori
             Random random = new Random();
           //  domZdravlja.Sifra = random.Next(1, 1000);
             domZdravlja.Aktivan = true;
-         //   tbSifra.DataContext = domZdravlja;
+            //   tbSifra.DataContext = domZdravlja;
+            domZdravlja.AdresaID = 847;
             tbNaziv.DataContext = domZdravlja;
             tbAdresa.DataContext = domZdravlja;
         }
@@ -52,7 +53,7 @@ namespace SF_19_2019_POP2020.Windows.DomZdravljaProzori
             {
                 //Util.Instance.Adrese.Add(adresa);
                 Util.Instance.updateDomZdravlja(domZdravlja);
-                
+
 
 
             }
@@ -68,5 +69,27 @@ namespace SF_19_2019_POP2020.Windows.DomZdravljaProzori
                 domZdravlja.AdresaID = gw.SelektovanaAdresa.SifraAdrese;
             }
         }
+
+
+        private bool validacije()
+        {
+            bool ok = true;
+            String poruka = "DZ se nije sacuvao\nMolimo popravite sledece greske u unosu:\n";
+            if (tbNaziv.Text.Equals(""))
+            {
+                poruka += "\n- Polje naziv ne sme biti Prazno!\n";
+                ok = false;
+            }
+            if (ok == false)
+            {
+                MessageBox.Show(poruka, "Probajte ponovo");
+            }
+            return ok;
+
+
+
+
+        }
+
     }
 }

@@ -1,4 +1,6 @@
 ﻿using SF_19_2019_POP2020.Windows.DomZdravljaProzori;
+using SF_19_2019_POP2020.Windows.NEPRIJAVLJENIWindow;
+using SF_19_2019_POP2020.Windows.Pretrage;
 using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
@@ -91,6 +93,15 @@ namespace SF_19_2019_POP2020.Windows
   
             few.ShowDialog();
         }
+
+        private void btnDZ_Click(object sender, RoutedEventArgs e)
+        {
+            DomZdravljaViaAdresa few = new DomZdravljaViaAdresa();
+            few.ShowDialog();
+        }
+
+
+
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {

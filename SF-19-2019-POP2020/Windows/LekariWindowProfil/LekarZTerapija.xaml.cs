@@ -1,4 +1,4 @@
-﻿using SF_19_2019_POP2020.Windows.DoktoriProzori;
+﻿using SF_19_2019_POP2020.Models;
 using SF_19_2019_POP2020.Windows.PacijentiProzori;
 using SF19_2019_POP2020.Models;
 using System;
@@ -15,86 +15,51 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SF_19_2019_POP2020.Windows.TerapijaProzori
+namespace SF_19_2019_POP2020.Windows.LekariWindowProfil
 {
     /// <summary>
-    /// Interaction logic for TerapijaAddEdit.xaml
+    /// Interaction logic for LekarZTerapija.xaml
     /// </summary>
-    public partial class TerapijaAddEdit : Window
+    public partial class LekarZTerapija : Window
     {
         Terapija terapija;
-        public enum Stanje { DODAVANJE, IZMENA };
-        Stanje stanje;
-
-        public TerapijaAddEdit(Terapija terapija, Stanje stanje = Stanje.DODAVANJE)
+        Lekar lekar;
+        public LekarZTerapija(Terapija terapija, Lekar lekar)
         {
-            InitializeComponent();
 
+
+            InitializeComponent();
+            this.lekar = lekar;
             this.terapija = terapija;
-            this.stanje = stanje;
 
             Random random = new Random();
             //      korisnik.ID = random.Next(1, 1000);
             terapija.Aktivan = true;
             tbOpis.DataContext = terapija;
-            terapija.PacijentID = 100;
-            terapija.LekarID = 768;
-            tbLekar.DataContext = terapija;
-            tbPacijent.DataContext = terapija;
-
-
+            terapija.PacijentID = 836;
+            terapija.LekarID = lekar.ID;
         }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
-            if (stanje == Stanje.DODAVANJE)
+            if (validacije())
             {
-
-                if (validacije())
-                {
-                    Util.Instance.Terapije.Add(terapija);
-                    Util.Instance.SacuvajEntitet(terapija);
-                    this.Close();
-                }
+                Util.Instance.Terapije.Add(terapija);
+                Util.Instance.SacuvajEntitet(terapija);
+                this.Close();
 
             }
-            if (stanje == Stanje.IZMENA)
-            {
-                if (validacije())
-                {
-                    //Util.Instance.Adrese.Add(adresa);
-                    Util.Instance.updateTerapija(terapija);
-                    this.Close();
-                }
 
-
-
-            }
         }
 
         private void btnPicPacijent_Click(object sender, RoutedEventArgs e)
         {
-          
-
             PacijentiPick gw = new PacijentiPick(PacijentiPick.Stanje.PREUZIMANJE);
             if (gw.ShowDialog() == true)
             {
                 terapija.PacijentID = gw.SelektovaniPacijent.ID;
             }
         }
-
-        private void btnLekar_Click(object sender, RoutedEventArgs e)
-        {
-            LekariPick gw = new LekariPick(LekariPick.Stanje.PREUZIMANJE);
-            if (gw.ShowDialog() == true)
-            {
-                terapija.LekarID= gw.SelektovaniLekar.ID;
-            }
-        }
-
-
-
 
         private bool validacije()
         {
@@ -115,6 +80,8 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
 
 
         }
+
+
+
     }
 }
-

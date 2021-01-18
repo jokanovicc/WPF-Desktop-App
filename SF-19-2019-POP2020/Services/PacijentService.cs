@@ -122,7 +122,6 @@ namespace SF_19_2019_POP2020.Services
                                              prezime = @prezime,
                                               lozinka = @lozinka,
                                                email = @email,
-                                               jmbg = @jmbg,
                                                pol = @pol,
                                                aktivan = @aktivan,
                                             adresa_id = @adresa_id
@@ -133,8 +132,7 @@ namespace SF_19_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("prezime", pacijent.Prezime));
                 command.Parameters.Add(new SqlParameter("lozinka", pacijent.Lozinka));
                 command.Parameters.Add(new SqlParameter("email", pacijent.Email));
-                command.Parameters.Add(new SqlParameter("jmbg", pacijent.JMBG));
-                command.Parameters.Add(new SqlParameter("pol", EPol.M));
+                command.Parameters.Add(new SqlParameter("pol", pacijent.Pol));
                 command.Parameters.Add(new SqlParameter("aktivan", pacijent.Aktivan));
                 command.Parameters.Add(new SqlParameter("adresa_id", pacijent.AdresaID));
 

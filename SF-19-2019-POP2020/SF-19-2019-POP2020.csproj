@@ -93,11 +93,11 @@
     <Compile Include="Windows\DoktoriProzori\DoktorAddEdit.xaml.cs">
       <DependentUpon>DoktorAddEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\DoktoriProzori\DoktoriPick.xaml.cs">
-      <DependentUpon>DoktoriPick.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\DoktoriProzori\DoktoriWindow.xaml.cs">
       <DependentUpon>DoktoriWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DoktoriProzori\LekariPick.xaml.cs">
+      <DependentUpon>LekariPick.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\DomZdravljaProzori\DomZdravljaPick.xaml.cs">
       <DependentUpon>DomZdravljaPick.xaml</DependentUpon>
@@ -107,9 +107,6 @@
     </Compile>
     <Compile Include="Windows\DomZdravljaProzori\LekarTermini.xaml.cs">
       <DependentUpon>LekarTermini.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\LekariProzori\AddEditDoctor.xaml.cs">
-      <DependentUpon>AddEditDoctor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AdministratoriWindow.xaml.cs">
       <DependentUpon>AdministratoriWindow.xaml</DependentUpon>
@@ -123,17 +120,14 @@
     <Compile Include="Windows\AdresaProzori\AdreseWindow.xaml.cs">
       <DependentUpon>AdreseWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LekariProzori\AllDoctors.xaml.cs">
-      <DependentUpon>AllDoctors.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\DomZdravljaProzori\DomoviZdravljaAddEdit.xaml.cs">
       <DependentUpon>DomoviZdravljaAddEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\DomZdravljaProzori\DomoviZdravljaWindow.xaml.cs">
       <DependentUpon>DomoviZdravljaWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LekariProzori\LekariPick.xaml.cs">
-      <DependentUpon>LekariPick.xaml</DependentUpon>
+    <Compile Include="Windows\LekariWindowProfil\GrafickiPrikaz.xaml.cs">
+      <DependentUpon>GrafickiPrikaz.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LekariWindowProfil\LekarGlavna.xaml.cs">
       <DependentUpon>LekarGlavna.xaml</DependentUpon>
@@ -141,14 +135,14 @@
     <Compile Include="Windows\LekariWindowProfil\LekariZakazivanje.xaml.cs">
       <DependentUpon>LekariZakazivanje.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\LekariWindowProfil\LekarZTerapija.xaml.cs">
+      <DependentUpon>LekarZTerapija.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\LekariWindowProfil\TerapijeKodLekara.xaml.cs">
       <DependentUpon>TerapijeKodLekara.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LekariWindowProfil\TerminUdz.xaml.cs">
       <DependentUpon>TerminUdz.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\NEPRIJAVLJENIWindow\DomZdravljaPrekoAdresePrikaz.xaml.cs">
       <DependentUpon>DomZdravljaPrekoAdresePrikaz.xaml</DependentUpon>
@@ -186,11 +180,29 @@
     <Compile Include="Windows\Pretrage\LekaraViaDomZdravlja.xaml.cs">
       <DependentUpon>LekaraViaDomZdravlja.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Pretrage\LekarViaAdresa.xaml.cs">
+      <DependentUpon>LekarViaAdresa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Pretrage\PacijentPoAdresi.xaml.cs">
+      <DependentUpon>PacijentPoAdresi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Pretrage\PrikazLekaraAdresa.xaml.cs">
+      <DependentUpon>PrikazLekaraAdresa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Pretrage\PrikazLekaraDz.xaml.cs">
       <DependentUpon>PrikazLekaraDz.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Pretrage\PrikazPacijentaAdresa.xaml.cs">
+      <DependentUpon>PrikazPacijentaAdresa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Pretrage\PrikazTerminaZaDz.xaml.cs">
       <DependentUpon>PrikazTerminaZaDz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Pretrage\TerapijaViaLekar.xaml.cs">
+      <DependentUpon>TerapijaViaLekar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Pretrage\TerapijaViaLPrikaz.xaml.cs">
+      <DependentUpon>TerapijaViaLPrikaz.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\RegistracijaPacijent.xaml.cs">
       <DependentUpon>RegistracijaPacijent.xaml</DependentUpon>
@@ -234,11 +246,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\DoktoriProzori\DoktoriPick.xaml">
+    <Page Include="Windows\DoktoriProzori\DoktoriWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\DoktoriProzori\DoktoriWindow.xaml">
+    <Page Include="Windows\DoktoriProzori\LekariPick.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -251,10 +263,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\DomZdravljaProzori\LekarTermini.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\LekariProzori\AddEditDoctor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -274,10 +282,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\LekariProzori\AllDoctors.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Windows\DomZdravljaProzori\DomoviZdravljaAddEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -286,7 +290,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\LekariProzori\LekariPick.xaml">
+    <Page Include="Windows\LekariWindowProfil\GrafickiPrikaz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -298,15 +302,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\LekariWindowProfil\LekarZTerapija.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\LekariWindowProfil\TerapijeKodLekara.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\LekariWindowProfil\TerminUdz.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -358,11 +362,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Pretrage\LekarViaAdresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Pretrage\PacijentPoAdresi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Pretrage\PrikazLekaraAdresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Pretrage\PrikazLekaraDz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Pretrage\PrikazPacijentaAdresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Pretrage\PrikazTerminaZaDz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Pretrage\TerapijaViaLekar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Pretrage\TerapijaViaLPrikaz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

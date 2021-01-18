@@ -10,14 +10,14 @@
         <StackPanel Margin="20">
             <Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <Separator></Separator>
-            <Label Content="Username" Foreground="White"/>
+            <Label Content="JMBG" Foreground="White"/>
             <TextBox Name="txtUsername" Background="#545d6a" Foreground="White" FontSize="18"/>
             <Label Content="Password" Foreground="White"/>
             <PasswordBox Name="txtPassword" Background="#545d6a" Foreground="White" FontSize="18"/>
-            <Button Name="btnSubmit" Click="btnSubmit_Click" Content="Submit" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"/>
-            <Button x:Name="btnAdmin" Click="btnAdmin_Click" Content="Prodji kao Admin" Margin="210,10,199,10" Background="#545d6a" Foreground="White" FontSize="18"/>
-            <Button x:Name="btnRegistracija" Click="btnReg_Click" Content="Registruj se" Margin="142,10,139,10" Background="#545d6a" Foreground="White" FontSize="18"/>
-            <Button Name="btnNeprijavljeni" Click="btnNeprijavljeni_Click" Content="Neprijavljeni" Margin="114,10,111,10" Background="#545d6a" Foreground="White" FontSize="18"/>
+            <Button Name="btnSubmit" Click="btnSubmit_Click" Content="Submit" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18" Height="41"/>
+            <Button x:Name="btnRegistracija" Click="btnReg_Click" Content="Registruj se" Margin="142,10,139,10" Background="#545d6a" Foreground="White" FontSize="18" Height="45"/>
+            <Button x:Name="btnNeprijavljeni" Click="btnNeprijavljeni_Click" Content="Neprijavljeni" Margin="60,10" Background="#545d6a" Foreground="White" FontSize="18"/>
+            <Button x:Name="btnAdmin" Click="btnAdmin_Click" Content="A" Margin="60,10,484,10" Background="#545d6a" Foreground="White" FontSize="18" RenderTransformOrigin="1.111,0.537"/>
 
         </StackPanel>
     </Border>

@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.NEPRIJAVLJENIWindow"
         mc:Ignorable="d"
-        Title="Neregistrovani" Height="400" Width="1200">
-    <Grid Margin="0,0,0,168">
-        <DataGrid AutoGeneratingColumn="DGAdrese_AutoGeneratingColumn" AutoGenerateColumns="True" Margin="15,36,773,10" Name="dgAdresa" IsReadOnly="True" FontSize="16"/>
-        <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="DGDZ_AutoGeneratingColumn" Margin="420,36,337,10" Name="dgDomZdravlja" IsReadOnly="True" FontSize="16"/>
-        <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="DGL_AutoGeneratingColumn" Margin="859,36,10,10" Name="dgLekari" IsReadOnly="True" FontSize="16"/>
-        <Label Content="Adrese u Kojima se nalaze domoviZdravlja i Lekari" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" Width="294"/>
-        <Label Content="DomoviZdravlja u kojima rade Lekari" HorizontalAlignment="Left" Margin="467,5,0,0" VerticalAlignment="Top" Width="294"/>
+        Title="Neregistrovani" Height="400" Width="945.977">
+    <Grid Margin="0,0,333,143">
+        <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="DGL_AutoGeneratingColumn" Margin="10,0,153,5" Name="dgLekari" IsReadOnly="True" FontSize="16"/>
+
+        <TextBox Name="TxtPretraga" HorizontalAlignment="Left" Height="21" Margin="464,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="131" KeyUp="TxtPretraga_KeyUp" Background="#FF709AD6"/>
+
         <Label Content="Lekari" HorizontalAlignment="Left" Margin="1008,5,0,0" VerticalAlignment="Top" Width="77"/>
-        <Button Content="Nadji Dom Zdravlja" HorizontalAlignment="Left" Height="58" Margin="490,210,0,-67" Click="btn_DomZdravlja" VerticalAlignment="Top" Width="226"/>
+        <Button Content="Dom Zdravlja preko Adrese i Lekara" HorizontalAlignment="Left" Height="74" Margin="139,254,0,-102" Click="btn_DomZdravlja" VerticalAlignment="Top" Width="271" FontSize="14"/>
+        <Button Content="Nadji Dom Zdravlja preko Adrese" HorizontalAlignment="Left" Height="74" Margin="662,254,-283,-102" Click="btn_DomZdravlja2" VerticalAlignment="Top" Width="226" FontSize="14"/>
 
 
 

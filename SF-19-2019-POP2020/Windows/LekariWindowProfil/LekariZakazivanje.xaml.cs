@@ -50,11 +50,33 @@ namespace SF_19_2019_POP2020.Windows.LekariWindowProfil
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
 
+            if (validacije())
+            {
                 Util.Instance.Termini.Add(termin);
                 Util.Instance.SacuvajEntitet(termin);
-            this.Close();
+                this.Close();
+            }
+
+        }
+
+        private bool validacije()
+        {
+            bool ok = true;
+            String poruka = "Termin se nije sacuvao\nMolimo popravite sledece greske u unosu:\n";
+            if (dpDatum.SelectedDate < DateTime.Now)
+            {
+                poruka += "\n- Izabrali ste datum u proslosti!\n";
+                ok = false;
+            }
+            if (ok == false)
+            {
+                MessageBox.Show(poruka, "Probajte ponovo");
+            }
+            return ok;
+
+
+
 
         }
     }

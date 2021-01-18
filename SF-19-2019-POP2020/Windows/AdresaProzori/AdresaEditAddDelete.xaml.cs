@@ -47,26 +47,29 @@ namespace SF_19_2019_POP2020.Windows.AdresaEditUpdate
         {
             this.DialogResult = true;
 
-                if (stanje == Stanje.DODAVANJE)
-                {
+            if (stanje == Stanje.DODAVANJE)
+            {
                 if (validacije())
                 {
                     Util.Instance.Adrese.Add(adresa);
                     Util.Instance.SacuvajEntitet(adresa);
                 }
 
-                }
-                if (stanje == Stanje.IZMENA)
-                {
-                
-                    //Util.Instance.Adrese.Add(adresa);
-                    Util.Instance.updateAdresa(adresa);
-
-                
-                }
-                this.Close();
             }
-        
+            if (stanje == Stanje.IZMENA)
+            {
+
+                //Util.Instance.Adrese.Add(adresa);
+                Util.Instance.updateAdresa(adresa);
+
+
+            }
+            this.Close();
+        }
+
+
+
+
 
         private bool validacije()
         {

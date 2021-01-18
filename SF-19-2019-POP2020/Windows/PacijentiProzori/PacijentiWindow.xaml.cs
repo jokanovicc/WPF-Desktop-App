@@ -90,10 +90,35 @@ namespace SF_19_2019_POP2020.Windows
                 MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 Pacijent selektovaniKorisnik = view.CurrentItem as Pacijent;
-                Util.Instance.DeletePacijent(selektovaniKorisnik.ID);
+                if(terminProvera(selektovaniKorisnik) == false)
+                {
+                    Util.Instance.DeletePacijent(selektovaniKorisnik.ID);
+                    view.Refresh();
+                }
+
             }
-            view.Refresh();
+           
         }
+
+
+
+
+
+        private bool terminProvera(Pacijent pac)
+        {
+            foreach (Termin termini in Util.Instance.Termini)
+            {
+                if (termini.PacijentID == pac.ID)
+                {
+                    MessageBox.Show("Ne mozete obrisati pacijenta koji ima zakazan termin", "GRESKA");
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+
 
         private bool PrikazFiltera(object obj)
         {
@@ -103,6 +128,12 @@ namespace SF_19_2019_POP2020.Windows
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAdresa_Click(object sender, RoutedEventArgs e)
+        {
+            PacijentiPick pp = new PacijentiPick(PacijentiPick.Stanje.PREUZIMANJE);
+            pp.Show();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

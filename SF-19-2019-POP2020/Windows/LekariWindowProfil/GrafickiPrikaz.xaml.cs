@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SF_19_2019_POP2020.Windows
+namespace SF_19_2019_POP2020.Windows.LekariWindowProfil
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for GrafickiPrikaz.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class GrafickiPrikaz : Window
     {
-        public Login()
+        public GrafickiPrikaz()
         {
             InitializeComponent();
         }
