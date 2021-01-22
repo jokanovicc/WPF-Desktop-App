@@ -76,7 +76,7 @@ namespace SF_19_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("lozinka", pacijent.Lozinka));
                 command.Parameters.Add(new SqlParameter("email", pacijent.Email));
                 command.Parameters.Add(new SqlParameter("jmbg", pacijent.JMBG));
-                command.Parameters.Add(new SqlParameter("pol", EPol.M));
+                command.Parameters.Add(new SqlParameter("pol", pacijent.Pol));
                 command.Parameters.Add(new SqlParameter("aktivan", pacijent.Aktivan));
                 command.Parameters.Add(new SqlParameter("adresa_id", pacijent.AdresaID));
                 return (int)command.ExecuteScalar();

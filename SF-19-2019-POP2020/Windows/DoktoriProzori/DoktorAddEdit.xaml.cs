@@ -209,7 +209,7 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
         private bool jelUnikat(string jmbg)
         {
 
-            foreach (Pacijent pacijent in Util.Instance.Pacijenti)
+            foreach (Lekar pacijent in Util.Instance.Lekari)
             {
                 if (jmbg.Equals(pacijent.JMBG))
                 {

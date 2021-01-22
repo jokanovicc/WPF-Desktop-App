@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.DoktoriProzori"
         mc:Ignorable="d"
         WindowStyle="None"
-        Title="Doktor-Izmena/Dodavanje" Height="580" Width="672">
-    <Grid>
+        Title="Doktor-Izmena/Dodavanje" Height="580" Width="672" ResizeMode="NoResize" Background="#04c582">
+
+        <Grid>
 
         <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="10,41,0,0" Name="lbIme" Text="Ime" VerticalAlignment="Top" Width="60" />
         <TextBox Text = "{Binding Path=Ime}" FontSize="20" Height="32" HorizontalAlignment="Left" Margin="78,41,0,0" Name="tbIme" VerticalAlignment="Top" Width="548" />
@@ -29,10 +30,10 @@
 
         <TextBox Text="{Binding Path=AdresaID}" Height="23" HorizontalAlignment="Left" Margin="164,376,0,0" Name="tbAdresa" VerticalAlignment="Top" Width="70" IsReadOnly="True" />
 
-        <Button Content="Izaberi Adresu" Height="36" HorizontalAlignment="Left" Margin="239,372,0,0" Name="btnPickAdresa" VerticalAlignment="Top" Width="129" Click="btnPicAdresa_Click" RenderTransformOrigin="-0.27,0.537" />
+        <Button Background="#545d6a" Foreground="White" Content="Izaberi Adresu" Height="36" HorizontalAlignment="Left" Margin="239,372,0,0" Name="btnPickAdresa" VerticalAlignment="Top" Width="129" Click="btnPicAdresa_Click" RenderTransformOrigin="-0.27,0.537" />
         <TextBox Text="{Binding Path=DomZdravljaID}" Height="23" HorizontalAlignment="Left" Margin="164,428,0,0" Name="tbDomZdravlja" VerticalAlignment="Top" Width="70" IsReadOnly="True" />
 
-        <Button Content="Izaberi Dom Zdravlja" Height="34" HorizontalAlignment="Left" Margin="239,417,0,0" Name="btnPickDomZdravlja" VerticalAlignment="Top" Width="129" Click="btnPicDomZdravlja_Click" RenderTransformOrigin="-0.27,0.537" />
+        <Button Background="#545d6a" Foreground="White" Content="Izaberi Dom Zdravlja" Height="34" HorizontalAlignment="Left" Margin="239,417,0,0" Name="btnPickDomZdravlja" VerticalAlignment="Top" Width="129" Click="btnPicDomZdravlja_Click" RenderTransformOrigin="-0.27,0.537" />
 
 
         <TextBlock FontSize="20" Height="32" HorizontalAlignment="Left" Margin="13,310,0,0" Name="lbJmbg" Text="Jmbg" VerticalAlignment="Top" Width="60" />
@@ -41,11 +42,12 @@
 
 
 
-        <Button Content="Potvrdi" Height="47" HorizontalAlignment="Right" Margin="0,0,106,10" Name="btnOK" VerticalAlignment="Bottom" Width="194" FontSize="20" IsDefault="True" Click="btnOK_Click" />
-        <Button Content="Odustani" FontSize="20" Height="30" Margin="0,0,348,15" Name="btnCancel" VerticalAlignment="Bottom" IsCancel="True" HorizontalAlignment="Right" Width="133"  Click="btnClose_Click"/>
+        <Button Background="#545d6a" Foreground="White" Content="Potvrdi" Height="47" HorizontalAlignment="Right" Margin="0,0,106,10" Name="btnOK" VerticalAlignment="Bottom" Width="194" FontSize="20" IsDefault="True" Click="btnOK_Click" />
+        <Button Background="#545d6a" Foreground="White" Content="Odustani" FontSize="20" Height="30" Margin="0,0,348,15" Name="btnCancel" VerticalAlignment="Bottom" IsCancel="True" HorizontalAlignment="Right" Width="133"  Click="btnClose_Click"/>
         <ComboBox Text = "{Binding Path=Pol}"  Name="tbPol" HorizontalAlignment="Left" Margin="486,384,0,0" VerticalAlignment="Top" Width="154" Height="24" />
 
 
 
     </Grid>
+   
 </Window>

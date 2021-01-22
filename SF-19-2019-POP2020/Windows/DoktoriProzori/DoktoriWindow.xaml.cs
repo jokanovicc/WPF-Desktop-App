@@ -1,4 +1,5 @@
 ﻿using SF_19_2019_POP2020.Models;
+using SF_19_2019_POP2020.Windows.TerminiWindow;
 using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
@@ -129,6 +130,12 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnTermin_Click(object sender, RoutedEventArgs e)
+        {
+            TerminiKodLekaraPick tklp = new TerminiKodLekaraPick();
+            tklp.Show();
         }
 
 

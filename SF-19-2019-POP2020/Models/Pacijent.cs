@@ -151,6 +151,8 @@ namespace SF19_2019_POP2020.Models
 
 
 
+
+
         public object Clone()
         {
             Pacijent kopija = new Pacijent();

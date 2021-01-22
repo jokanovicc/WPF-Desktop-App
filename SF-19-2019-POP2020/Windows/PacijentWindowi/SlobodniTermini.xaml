@@ -10,5 +10,8 @@
         <DataGrid AutoGenerateColumns="True" Margin="32,70,34,163" Name="dgTermini" IsReadOnly="True" FontSize="16"
 />
         <Button Content="Zakazi Termin" HorizontalAlignment="Left" Height="46" Margin="313,316,0,0" VerticalAlignment="Top" Click="ZakaziTermin" Width="124"/>
+
+        <Button Content="Nadji Termin po Lekaru" HorizontalAlignment="Left" Height="46" Margin="76,316,0,0" VerticalAlignment="Top" Click="TerminTermin" Width="124"/>
+
     </Grid>
 </Window>

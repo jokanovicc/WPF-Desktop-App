@@ -67,8 +67,8 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
                     Util.Instance.SacuvajEntitet(korisnik);
                     this.Close();
 
-                    //     }
-                }
+                         }
+             //   }
             }
            
         

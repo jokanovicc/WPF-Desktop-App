@@ -56,9 +56,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Aplikacija.cs" />
-    <Compile Include="Glavna.xaml.cs">
-      <DependentUpon>Glavna.xaml</DependentUpon>
-    </Compile>
     <Compile Include="HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
@@ -204,6 +201,9 @@
     <Compile Include="Windows\Pretrage\TerapijaViaLPrikaz.xaml.cs">
       <DependentUpon>TerapijaViaLPrikaz.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Pretrage\TerminViaLekarPrikaz.xaml.cs">
+      <DependentUpon>TerminViaLekarPrikaz.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\RegistracijaPacijent.xaml.cs">
       <DependentUpon>RegistracijaPacijent.xaml</DependentUpon>
     </Compile>
@@ -219,13 +219,12 @@
     <Compile Include="Windows\TerminiWindow\TerminiAddEdit.xaml.cs">
       <DependentUpon>TerminiAddEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\TerminiWindow\TerminiKodLekaraPick.xaml.cs">
+      <DependentUpon>TerminiKodLekaraPick.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\TerminiWindow\TerminiWindow1.xaml.cs">
       <DependentUpon>TerminiWindow1.xaml</DependentUpon>
     </Compile>
-    <Page Include="Glavna.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="HomeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -394,6 +393,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Pretrage\TerminViaLekarPrikaz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\RegistracijaPacijent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -411,6 +414,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\TerminiWindow\TerminiAddEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\TerminiWindow\TerminiKodLekaraPick.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -3,6 +3,7 @@ using SF_19_2019_POP2020.Windows.DoktoriProzori;
 using SF_19_2019_POP2020.Windows.DomZdravljaProzori;
 using SF_19_2019_POP2020.Windows.Pretrage;
 using SF_19_2019_POP2020.Windows.TerapijaProzori;
+using SF_19_2019_POP2020.Windows.TerminiWindow;
 using SF19_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
@@ -206,6 +207,13 @@ namespace SF_19_2019_POP2020.Windows.LekariWindowProfil
         {
             LekarTermini lt = new LekarTermini(lekar);
             lt.Show();
+
+        }
+
+        private void btnTerminLekar_Click(object sender, RoutedEventArgs e)
+        {
+            TerminiKodLekaraPick t = new TerminiKodLekaraPick();
+            t.Show();
 
         }
     }

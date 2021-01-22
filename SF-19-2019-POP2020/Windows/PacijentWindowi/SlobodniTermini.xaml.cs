@@ -49,7 +49,7 @@ namespace SF_19_2019_POP2020.Windows.PacijentWindowi
 
             foreach (Termin t in Util.Instance.Termini)
             {
-                if (t.Status.Equals(EStatusTermina.SLOBODAN))
+                if (t.Status.Equals(EStatusTermina.SLOBODAN) && t.Aktivan == true)
                 {
 
                     pac.Add(t);
@@ -79,6 +79,13 @@ namespace SF_19_2019_POP2020.Windows.PacijentWindowi
                 }
             }
             view.Refresh();
+        }
+
+
+        private void TerminTermin(object sender, RoutedEventArgs e)
+        {
+            TerminiKodLekaraPick tklp = new TerminiKodLekaraPick();
+            tklp.Show();
         }
 
 

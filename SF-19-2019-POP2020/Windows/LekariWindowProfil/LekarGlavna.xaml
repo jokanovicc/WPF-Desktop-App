@@ -20,6 +20,8 @@
 />
             <Button Background="#545d6a" Foreground="White"  Content="Dodaj Terapiju" Height="39" HorizontalAlignment="Left" Margin="796,0,0,0" Name="btnT" VerticalAlignment="Bottom" Width="141" Click="btnT_Click" RenderTransformOrigin="1.48,0.537" FontSize="16" />
             <Button Background="#545d6a" Foreground="White"  Content="Termini" Height="39" HorizontalAlignment="Left" Margin="12,0,0,44" x:Name="btntermin_Copy" VerticalAlignment="Bottom" Width="116" Click="btnTermin_Click" FontSize="22" />
+            <Button Background="#545d6a" Foreground="White"  Content="Termin Po Lekaru" Height="39" HorizontalAlignment="Left" Margin="145,0,0,44" x:Name="btnterminLkear_Copy" VerticalAlignment="Bottom" Width="164" Click="btnTerminLekar_Click" FontSize="22" />
+
             <Button Background="#545d6a" Foreground="White"  Content="Doktori" Height="39" HorizontalAlignment="Left" Margin="10,0,0,121" x:Name="btnDoktori_Copy1" VerticalAlignment="Bottom" Width="170" Click="btnDoktori_Click" FontSize="20" />
             <Label Content="Informacije" Foreground="White" HorizontalAlignment="Left" Margin="12,1,0,0" VerticalAlignment="Top" Height="52" Width="249" FontSize="24"/>
 
