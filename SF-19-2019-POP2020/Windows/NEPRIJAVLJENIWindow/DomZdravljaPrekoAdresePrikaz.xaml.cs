@@ -43,7 +43,7 @@ namespace SF_19_2019_POP2020.Windows.NEPRIJAVLJENIWindow
 
                 SqlCommand command = conn.CreateCommand();
 
-                command.CommandText = @"select d.id,d.naziv,d.adresa_id,d.active from domZdravlja d where adresa_id =" + sifraAdrese;
+                command.CommandText = @"select d.id,d.naziv,d.adresa_id,d.active from domZdravlja d where adresa_id =" + sifraAdrese + " and active = 1";
 
                 SqlDataReader reader = command.ExecuteReader();
 

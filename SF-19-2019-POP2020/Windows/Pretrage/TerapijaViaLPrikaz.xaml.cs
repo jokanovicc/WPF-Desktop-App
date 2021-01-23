@@ -48,7 +48,7 @@ namespace SF_19_2019_POP2020.Windows.Pretrage
 
                 SqlCommand command = conn.CreateCommand();
 
-                command.CommandText = @"select * from Terapije d where lekar_id =" + sifraLekara;
+                command.CommandText = @"select * from Terapije d where lekar_id =" + sifraLekara + " and aktivan = 1";
 
                 SqlDataReader reader = command.ExecuteReader();
 
