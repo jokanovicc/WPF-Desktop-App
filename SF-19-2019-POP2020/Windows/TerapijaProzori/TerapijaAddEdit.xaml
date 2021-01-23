@@ -16,12 +16,12 @@
 
         <TextBlock FontSize="20" Height="34" HorizontalAlignment="Left" Margin="32,417,0,0" Name="lbLekar" Text="Lekar" VerticalAlignment="Top" Width="112" RenderTransformOrigin="0.501,7.289" />
 
-        <TextBox Text="{Binding Path=PacijentID}" Height="23" HorizontalAlignment="Left" Margin="164,376,0,0" Name="tbPacijent" VerticalAlignment="Top" Width="102" IsReadOnly="True" />
+        <TextBox Text="{Binding Path=PacijentID}" Height="23" HorizontalAlignment="Left" Margin="164,376,0,0" Name="tbPacijent" VerticalAlignment="Top" Width="13" IsReadOnly="True" />
 
-        <Button Content="Izaberi Pacijenta" Height="28" HorizontalAlignment="Left" Margin="271,371,0,0" Name="btnPickPacijent" VerticalAlignment="Top" Width="129" Click="btnPicPacijent_Click" RenderTransformOrigin="-0.27,0.537" />
-        <TextBox Text="{Binding Path=LekarID}" Height="23" HorizontalAlignment="Left" Margin="164,428,0,0" Name="tbLekar" VerticalAlignment="Top" Width="102" IsReadOnly="True" />
+        <Button Content="Izaberi Pacijenta" Height="28" HorizontalAlignment="Left" Margin="185,376,0,0" Name="btnPickPacijent" VerticalAlignment="Top" Width="129" Click="btnPicPacijent_Click" RenderTransformOrigin="-0.27,0.537" />
+        <TextBox Text="{Binding Path=LekarID}" Height="23" HorizontalAlignment="Left" Margin="164,428,0,0" Name="tbLekar" VerticalAlignment="Top" Width="13" IsReadOnly="True" />
 
-        <Button Content="Izaberi Lekara" Height="34" HorizontalAlignment="Left" Margin="271,417,0,0" Name="btnPickLekar" VerticalAlignment="Top" Width="129" Click="btnLekar_Click" RenderTransformOrigin="-0.27,0.537" />
+        <Button Content="Izaberi Lekara" Height="34" HorizontalAlignment="Left" Margin="185,428,0,0" Name="btnPickLekar" VerticalAlignment="Top" Width="129" Click="btnLekar_Click" RenderTransformOrigin="-0.27,0.537" />
 
 
 

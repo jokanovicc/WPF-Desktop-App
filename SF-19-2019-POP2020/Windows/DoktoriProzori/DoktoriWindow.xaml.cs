@@ -106,12 +106,14 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
                         {
                             Lekar selektovaniKorisnik = view.CurrentItem as Lekar;
 
-                            if(terminProvera(selektovaniKorisnik) == false)
+                            if (terminProvera(selektovaniKorisnik) == false)
+                            {
+                                if (terapijaProvera(selektovaniKorisnik) == false)
                                 {
                                     Util.Instance.DeleteDoktor(selektovaniKorisnik.JMBG);
                                     view.Refresh();
                                 }
-
+                            }
                         }
         }
 
@@ -128,6 +130,19 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
             return false;
         }
 
+
+        private bool terapijaProvera(Lekar lekar)
+        {
+            foreach (Terapija terapije in Util.Instance.Terapije)
+            {
+                if (terapije.LekarID == lekar.ID && terapije.Aktivan == true)
+                {
+                    MessageBox.Show("Ne mozete obrisati lekara koji ima poseduje terapije na svoje ime", "GRESKA");
+                    return true;
+                }
+            }
+            return false;
+        }
 
 
 

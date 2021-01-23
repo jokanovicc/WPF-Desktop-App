@@ -96,8 +96,11 @@ namespace SF_19_2019_POP2020.Windows
                 Pacijent selektovaniKorisnik = view.CurrentItem as Pacijent;
                 if(terminProvera(selektovaniKorisnik) == false)
                 {
-                    Util.Instance.DeletePacijent(selektovaniKorisnik.ID);
-                    view.Refresh();
+                    if (terapijaProvera(selektovaniKorisnik) == false)
+                    {
+                        Util.Instance.DeletePacijent(selektovaniKorisnik.ID);
+                        view.Refresh();
+                    }
                 }
 
             }
@@ -120,6 +123,20 @@ namespace SF_19_2019_POP2020.Windows
             }
             return false;
         }
+
+        private bool terapijaProvera(Pacijent pacijent)
+        {
+            foreach (Terapija terapije in Util.Instance.Terapije)
+            {
+                if (terapije.PacijentID == pacijent.ID && terapije.Aktivan == true)
+                {
+                    MessageBox.Show("Ne mozete obrisati pacijenta koji ima poseduje terapije na svoje ime", "GRESKA");
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
 
 
