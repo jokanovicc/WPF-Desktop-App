@@ -129,6 +129,11 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
                 poruka += "- Polje email nije u odgovarajucem formatu!\n";
                 ok = false;
             }
+            if (Util.Instance.proveriAdresu(korisnik.AdresaID) == false)
+            {
+                poruka += "- Ne postoji takva adresa\n";
+                ok = false;
+            }
 
             if (!tbJmbg.Text.All(char.IsDigit))
             {
@@ -146,7 +151,7 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
 
             if (tbLozinka.Text.Equals(""))
             {
-                poruka += "- Jmbg mora imati 13 cifara!\n";
+                poruka += "- Prazna lozinka!\n";
                 ok = false;
             }
             if (ok == false)
@@ -175,6 +180,11 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
                 poruka += "- Polje Prezime ne sme biti Prazno!\n";
                 ok = false;
             }
+            if (Util.Instance.proveriAdresu(korisnik.AdresaID) == false)
+            {
+                poruka += "- Ne postoji takva adresa\n";
+                ok = false;
+            }
             if (!tbEmail.Text.Contains("@"))
             {
                 poruka += "- Polje email nije u odgovarajucem formatu!\n";
@@ -183,7 +193,7 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
 
             if (tbLozinka.Text.Equals(""))
             {
-                poruka += "- Jmbg mora imati 13 cifara!\n";
+                poruka += "- Prazna lozinka!\n";
                 ok = false;
             }
             if (ok == false)

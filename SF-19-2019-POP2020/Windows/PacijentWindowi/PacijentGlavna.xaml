@@ -10,7 +10,7 @@
 
         <Grid>
 
-            <DataGrid   AutoGenerateColumns="True" Margin="12,32,10,281" Name="dgPacijenti" IsReadOnly="True" FontSize="16"
+            <DataGrid AutoGeneratingColumn="DGL_AutoGeneratingColumn"  AutoGenerateColumns="True" Margin="12,32,10,281" Name="dgPacijenti" IsReadOnly="True" FontSize="16"
                   
                   
                   

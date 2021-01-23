@@ -111,6 +111,16 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
                 poruka += "- Polje Opis ne sme biti Prazno!\n";
                 ok = false;
             }
+            if (Util.Instance.proveriLekara(terapija.LekarID) == false)
+            {
+                poruka += "\n- Ne postoji takav lekar!\n";
+                ok = false;
+            }
+            if (Util.Instance.proveriPacijenta(terapija.PacijentID) == false)
+            {
+                poruka += "\n- Ne postoji takav pacijent!\n";
+                ok = false;
+            }
             if (ok == false)
             {
                 MessageBox.Show(poruka, "Probajte ponovo");
