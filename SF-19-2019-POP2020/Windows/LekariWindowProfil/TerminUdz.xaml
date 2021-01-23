@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.LekariWindowProfil"
         mc:Ignorable="d"
-        Title="TerminUdz" Height="450" Width="800" Background="#04c582">
+        Title="TerminUdz" Height="450" Width="800" Background="#04c582" ResizeMode="NoResize">
     <Border Background="#2e3137" CornerRadius="20" Margin="15">
         <Grid Margin="10,0,-10,0">
             <TextBlock FontSize="20" Foreground="White" Height="39" HorizontalAlignment="Left" Margin="40,120,0,0" Name="lbDomZdravlja" Text="DomZdravlja" VerticalAlignment="Top" Width="116" />

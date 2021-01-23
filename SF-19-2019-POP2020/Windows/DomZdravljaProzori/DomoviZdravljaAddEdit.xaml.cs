@@ -35,29 +35,42 @@ namespace SF_19_2019_POP2020.Windows.DomZdravljaProzori
           //  domZdravlja.Sifra = random.Next(1, 1000);
             domZdravlja.Aktivan = true;
             //   tbSifra.DataContext = domZdravlja;
-            domZdravlja.AdresaID = 847;
+            domZdravlja.AdresaID = 147;
             tbNaziv.DataContext = domZdravlja;
             tbAdresa.DataContext = domZdravlja;
         }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
+            
             if (stanje == Stanje.DODAVANJE)
             {
-                domZdravlja.Aktivan = true;
-                Util.Instance.DomoviZdravlja.Add(domZdravlja);
-                Util.Instance.SacuvajEntitet(domZdravlja);
+                if (validacije())
+                {
+                    domZdravlja.Aktivan = true;
+                    Util.Instance.DomoviZdravlja.Add(domZdravlja);
+                    Util.Instance.SacuvajEntitet(domZdravlja);
+                    this.DialogResult = true;
+                    this.Close();
+                }
             }
             if (stanje == Stanje.IZMENA)
             {
-                //Util.Instance.Adrese.Add(adresa);
-                Util.Instance.updateDomZdravlja(domZdravlja);
-
+                if (validacije())
+                {
+                    //Util.Instance.Adrese.Add(adresa);
+                    Util.Instance.updateDomZdravlja(domZdravlja);
+                    this.DialogResult = true;
+                    this.Close();
+                }
+                else
+                {
+                    this.DialogResult = false;
+                }
 
 
             }
-            this.Close();
+            
         }
 
         private void btnPicAdresa_Click(object sender, RoutedEventArgs e)
@@ -79,6 +92,13 @@ namespace SF_19_2019_POP2020.Windows.DomZdravljaProzori
             {
                 poruka += "\n- Polje naziv ne sme biti Prazno!\n";
                 ok = false;
+            }
+            if (Util.Instance.proveriAdresu(domZdravlja.AdresaID) == false)
+            {
+                {
+                    poruka += "\n- Nema takve adrese!\n";
+                    ok = false;
+                }
             }
             if (ok == false)
             {

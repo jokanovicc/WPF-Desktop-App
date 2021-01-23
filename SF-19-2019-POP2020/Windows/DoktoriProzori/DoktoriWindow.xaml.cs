@@ -57,7 +57,11 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
 
             dgLekari.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
-
+        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan"))
+                e.Column.Visibility = Visibility.Collapsed;
+        }
         private bool CustomFilter(object obj)
         {
             Lekar korisnik = obj as Lekar;
@@ -115,7 +119,7 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
         {
             foreach(Termin termini in Util.Instance.Termini)
             {
-                if(termini.LekarID == lekar.ID)
+                if(termini.LekarID == lekar.ID && termini.Datum > DateTime.Now)
                 {
                     MessageBox.Show("Ne mozete obrisati lekara koji ima zakazan termin", "GRESKA");
                     return true;

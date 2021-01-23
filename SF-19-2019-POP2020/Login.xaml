@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF_19_2019_POP2020"
         mc:Ignorable="d"
-        Title="Login" Height="493.54" Width="665.797" FontSize="14" Background="#04c582">
+        Title="Login" Height="493.54" Width="665.797" FontSize="14" Background="#04c582" ResizeMode="NoResize">
     <Border Background="#2e3137" CornerRadius="20" Margin="20">
         <StackPanel Margin="20">
             <Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
@@ -17,7 +17,6 @@
             <Button Name="btnSubmit" Click="btnSubmit_Click" Content="Submit" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18" Height="41"/>
             <Button x:Name="btnRegistracija" Click="btnReg_Click" Content="Registruj se" Margin="142,10,139,10" Background="#545d6a" Foreground="White" FontSize="18" Height="45"/>
             <Button x:Name="btnNeprijavljeni" Click="btnNeprijavljeni_Click" Content="Neprijavljeni" Margin="60,10" Background="#545d6a" Foreground="White" FontSize="18"/>
-            <Button x:Name="btnAdmin" Click="btnAdmin_Click" Content="A" Margin="60,10,484,10" Background="#545d6a" Foreground="White" FontSize="18" RenderTransformOrigin="1.111,0.537"/>
 
         </StackPanel>
     </Border>

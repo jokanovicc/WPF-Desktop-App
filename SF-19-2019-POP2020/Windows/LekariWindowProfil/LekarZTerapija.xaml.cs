@@ -70,6 +70,12 @@ namespace SF_19_2019_POP2020.Windows.LekariWindowProfil
                 poruka += "- Polje Opis ne sme biti Prazno!\n";
                 ok = false;
             }
+            if (Util.Instance.proveriPacijenta(terapija.PacijentID) == true)
+            {
+                poruka += "\n- Ne postoji takav pacijent!\n";
+                ok = false;
+            }
+
             if (ok == false)
             {
                 MessageBox.Show(poruka, "Probajte ponovo");

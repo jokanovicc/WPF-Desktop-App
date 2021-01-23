@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.LekariWindowProfil"
         mc:Ignorable="d"
-        Title="Doktor-Izmena/Dodavanje" Height="580" Width="672" Background="#04c582">
+        Title="Doktor-Izmena/Dodavanje" Height="580" Width="672" Background="#04c582" ResizeMode="NoResize">
     <Border Background="#2e3137" CornerRadius="20" Margin="15">
         <Grid>
             <TextBlock FontSize="30" Foreground="White" Height="55" HorizontalAlignment="Left" Margin="25,126,0,0" Name="lbOpis" Text="Opis" VerticalAlignment="Top" Width="102" />

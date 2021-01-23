@@ -5,17 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.NEPRIJAVLJENIWindow"
         mc:Ignorable="d"
-        Title="Neregistrovani" Height="400" Width="945.977">
-    <Grid Margin="0,0,333,143">
-        <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="DGL_AutoGeneratingColumn" Margin="10,0,153,5" Name="dgLekari" IsReadOnly="True" FontSize="16"/>
+        Title="Neregistrovani" Height="400" Width="872.767" ResizeMode="NoResize" Background="#04c582">
+    <Border Background="#2e3137" CornerRadius="20" Margin="15">
 
-        <TextBox Name="TxtPretraga" HorizontalAlignment="Left" Height="21" Margin="464,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="131" KeyUp="TxtPretraga_KeyUp" Background="#FF709AD6"/>
+        <Grid Margin="0,0,333,143">
+            <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="DGL_AutoGeneratingColumn" Margin="10,0,32,5" Name="dgLekari" IsReadOnly="True" FontSize="16"/>
 
-        <Label Content="Lekari" HorizontalAlignment="Left" Margin="1008,5,0,0" VerticalAlignment="Top" Width="77"/>
-        <Button Content="Dom Zdravlja preko Adrese i Lekara" HorizontalAlignment="Left" Height="74" Margin="139,254,0,-102" Click="btn_DomZdravlja" VerticalAlignment="Top" Width="271" FontSize="14"/>
-        <Button Content="Nadji Dom Zdravlja preko Adrese" HorizontalAlignment="Left" Height="74" Margin="662,254,-283,-102" Click="btn_DomZdravlja2" VerticalAlignment="Top" Width="226" FontSize="14"/>
+            <TextBox Name="TxtPretraga" HorizontalAlignment="Left" Height="34" Margin="536,16,-187,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154" KeyUp="TxtPretraga_KeyUp" Background="#FF709AD6"/>
+
+            <Label Content="Lekari" HorizontalAlignment="Left" Margin="1008,5,0,0" VerticalAlignment="Top" Width="77"/>
+            <Button Background="#545d6a" Foreground="White"  Content="Dom Zdravlja preko Adrese i Lekara" HorizontalAlignment="Left" Height="57" Margin="98,254,0,-114" Click="btn_DomZdravlja" VerticalAlignment="Top" Width="271" FontSize="14"/>
+            <Button Background="#545d6a" Foreground="White" Content="Nadji Dom Zdravlja preko Adrese" HorizontalAlignment="Left" Height="57" Margin="536,254,-259,-114" Click="btn_DomZdravlja2" VerticalAlignment="Top" Width="226" FontSize="14"/>
+            <Label Foreground="White" Content="DOKTORI" HorizontalAlignment="Left" Height="52" Margin="10,197,0,-52" VerticalAlignment="Top" Width="295" FontSize="22"/>
 
 
 
-    </Grid>
+        </Grid>
+    </Border>
+
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.LekariWindowProfil"
         mc:Ignorable="d"
-        Title="LekarGlavna" Height="593.534" Width="996.552" Background="#04c582">
+        Title="LekarGlavna" Height="593.534" Width="996.552" Background="#04c582" ResizeMode="NoResize">
     <Border Background="#2e3137" CornerRadius="20" Margin="15">
         <Grid Margin="0,0,2,19">
             <Label Content="TERAPIJE PACIJENATA" Foreground="White" HorizontalAlignment="Left" Margin="683,154,0,0" VerticalAlignment="Top" Height="52" Width="249" FontSize="24"/>

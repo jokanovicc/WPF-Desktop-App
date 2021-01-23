@@ -55,7 +55,7 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
+         //   this.DialogResult = true;
            
 
             if (stanje == Stanje.DODAVANJE)
@@ -65,6 +65,7 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
                     //   if (!tbIme.Text.Equals("") && !tbPrezime.Text.Equals("") && !tbJmbg.Text.Equals("") && !tbLozinka.Text.Equals("") && !tbEmail.Text.Equals("") && tbEmail.Text.Contains("@")) {
                     Util.Instance.Pacijenti.Add(korisnik);
                     Util.Instance.SacuvajEntitet(korisnik);
+                    this.DialogResult = true;
                     this.Close();
 
                          }
@@ -79,7 +80,12 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
                 {
                     //Util.Instance.Adrese.Add(adresa);
                     Util.Instance.updatePacijent(korisnik);
+                    this.DialogResult = true;
                     this.Close();
+                }
+                else
+                {
+                    this.DialogResult = false;
                 }
 
 
@@ -172,12 +178,6 @@ namespace SF_19_2019_POP2020.Windows.PacijentiProzori
             if (!tbEmail.Text.Contains("@"))
             {
                 poruka += "- Polje email nije u odgovarajucem formatu!\n";
-                ok = false;
-            }
-
-            if (!tbJmbg.Text.All(char.IsDigit))
-            {
-                poruka += "- jmbg ne valj!\n";
                 ok = false;
             }
 

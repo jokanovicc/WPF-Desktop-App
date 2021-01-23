@@ -56,23 +56,31 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
+            
 
             if (stanje == Stanje.DODAVANJE)
             {
                 if (validacije()) { 
                 Util.Instance.Lekari.Add(korisnik);
                 Util.Instance.SacuvajEntitet(korisnik);
-                this.Close();
+                    this.DialogResult = true;
+                    this.Close();
                 }
         }
             if (stanje == Stanje.IZMENA)
             {
+                if (validacijeIzmena())
+                {
 
                     //Util.Instance.Adrese.Add(adresa);
                     Util.Instance.updateDoktor(korisnik);
+                    this.DialogResult = true;
                     this.Close();
-
+                }
+                else
+                {
+                    this.DialogResult = false;
+                }
 
 
         }
@@ -109,6 +117,16 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
             if (tbPrezime.Text.Equals(""))
             {
                 poruka += "- Polje Prezime ne sme biti Prazno!\n";
+                ok = false;
+            }
+            if (Util.Instance.proveriDZ(korisnik.DomZdravljaID)==false)
+            {
+                poruka += "- Ne postoji takav dom zdravlja\n";
+                ok = false;
+            }
+            if (Util.Instance.proveriAdresu(korisnik.AdresaID) == false)
+            {
+                poruka += "- Ne postoji takva adresa\n";
                 ok = false;
             }
             if (!tbEmail.Text.Contains("@"))
@@ -157,6 +175,16 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
                 poruka += "- Polje Ime ne sme biti Prazno!\n";
                 ok = false;
             }
+            if (Util.Instance.proveriDZ(korisnik.DomZdravljaID) == false)
+            {
+                poruka += "- Ne postoji takav dom zdravlja\n";
+                ok = false;
+            }
+            if (Util.Instance.proveriAdresu(korisnik.AdresaID) == false)
+            {
+                poruka += "- Ne postoji takva adresa\n";
+                ok = false;
+            }
             if (tbPrezime.Text.Equals(""))
             {
                 poruka += "- Polje Prezime ne sme biti Prazno!\n";
@@ -167,19 +195,6 @@ namespace SF_19_2019_POP2020.Windows.DoktoriProzori
                 poruka += "- Polje email nije u odgovarajucem formatu!\n";
                 ok = false;
             }
-
-            if (!tbJmbg.Text.All(char.IsDigit))
-            {
-                poruka += "- jmbg ne valj!\n";
-                ok = false;
-            }
-
-            if (tbJmbg.Text.Length != 13)
-            {
-                poruka += "- jmbg je zauzet!\n";
-                ok = false;
-            }
-
 
 
             if (tbLozinka.Text.Equals(""))

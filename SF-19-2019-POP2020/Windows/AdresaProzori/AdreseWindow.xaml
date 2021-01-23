@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Adrese" Height="450" Width="800" ResizeMode="NoResize" Background="#04c582" >
     <Grid>
-        <DataGrid AutoGenerateColumns="True" Margin="12,12,12,57" Name="dgAdresa" IsReadOnly="True" FontSize="16"/>
+        <DataGrid AutoGeneratingColumn="DGL_AutoGeneratingColumn" AutoGenerateColumns="True" Margin="12,12,12,57" Name="dgAdresa" IsReadOnly="True" FontSize="16"/>
 
 
         <Button Background="#545d6a" Foreground="White" Content="Obriši" Height="39" HorizontalAlignment="Left" Margin="165,0,0,12" Name="btnDelete" VerticalAlignment="Bottom" Width="66" Click="btnDelete_Click"  />

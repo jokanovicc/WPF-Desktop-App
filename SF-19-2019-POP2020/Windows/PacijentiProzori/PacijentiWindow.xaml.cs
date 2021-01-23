@@ -48,7 +48,11 @@ namespace SF_19_2019_POP2020.Windows
         {
             view.Refresh();
         }
-
+        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan"))
+                e.Column.Visibility = Visibility.Collapsed;
+        }
         private bool CustomFilter(object obj)
         {
             Pacijent korisnik = obj as Pacijent;
@@ -108,7 +112,7 @@ namespace SF_19_2019_POP2020.Windows
         {
             foreach (Termin termini in Util.Instance.Termini)
             {
-                if (termini.PacijentID == pac.ID)
+                if (termini.PacijentID == pac.ID && termini.Datum > DateTime.Now)
                 {
                     MessageBox.Show("Ne mozete obrisati pacijenta koji ima zakazan termin", "GRESKA");
                     return true;
@@ -164,6 +168,10 @@ namespace SF_19_2019_POP2020.Windows
                 }
             }
         }
+
+
+
+
 
 
 

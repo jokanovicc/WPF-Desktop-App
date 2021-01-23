@@ -47,7 +47,7 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
+            
             if (stanje == Stanje.DODAVANJE)
             {
 
@@ -55,6 +55,7 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
                 {
                     Util.Instance.Terapije.Add(terapija);
                     Util.Instance.SacuvajEntitet(terapija);
+                    this.DialogResult = true;
                     this.Close();
                 }
 
@@ -65,7 +66,12 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
                 {
                     //Util.Instance.Adrese.Add(adresa);
                     Util.Instance.updateTerapija(terapija);
+                    this.DialogResult = true;
                     this.Close();
+                }
+                else
+                {
+                    this.DialogResult = false;
                 }
 
 

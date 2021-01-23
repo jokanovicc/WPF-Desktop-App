@@ -1,4 +1,5 @@
-﻿using SF_19_2019_POP2020.Windows.DomZdravljaProzori;
+﻿using SF_19_2019_POP2020.Models;
+using SF_19_2019_POP2020.Windows.DomZdravljaProzori;
 using SF_19_2019_POP2020.Windows.NEPRIJAVLJENIWindow;
 using SF_19_2019_POP2020.Windows.Pretrage;
 using SF19_2019_POP2020.Models;
@@ -45,11 +46,18 @@ namespace SF_19_2019_POP2020.Windows
                 MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 DomZdravlja selektovaniDomZdravlja = view.CurrentItem as DomZdravlja;
-                Util.Instance.DeleteDomZdravlja(selektovaniDomZdravlja.Sifra);
-                view.Refresh();
+
+                if (terminProvera(selektovaniDomZdravlja) == false) { 
+                    Util.Instance.DeleteDomZdravlja(selektovaniDomZdravlja.Sifra);
+                    view.Refresh();
+                }
             }
         }
-
+        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan"))
+                e.Column.Visibility = Visibility.Collapsed;
+        }
         private bool CustomFilter(object obj)
         {
             DomZdravlja korisnik = obj as DomZdravlja;
@@ -71,6 +79,21 @@ namespace SF_19_2019_POP2020.Windows
             }
             return false;
         }
+
+        private bool terminProvera(DomZdravlja dz)
+        {
+            foreach (Lekar lekari in Util.Instance.Lekari)
+            {
+                if (lekari.DomZdravljaID == dz.Sifra && lekari.Aktivan == true)
+                {
+                    MessageBox.Show("Ne mozete obrisati dom zdravlja koji ima instancu", "GRESKA");
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
         private void TxtPretraga_KeyUp(object sender, KeyEventArgs e)
         {
             view.Refresh();

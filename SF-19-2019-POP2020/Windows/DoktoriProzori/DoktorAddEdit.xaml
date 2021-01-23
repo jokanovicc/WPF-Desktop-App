@@ -7,26 +7,27 @@
         mc:Ignorable="d"
         WindowStyle="None"
         Title="Doktor-Izmena/Dodavanje" Height="580" Width="672" ResizeMode="NoResize" Background="#04c582">
+    <Border Background="#2e3137" CornerRadius="20" Margin="15">
 
         <Grid>
 
-        <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="10,41,0,0" Name="lbIme" Text="Ime" VerticalAlignment="Top" Width="60" />
+            <TextBlock Foreground="White" FontSize="20" Height="23" HorizontalAlignment="Left" Margin="10,41,0,0" Name="lbIme" Text="Ime" VerticalAlignment="Top" Width="60" />
         <TextBox Text = "{Binding Path=Ime}" FontSize="20" Height="32" HorizontalAlignment="Left" Margin="78,41,0,0" Name="tbIme" VerticalAlignment="Top" Width="548" />
 
-        <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="10,104,0,0" Name="lbPrezime" Text="Prezime" VerticalAlignment="Top" Width="94" />
+            <TextBlock Foreground="White" FontSize="20" Height="23" HorizontalAlignment="Left" Margin="10,104,0,0" Name="lbPrezime" Text="Prezime" VerticalAlignment="Top" Width="94" />
         <TextBox Text = "{Binding Path=Prezime}" FontSize="20" Height="32" HorizontalAlignment="Left" Margin="111,104,0,0" Name="tbPrezime" VerticalAlignment="Top" Width="515" />
 
-        <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="10,168,0,0" Name="lbLozinka" Text="Lozinka" VerticalAlignment="Top" Width="82" />
+            <TextBlock Foreground="White" FontSize="20" Height="23" HorizontalAlignment="Left" Margin="10,168,0,0" Name="lbLozinka" Text="Lozinka" VerticalAlignment="Top" Width="82" />
         <TextBox Text = "{Binding Path=Lozinka}" FontSize="20" Height="32" HorizontalAlignment="Left" Margin="111,168,0,0" Name="tbLozinka" VerticalAlignment="Top" Width="529" />
 
-        <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="12,244,0,0" Name="lbEmail" Text="Email" VerticalAlignment="Top" Width="60" />
+            <TextBlock Foreground="White" FontSize="20" Height="23" HorizontalAlignment="Left" Margin="12,244,0,0" Name="lbEmail" Text="Email" VerticalAlignment="Top" Width="60" />
         <TextBox Text = "{Binding Path=Email}" FontSize="20" Height="32" HorizontalAlignment="Left" Margin="92,244,0,0" Name="tbEmail" VerticalAlignment="Top" Width="548" />
 
 
-        <TextBlock FontSize="20" Height="31" HorizontalAlignment="Left" Margin="32,368,0,0" Name="lbAdresa" Text="Adresa" VerticalAlignment="Top" Width="83" RenderTransformOrigin="0.501,7.289" />
+            <TextBlock Foreground="White" FontSize="20" Height="31" HorizontalAlignment="Left" Margin="32,368,0,0" Name="lbAdresa" Text="Adresa" VerticalAlignment="Top" Width="83" RenderTransformOrigin="0.501,7.289" />
 
 
-        <TextBlock FontSize="20" Height="34" HorizontalAlignment="Left" Margin="32,417,0,0" Name="lbDomZdravlja" Text="DomZdravlja" VerticalAlignment="Top" Width="112" RenderTransformOrigin="0.501,7.289" />
+            <TextBlock Foreground="White" FontSize="20" Height="34" HorizontalAlignment="Left" Margin="32,417,0,0" Name="lbDomZdravlja" Text="DomZdravlja" VerticalAlignment="Top" Width="112" RenderTransformOrigin="0.501,7.289" />
 
         <TextBox Text="{Binding Path=AdresaID}" Height="23" HorizontalAlignment="Left" Margin="164,376,0,0" Name="tbAdresa" VerticalAlignment="Top" Width="70" IsReadOnly="True" />
 
@@ -36,7 +37,7 @@
         <Button Background="#545d6a" Foreground="White" Content="Izaberi Dom Zdravlja" Height="34" HorizontalAlignment="Left" Margin="239,417,0,0" Name="btnPickDomZdravlja" VerticalAlignment="Top" Width="129" Click="btnPicDomZdravlja_Click" RenderTransformOrigin="-0.27,0.537" />
 
 
-        <TextBlock FontSize="20" Height="32" HorizontalAlignment="Left" Margin="13,310,0,0" Name="lbJmbg" Text="Jmbg" VerticalAlignment="Top" Width="60" />
+            <TextBlock Foreground="White" FontSize="20" Height="32" HorizontalAlignment="Left" Margin="13,310,0,0" Name="lbJmbg" Text="Jmbg" VerticalAlignment="Top" Width="60" />
         <TextBox Text = "{Binding Path=JMBG}" FontSize="20" Height="32" HorizontalAlignment="Left" Margin="92,310,0,0" Name="tbJmbg" VerticalAlignment="Top" Width="548" />
 
 
@@ -49,5 +50,6 @@
 
 
     </Grid>
-   
+    </Border>
+
 </Window>

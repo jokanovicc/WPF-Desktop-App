@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.TerapijaProzori"
         mc:Ignorable="d"
-        Title="Doktor-Izmena/Dodavanje" Height="580" Width="672">
+        Title="Doktor-Izmena/Dodavanje" Height="580" Width="672" ResizeMode="NoResize">
     <Grid>
         <TextBlock FontSize="20" Height="23" HorizontalAlignment="Left" Margin="10,41,0,0" Name="lbOpis" Text="Opis" VerticalAlignment="Top" Width="60" />
         <TextBox Text = "{Binding Path=Opis}" FontSize="20" Height="32" HorizontalAlignment="Left" Margin="78,41,0,0" Name="tbOpis" VerticalAlignment="Top" Width="548" />

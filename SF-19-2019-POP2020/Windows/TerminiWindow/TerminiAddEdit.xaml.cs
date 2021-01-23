@@ -61,13 +61,14 @@ namespace SF_19_2019_POP2020.Windows.TerminiWindow
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
+            
 
             if (stanje == Stanje.DODAVANJE)
             {
                 if (validacije()) { 
                 Util.Instance.Termini.Add(termin);
                 Util.Instance.SacuvajEntitet(termin);
+                    this.DialogResult = true;
                     this.Close();
                 }
         }
@@ -76,10 +77,15 @@ namespace SF_19_2019_POP2020.Windows.TerminiWindow
                 if (validacije()) { 
                 //Util.Instance.Adrese.Add(adresa);
                 Util.Instance.updateTermin(termin);
-                this.Close();
-                   
+                    this.DialogResult = true;
+                    this.Close();
 
-                    }
+
+                }
+                else
+                {
+                    this.DialogResult = false;
+                }
 
             }
 
@@ -108,6 +114,16 @@ namespace SF_19_2019_POP2020.Windows.TerminiWindow
         {
             bool ok = true;
             String poruka = "Termin se nije sacuvao\nMolimo popravite sledece greske u unosu:\n";
+            if (Util.Instance.proveriLekara(termin.LekarID)==false)
+            {
+                poruka += "\n- Ne postoji takav lekar!\n";
+                ok = false;
+            }
+            if (Util.Instance.proveriPacijenta(termin.PacijentID) == false)
+            {
+                poruka += "\n- Ne postoji takav pacijent!\n";
+                ok = false;
+            }
             if (dpDatum.SelectedDate < DateTime.Now)
             {
                 poruka += "\n- Izabrali ste datum u proslosti!\n";

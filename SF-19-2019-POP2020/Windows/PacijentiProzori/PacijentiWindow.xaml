@@ -8,7 +8,7 @@
         Title="PacijentiWindow" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
 
-        <DataGrid AutoGenerateColumns="True" Margin="12,12,10,75" Name="dgPacijenti" IsReadOnly="True" FontSize="16"
+        <DataGrid AutoGeneratingColumn="DGL_AutoGeneratingColumn" AutoGenerateColumns="True" Margin="12,12,10,75" Name="dgPacijenti" IsReadOnly="True" FontSize="16"
                   
                   
                   

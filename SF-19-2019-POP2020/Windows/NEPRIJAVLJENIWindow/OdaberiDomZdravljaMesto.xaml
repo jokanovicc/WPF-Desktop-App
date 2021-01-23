@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.NEPRIJAVLJENIWindow"
         mc:Ignorable="d"
-        Title="OdaberiDomZdravljaMesto" Height="431.347" Width="800">
+        Title="OdaberiDomZdravljaMesto" Height="431.347" Width="800" ResizeMode="NoResize">
     <Grid>
         <TextBlock FontSize="20" Height="39" HorizontalAlignment="Left" Margin="40,120,0,0" Name="lbAdresa" Text="Adresa" VerticalAlignment="Top" Width="68" />
         <TextBox Text="{Binding Path=Adresa, Mode=OneWay}" Height="39" HorizontalAlignment="Left" Margin="173,120,0,0" Name="tbAdresa" VerticalAlignment="Top" Width="491" IsReadOnly="True" />

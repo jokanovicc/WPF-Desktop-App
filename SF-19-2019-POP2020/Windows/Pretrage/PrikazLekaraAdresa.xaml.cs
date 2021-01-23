@@ -36,7 +36,11 @@ namespace SF_19_2019_POP2020.Windows.Pretrage
             dgDomZdravlja.ItemsSource = view;
             dgDomZdravlja.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
-
+        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("ID") || e.PropertyName.Equals("JMBG") || e.PropertyName.Equals("Lozinka") || e.PropertyName.Equals("AdresaID") || e.PropertyName.Equals("DomZdravljaID"))
+                e.Column.Visibility = Visibility.Collapsed;
+        }
         public ObservableCollection<Lekar> readAdresa(int sifraAdrese)
         {
             ObservableCollection<Lekar> pac = new ObservableCollection<Lekar>();

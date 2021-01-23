@@ -70,7 +70,6 @@
     <Compile Include="Models\Termin.cs" />
     <Compile Include="MyExceptions\UserNotFoundException.cs" />
     <Compile Include="Services\AdresaService.cs" />
-    <Compile Include="Services\DoctorService.cs" />
     <Compile Include="Services\DomZdravljaService.cs" />
     <Compile Include="Services\IDomZdravljaServis.cs" />
     <Compile Include="Services\IPacijentService.cs" />
@@ -82,7 +81,6 @@
     <Compile Include="Services\PacijentService.cs" />
     <Compile Include="Services\TerapijaService.cs" />
     <Compile Include="Services\TerminiService.cs" />
-    <Compile Include="Services\UserService.cs" />
     <Compile Include="Validations\EmailValidation.cs" />
     <Compile Include="Windows\Changelog.xaml.cs">
       <DependentUpon>Changelog.xaml</DependentUpon>
@@ -122,9 +120,6 @@
     </Compile>
     <Compile Include="Windows\DomZdravljaProzori\DomoviZdravljaWindow.xaml.cs">
       <DependentUpon>DomoviZdravljaWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\LekariWindowProfil\GrafickiPrikaz.xaml.cs">
-      <DependentUpon>GrafickiPrikaz.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LekariWindowProfil\LekarGlavna.xaml.cs">
       <DependentUpon>LekarGlavna.xaml</DependentUpon>
@@ -286,10 +281,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\DomZdravljaProzori\DomoviZdravljaWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\LekariWindowProfil\GrafickiPrikaz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

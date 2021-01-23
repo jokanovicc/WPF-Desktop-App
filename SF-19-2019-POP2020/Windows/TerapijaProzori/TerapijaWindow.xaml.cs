@@ -74,7 +74,11 @@ namespace SF_19_2019_POP2020.Windows.TerapijaProzori
             this.Close();
         }
 
-
+        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan"))
+                e.Column.Visibility = Visibility.Collapsed;
+        }
         private void btnLekar_Click(object sender, RoutedEventArgs e)
         {
             TerapijaViaLekar tvl = new TerapijaViaLekar();

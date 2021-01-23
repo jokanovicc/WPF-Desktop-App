@@ -31,8 +31,6 @@ namespace SF19_2019_POP2020.Models
         private Util()
         {
             _adresaService = new AdresaService();
-            _userService = new UserService();
-            _doctorService = new DoctorService();
             _domZdravljaServis = new DomZdravljaService();
             _pacijentService = new PacijentService();
             _lekariServis = new LekariServis();
@@ -120,9 +118,7 @@ namespace SF19_2019_POP2020.Models
         public void CitanjeEntiteta()
         {
 
-                _userService.readUsers();
 
-                _doctorService.readUsers();
 
                 _adresaService.readAdrese();
             _domZdravljaServis.readDomZdravlja();
@@ -199,6 +195,55 @@ namespace SF19_2019_POP2020.Models
         public void updateTermin(Termin termin)
         {
             _terminService.updateTermin1(termin);
+        }
+
+        public bool proveriAdresu(int id)
+        {
+            foreach(Adresa adresa in Adrese)
+            {
+                if (adresa.SifraAdrese.Equals(id))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool proveriDZ(int id)
+        {
+            foreach (DomZdravlja dz in DomoviZdravlja)
+            {
+                if (dz.Sifra.Equals(id))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool proveriLekara(int id)
+        {
+            foreach (Lekar l in Lekari)
+            {
+                if (l.ID.Equals(id))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        public bool proveriPacijenta(int id)
+        {
+            foreach (Pacijent p in Pacijenti)
+            {
+                if (p.ID.Equals(id))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 

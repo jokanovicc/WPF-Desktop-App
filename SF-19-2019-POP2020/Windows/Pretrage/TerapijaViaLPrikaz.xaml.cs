@@ -34,7 +34,11 @@ namespace SF_19_2019_POP2020.Windows.Pretrage
             dgLekari.ItemsSource = view;
             dgLekari.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
-
+        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan"))
+                e.Column.Visibility = Visibility.Collapsed;
+        }
         public ObservableCollection<Terapija> readTer(int sifraLekara)
         {
             ObservableCollection<Terapija> pac = new ObservableCollection<Terapija>();

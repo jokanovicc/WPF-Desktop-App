@@ -84,6 +84,12 @@ namespace SF_19_2019_POP2020.Windows
                 poruka += "- Polje Ime ne sme biti Prazno!\n";
                 ok = false;
             }
+
+            if (Util.Instance.proveriAdresu(korisnik.AdresaID) == false)
+            {
+                poruka += "- Nema takve adrese!\n";
+                ok = false;
+            }
             if (tbPrezime.Text.Equals(""))
             {
                 poruka += "- Polje Prezime ne sme biti Prazno!\n";

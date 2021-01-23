@@ -1,7 +1,7 @@
 ﻿<Window x:Class="SF_19_2019_POP2020.Windows.PacijentiProzori.PacijentiPick"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Pacijenti" Height="404" Width="466">
+        Title="Pacijenti" Height="404" Width="466" ResizeMode="NoResize">
     <Grid>
         <DataGrid   AutoGenerateColumns="True" AutoGeneratingColumn="DGL_AutoGeneratingColumn" Margin="12,12,12,150" Name="dgPacijenti" IsReadOnly="True" />
         <Button Content="Obriši" Height="39" HorizontalAlignment="Left" Margin="165,0,0,31" Name="btnDelete" VerticalAlignment="Bottom" Width="66" />

@@ -44,7 +44,11 @@ namespace SF_19_2019_POP2020.Windows
             dgTermini.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
 
-
+        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan"))
+                e.Column.Visibility = Visibility.Collapsed;
+        }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Da li ste sigurni?", "Potvrda",

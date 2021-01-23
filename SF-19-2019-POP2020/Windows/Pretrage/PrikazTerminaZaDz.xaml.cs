@@ -44,7 +44,11 @@ namespace SF_19_2019_POP2020.Windows.Pretrage
 
 
         }
-
+        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan"))
+                e.Column.Visibility = Visibility.Collapsed;
+        }
         public ObservableCollection<Termin> readTermin(int sifraAdrese, Lekar lekar,DateTime datum)
         {
             ObservableCollection<Termin> pac = new ObservableCollection<Termin>();

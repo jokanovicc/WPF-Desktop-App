@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.DomZdravljaProzori"
         mc:Ignorable="d"
-        Title="LekarTermini" Height="450" Width="827.155">
+        Title="LekarTermini" Height="450" Width="827.155" ResizeMode="NoResize">
     <Grid>
         <DataGrid AutoGenerateColumns="True" Margin="24,35,41,112" Name="dgTerminiZakazani" IsReadOnly="True" FontSize="16"/>
         <Button Background="#545d6a" Foreground="White"  Content="Dodaj Termin" Height="39" HorizontalAlignment="Left" Margin="678,0,0,22" Name="btnT" VerticalAlignment="Bottom" Width="100" Click="btnT_Click" />

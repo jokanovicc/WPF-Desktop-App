@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.PacijentWindowi"
         mc:Ignorable="d"
-        Title="PacijentGlavna" Height="450" Width="800" Background="#04c582" >
+        Title="PacijentGlavna" Height="450" Width="800" Background="#04c582" ResizeMode="NoResize" >
     <Border Background="#2e3137" CornerRadius="20" Margin="15">
 
         <Grid>

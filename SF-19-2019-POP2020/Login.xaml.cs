@@ -37,23 +37,23 @@ namespace SF_19_2019_POP2020
             {
 
 
-                    if (sqlCon.State == ConnectionState.Closed)
-                        sqlCon.Open();
-                    String query = "SELECT COUNT(1) FROM pacijenti WHERE jmbg=@jmbg AND lozinka=@lozinka";
-                    SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-                    sqlCmd.CommandType = CommandType.Text;
-                    sqlCmd.Parameters.AddWithValue("@jmbg", txtUsername.Text);
-                    sqlCmd.Parameters.AddWithValue("@lozinka", txtPassword.Password);
-                    int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
-                    if (count == 1)
-                    {
-                        PacijentGlavna dashboard = new PacijentGlavna(txtUsername.Text);
-                        dashboard.Show();
-                        this.Close();
-                    }
+                if (sqlCon.State == ConnectionState.Closed)
+                    sqlCon.Open();
+                String query = "SELECT COUNT(1) FROM pacijenti WHERE jmbg=@jmbg AND lozinka=@lozinka and aktivan=1";
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.Parameters.AddWithValue("@jmbg", txtUsername.Text);
+                sqlCmd.Parameters.AddWithValue("@lozinka", txtPassword.Password);
+                int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
+                if (count == 1)
+                {
+                    PacijentGlavna dashboard = new PacijentGlavna(txtUsername.Text);
+                    dashboard.Show();
+                    this.Close();
+                }
                 if (count != 1)
                 {
-                    String query1 = "SELECT COUNT(1) FROM doktori WHERE jmbg=@jmbg AND lozinka=@lozinka";
+                    String query1 = "SELECT COUNT(1) FROM doktori WHERE jmbg=@jmbg AND lozinka=@lozinka and aktivan=1";
                     SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon);
                     sqlCmd1.CommandType = CommandType.Text;
                     sqlCmd1.Parameters.AddWithValue("@jmbg", txtUsername.Text);
@@ -72,10 +72,18 @@ namespace SF_19_2019_POP2020
                     }
 
                 }
-
+            
+                if(txtUsername.Text.Equals("admin") && txtPassword.Password.Equals("admin"))
+                {
+                    HomeWindow dashboard = new HomeWindow();
+                    dashboard.Show();
+                    this.Close();
+                }
+       
 
 
             }
+
 
             catch (Exception ex)
             {
@@ -85,14 +93,6 @@ namespace SF_19_2019_POP2020
             {
                 sqlCon.Close();
             }
-        }
-
-        private void btnAdmin_Click(object sender, RoutedEventArgs e)
-        {
-            HomeWindow dashboard = new HomeWindow();
-            dashboard.Show();
-            this.Close();
-
         }
 
         private void btnReg_Click(object sender, RoutedEventArgs e)

@@ -45,7 +45,7 @@ namespace SF_19_2019_POP2020.Windows.AdresaEditUpdate
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
+           
 
             if (stanje == Stanje.DODAVANJE)
             {
@@ -53,18 +53,29 @@ namespace SF_19_2019_POP2020.Windows.AdresaEditUpdate
                 {
                     Util.Instance.Adrese.Add(adresa);
                     Util.Instance.SacuvajEntitet(adresa);
+                    this.DialogResult = true;
+                    this.Close();
                 }
 
             }
             if (stanje == Stanje.IZMENA)
             {
+                if (validacije())
+                {
 
-                //Util.Instance.Adrese.Add(adresa);
-                Util.Instance.updateAdresa(adresa);
+                    //Util.Instance.Adrese.Add(adresa);
+                    Util.Instance.updateAdresa(adresa);
+                    this.DialogResult = true;
+                    this.Close();
+                }
+                else {
+
+                    this.DialogResult = false;
+                }
 
 
             }
-            this.Close();
+            
         }
 
 

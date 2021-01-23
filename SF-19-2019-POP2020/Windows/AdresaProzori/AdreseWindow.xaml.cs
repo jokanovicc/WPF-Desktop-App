@@ -42,20 +42,55 @@ namespace SF_19_2019_POP2020.Windows
             dgAdresa.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
 
+        private void DGL_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan"))
+                e.Column.Visibility = Visibility.Collapsed;
+        }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Da li ste sigurni?", "Potvrda",
                 MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                Adresa selektovanaAdresa = view.CurrentItem as Adresa;
-                Util.Instance.DeleteAdresa(selektovanaAdresa.SifraAdrese);
-                view.Refresh();
+
+                if(Provera(selektovanaAdresa) == false)
+                {
+                    if (Provera2(selektovanaAdresa) == false)
+                    {
+                        Util.Instance.DeleteAdresa(selektovanaAdresa.SifraAdrese);
+                        view.Refresh();
+                    }
+                }
+
             }
         }
 
+        private bool Provera(Adresa ad)
+        {
+            foreach (Lekar lekari in Util.Instance.Lekari)
+            {
+                if (lekari.AdresaID == ad.SifraAdrese && lekari.Aktivan == true)
+                {
+                    MessageBox.Show("Ne mozete obrisati adresu koji ima instancu", "GRESKA");
+                    return true;
+                }
+            }
+            return false;
+        }
 
-
-
+        private bool Provera2(Adresa ad)
+        {
+            foreach (Pacijent pacijenti in Util.Instance.Pacijenti)
+            {
+                if (pacijenti.AdresaID == ad.SifraAdrese && pacijenti.Aktivan == true)
+                {
+                    MessageBox.Show("Ne mozete obrisati adresu koji ima instancu", "GRESKA");
+                    return true;
+                }
+            }
+            return false;
+        }
 
         private bool PrikazFiltera(object obj)
         {

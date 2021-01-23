@@ -1,7 +1,7 @@
 ﻿<Window x:Class="SF_19_2019_POP2020.Windows.TerminiWindow.TerminiAddEdit"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Termini" Height="556" Width="672">
+        Title="Termini" Height="556" Width="672" ResizeMode="NoResize">
     <Grid>
 
 

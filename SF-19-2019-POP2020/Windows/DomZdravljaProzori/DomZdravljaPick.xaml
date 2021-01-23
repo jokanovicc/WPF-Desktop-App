@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF_19_2019_POP2020.Windows.DomZdravljaProzori"
         mc:Ignorable="d"
-        Title="Dom Zdravlja" Height="404" Width="466">
+        Title="Dom Zdravlja" Height="404" Width="466" ResizeMode="NoResize">
     <Grid>
         <DataGrid AutoGeneratingColumn="DGL_AutoGeneratingColumn" AutoGenerateColumns="True" Margin="12,12,12,143" Name="dgDomoviZdravlja" IsReadOnly="True" />
         <Button Content="Obriši" Height="39" HorizontalAlignment="Left" Margin="165,0,0,31" Name="btnDelete" VerticalAlignment="Bottom" Width="66" />
